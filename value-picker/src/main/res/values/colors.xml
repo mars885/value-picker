@@ -12,19 +12,11 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
--->
+  -->
 
 <resources>
 
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-
-    <color name="time_picker_text_color">#00c458</color>
-    <color name="time_picker_divider_color">@color/time_picker_text_color</color>
-    <color name="date_picker_text_color">#0016ff</color>
-    <color name="date_picker_divider_color">@color/date_picker_text_color</color>
-    <color name="team_picker_text_color">#b09600</color>
-    <color name="team_picker_divider_color">#b09600</color>
+    <color name="default_value_item_text_color">#000000</color>
+    <color name="default_value_item_divider_color">#000000</color>
 
 </resources>

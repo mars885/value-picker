@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
   ~
@@ -14,17 +16,12 @@
   ~ limitations under the License.
 -->
 
-<resources>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <solid android:color="@color/default_value_item_divider_color"/>
 
-    <color name="time_picker_text_color">#00c458</color>
-    <color name="time_picker_divider_color">@color/time_picker_text_color</color>
-    <color name="date_picker_text_color">#0016ff</color>
-    <color name="date_picker_divider_color">@color/date_picker_text_color</color>
-    <color name="team_picker_text_color">#b09600</color>
-    <color name="team_picker_divider_color">#b09600</color>
+    <size android:height="@dimen/default_value_item_divider_height"/>
 
-</resources>
+</shape>
