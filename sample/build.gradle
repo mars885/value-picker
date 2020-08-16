@@ -60,7 +60,8 @@ dependencies {
     implementation project(":value-picker")
 
     implementation deps.appCompat
-    implementation deps.recyclerView
+    implementation deps.navFragmentKtx
+    implementation deps.navUiKtx
     implementation deps.commonsKtx
 
     testImplementation deps.jUnit

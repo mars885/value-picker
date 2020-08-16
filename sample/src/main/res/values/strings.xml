@@ -18,11 +18,6 @@
 
     <string name="app_name">ValuePicker</string>
 
-    <string name="time_picker_title">Time Picker</string>
-    <string name="date_picker_title">Date Picker</string>
-    <string name="team_picker_title">Team Picker</string>
-    <string name="time_picker_info_container_title">Picked Time</string>
-    <string name="date_picker_info_container_title">Picked Date</string>
-    <string name="team_picker_info_container_title">Picked Team</string>
+    <string name="font_family_medium" translatable="false">sans-serif-medium</string>
 
 </resources>

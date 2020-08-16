@@ -20,12 +20,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
     <style name="TimePicker">
         <item name="valuePickerView_maxVisibleItems">3</item>
-        <item name="valuePickerView_textColor">@color/time_picker_text_color</item>
-        <item name="valuePickerView_dividerColor">@color/time_picker_divider_color</item>
+        <item name="valuePickerView_textColor">@color/colorAccent</item>
+        <item name="valuePickerView_dividerColor">@color/colorAccent</item>
         <item name="valuePickerView_textSize">@dimen/time_picker_text_size</item>
         <item name="valuePickerView_areDividersEnabled">true</item>
         <item name="valuePickerView_isInfiniteScrollEnabled">false</item>
@@ -33,20 +35,20 @@
 
     <style name="DatePicker">
         <item name="valuePickerView_maxVisibleItems">5</item>
-        <item name="valuePickerView_textColor">@color/date_picker_text_color</item>
-        <item name="valuePickerView_dividerColor">@color/date_picker_divider_color</item>
+        <item name="valuePickerView_textColor">@color/colorAccent</item>
+        <item name="valuePickerView_dividerColor">@color/colorAccent</item>
         <item name="valuePickerView_textSize">@dimen/date_picker_text_size</item>
         <item name="valuePickerView_areDividersEnabled">true</item>
         <item name="valuePickerView_isInfiniteScrollEnabled">true</item>
     </style>
 
     <style name="TeamPicker">
-        <item name="valuePickerView_maxVisibleItems">7</item>
-        <item name="valuePickerView_textColor">@color/team_picker_text_color</item>
-        <item name="valuePickerView_textSize">@dimen/date_picker_text_size</item>
+        <item name="valuePickerView_maxVisibleItems">5</item>
+        <item name="valuePickerView_textColor">@color/colorAccent</item>
+        <item name="valuePickerView_textSize">@dimen/team_picker_text_size</item>
         <item name="valuePickerView_divider">@drawable/team_picker_divider_drawable</item>
         <item name="valuePickerView_areDividersEnabled">true</item>
-        <item name="valuePickerView_isInfiniteScrollEnabled">true</item>
+        <item name="valuePickerView_isInfiniteScrollEnabled">false</item>
     </style>
 
 </resources>

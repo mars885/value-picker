@@ -1,12 +1,12 @@
 package com.paulrybitskyi.valuepicker
 
 import android.content.Context
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.paulrybitskyi.commons.ktx.views.setTextSizeInPx
 import com.paulrybitskyi.valuepicker.ValuePickerRecyclerViewAdapter.ViewHolder
 import com.paulrybitskyi.valuepicker.scrollhelpers.ScrollHelper
 import com.paulrybitskyi.commons.utils.observeChanges
@@ -39,7 +39,7 @@ internal class ValuePickerRecyclerViewAdapter(
             )
             gravity = Gravity.CENTER
             setTextColor(valueItemConfig.textColor)
-            setTextSize(TypedValue.COMPLEX_UNIT_PX, valueItemConfig.textSize)
+            setTextSizeInPx(valueItemConfig.textSize)
             typeface = valueItemConfig.typeface
         }
     }

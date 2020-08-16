@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
   ~
@@ -14,11 +16,12 @@
   ~ limitations under the License.
 -->
 
-<resources>
-
-    <color name="colorPrimary">#2d2b39</color>
-    <color name="colorPrimaryDark">#22202b</color>
-    <color name="colorAccent">#7986cb</color>
-    <color name="colorPrimaryText">#95949a</color>
-
-</resources>
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:clipToPadding="false"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>

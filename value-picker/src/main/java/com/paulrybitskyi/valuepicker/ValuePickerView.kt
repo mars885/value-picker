@@ -289,13 +289,8 @@ class ValuePickerView @JvmOverloads constructor(
 
 
     private fun calculateValueItemSize(): Size {
-        if(!hasItems) {
-            return getDefaultValueItemSize()
-        }
-
-        if(hasFixedItemSize) {
-            return requireNotNull(fixedItemSize)
-        }
+        if(!hasItems) return getDefaultValueItemSize()
+        if(hasFixedItemSize) return requireNotNull(fixedItemSize)
 
         val valueItemTextMaxSize = calculateValueItemTextMaxSize()
         val valueItemTextSizeRatio = (valueItemConfig.textSize / defaultValueItemTextSize)
@@ -341,9 +336,7 @@ class ValuePickerView @JvmOverloads constructor(
 
 
     private fun calculateFinalValueItemWidth(calculatedValueItemWidth: Int, minValueItemWidth: Int): Int {
-        if(hasFixedItemWidth) {
-            return requireNotNull(fixedItemSize).width
-        }
+        if(hasFixedItemWidth) return requireNotNull(fixedItemSize).width
 
         if(calculatedValueItemWidth < minValueItemWidth) {
             return minValueItemWidth
@@ -354,9 +347,7 @@ class ValuePickerView @JvmOverloads constructor(
 
 
     private fun calculateFinalValueItemHeight(calculatedValueItemHeight: Int, minValueItemHeight: Int): Int {
-        if(hasFixedItemHeight) {
-            return requireNotNull(fixedItemSize).height
-        }
+        if(hasFixedItemHeight) return requireNotNull(fixedItemSize).height
 
         if(calculatedValueItemHeight < minValueItemHeight) {
             return minValueItemHeight
@@ -379,7 +370,7 @@ class ValuePickerView @JvmOverloads constructor(
         maxVisibleItems = when {
             (itemSize <= DEFAULT_MAX_VISIBLE_ITEMS) -> DEFAULT_MAX_VISIBLE_ITEMS
             itemSize.isOdd -> itemSize
-            else -> (itemSize -1)
+            else -> (itemSize - 1)
         }
     }
 

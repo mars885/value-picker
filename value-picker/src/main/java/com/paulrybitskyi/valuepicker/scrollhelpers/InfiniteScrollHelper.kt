@@ -4,7 +4,7 @@ internal class InfiniteScrollHelper(override var realItemCount: Int = 0) : Scrol
 
 
     override val adapterItemCount: Int
-        get() = Integer.MAX_VALUE
+        get() = (if(realItemCount == 0) 0 else Integer.MAX_VALUE)
 
 
     override fun calculateInitialPosition(position: Int): Int {

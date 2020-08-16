@@ -4,7 +4,6 @@ import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.commons.ktx.applyBounds
-import com.paulrybitskyi.valuepicker.ValueItemConfig
 import kotlin.math.ceil
 import kotlin.math.floor
 

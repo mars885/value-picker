@@ -26,11 +26,11 @@ internal class ValuePickerLayoutManager(
     ) {
         super.onLayoutChildren(recycler, state)
 
-        updateViewsAlpha()
+        updateChildrenAlpha()
     }
 
 
-    private fun updateViewsAlpha() {
+    private fun updateChildrenAlpha() {
         val recyclerViewCenterY = calculateRecyclerViewCenterY().toFloat()
 
         for(i in 0 until childCount) {
@@ -44,15 +44,24 @@ internal class ValuePickerLayoutManager(
     }
 
 
+    private fun calculateRecyclerViewCenterY(): Int {
+        return (height / 2)
+    }
+
+
+    private fun calculateChildCenterY(child: View): Int {
+        return ((child.height / 2) + child.top)
+    }
+
+
     override fun scrollVerticallyBy(
         dy: Int,
         recycler: RecyclerView.Recycler,
         state: RecyclerView.State
     ): Int {
         return if(orientation == VERTICAL) {
-            super.scrollVerticallyBy(dy, recycler, state).also {
-                updateViewsAlpha()
-            }
+            super.scrollVerticallyBy(dy, recycler, state)
+                .also { updateChildrenAlpha() }
         } else {
             return 0
         }
@@ -80,16 +89,6 @@ internal class ValuePickerLayoutManager(
 
             selectedChild?.let { onViewSelectedListener?.invoke(it) }
         }
-    }
-
-
-    private fun calculateRecyclerViewCenterY(): Int {
-        return (height / 2)
-    }
-
-
-    private fun calculateChildCenterY(child: View): Int {
-        return (((child.bottom - child.top) / 2) + child.top)
     }
 
 
