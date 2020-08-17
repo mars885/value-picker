@@ -37,8 +37,18 @@ internal enum class DashboardDestination(
     ),
     TEAM_PICKER(
         title = "Team Picker",
-        description = "A vertical picker with a custom divider and text font for picking the NBA team.",
+        description = "A vertical picker with a fixed item size, custom divider, and text font for picking the NBA team.",
         destinationId = R.id.teamPickerFragment
+    ),
+    RATING_PICKER(
+        title = "Rating Picker",
+        description = "A horizontal picker for picking a rating.",
+        destinationId = R.id.ratingPickerFragment
+    ),
+    CLOTHING_SIZE_PICKER(
+        title = "Clothing Size Picker",
+        description = "A horizontal picker with a fixed item size, custom divider, and infinite scroll enabled for picking the clothing size.",
+        destinationId = R.id.clothingSizePickerFragment
     )
 
 }

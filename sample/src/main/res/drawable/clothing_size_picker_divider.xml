@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
   ~
@@ -12,14 +14,21 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
+-->
 
-<resources>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-    <dimen name="default_value_item_min_width">80dp</dimen>
-    <dimen name="default_value_item_min_height">50dp</dimen>
-    <dimen name="default_value_item_padding">10dp</dimen>
-    <dimen name="default_value_item_text_size">16sp</dimen>
-    <dimen name="default_value_item_divider_size">2dp</dimen>
+    <gradient
+        android:startColor="@color/colorPrimary"
+        android:centerColor="@color/colorAccent"
+        android:endColor="@color/colorPrimary"
+        android:type="linear"
+        android:angle="90"/>
 
-</resources>
+    <corners android:radius="2dp"/>
+
+    <size android:width="2dp"/>
+
+</shape>

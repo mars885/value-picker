@@ -22,6 +22,8 @@
 
     <solid android:color="@color/default_value_item_divider_color"/>
 
-    <size android:height="@dimen/default_value_item_divider_height"/>
+    <size
+        android:width="@dimen/default_value_item_divider_size"
+        android:height="@dimen/default_value_item_divider_size"/>
 
 </shape>

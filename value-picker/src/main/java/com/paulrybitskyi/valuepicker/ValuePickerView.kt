@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -18,6 +19,12 @@ import com.paulrybitskyi.commons.ktx.drawing.getTextBounds
 import com.paulrybitskyi.commons.recyclerview.utils.disableAnimations
 import com.paulrybitskyi.commons.recyclerview.utils.recreateItemViews
 import com.paulrybitskyi.commons.utils.observeChanges
+import com.paulrybitskyi.valuepicker.model.*
+import com.paulrybitskyi.valuepicker.model.Orientation.Companion.asOrientation
+import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
+import com.paulrybitskyi.valuepicker.model.VALUE_ITEM_CONFIG_STUB
+import com.paulrybitskyi.valuepicker.model.ValueItemConfig
+import com.paulrybitskyi.valuepicker.model.sizeOf
 import com.paulrybitskyi.valuepicker.utils.getColor
 
 
@@ -32,25 +39,37 @@ class ValuePickerView @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
 
+    private val defaultTextColor = getColor(R.color.default_value_item_text_color)
     private val defaultValueItemMinWidth = getDimensionPixelSize(R.dimen.default_value_item_min_width)
     private val defaultValueItemMinHeight = getDimensionPixelSize(R.dimen.default_value_item_min_height)
     private val defaultValueItemPadding = getDimensionPixelSize(R.dimen.default_value_item_padding)
     private val defaultValueItemTextSize = getDimension(R.dimen.default_value_item_text_size)
 
-    private lateinit var valueItemViewPaint: Paint
-    private val valueItemViewTextBounds = Rect()
+    var areDividersEnabled by observeChanges(true) { _, newValue ->
+        valuePickerItemDecorator.areDividersEnabled = newValue
+    }
 
-    private var valueItemConfig by observeChanges(VALUE_ITEM_CONFIG_STUB) { _, config ->
-        valuePickerAdapter.valueItemConfig = config
+    var isInfiniteScrollEnabled by observeChanges(false) { _, _ ->
+        valuePickerAdapter.scrollHelper = initScrollHelper()
         recreateItemViews()
     }
 
-    private var _selectedItem: Item? = null
+    private val hasItems: Boolean
+        get() = items.isNotEmpty()
+
+    private val hasFixedItemSize: Boolean
+        get() = (fixedItemSize?.hasBothDimensions == true)
+
+    private val hasFixedItemWidth: Boolean
+        get() = (fixedItemSize?.hasWidth == true)
+
+    private val hasFixedItemHeight: Boolean
+        get() = (fixedItemSize?.hasHeight == true)
 
     private val itemCount: Int
         get() = items.size
 
-    var maxVisibleItems: Int = DEFAULT_MAX_VISIBLE_ITEMS
+    var maxVisibleItems = DEFAULT_MAX_VISIBLE_ITEMS
         set(value) {
             require(value.isOdd) { "The max visible items value must be odd." }
             field = value
@@ -77,12 +96,14 @@ class ValuePickerView @JvmOverloads constructor(
         }
         get() = valueItemConfig.textSize
 
-    var typeface: Typeface
+    var textTypeface: Typeface
         set(value) {
             valueItemViewPaint.typeface = value
-            updateValueItemConfig(valueItemConfig.copy(typeface = value))
+            updateValueItemConfig(valueItemConfig.copy(textTypeface = value))
         }
-        get() = valueItemConfig.typeface
+        get() = valueItemConfig.textTypeface
+
+    private var _selectedItem: Item? = null
 
     val selectedItem: Item?
         get() = _selectedItem
@@ -90,6 +111,11 @@ class ValuePickerView @JvmOverloads constructor(
     var fixedItemSize by observeChanges<Size?>(null) { _, _ ->
         recalculateValueItemSize()
         reconfigureRecyclerView()
+        recreateItemViews()
+    }
+
+    private var valueItemConfig by observeChanges(VALUE_ITEM_CONFIG_STUB) { _, config ->
+        valuePickerAdapter.valueItemConfig = config
         recreateItemViews()
     }
 
@@ -103,6 +129,9 @@ class ValuePickerView @JvmOverloads constructor(
         _selectedItem?.let(::scrollToItem) ?: setSelectedItem(items.first())
     }
 
+    private lateinit var valueItemViewPaint: Paint
+    private val valueItemViewTextBounds = Rect()
+
     private lateinit var valuePickerItemDecorator: ValuePickerItemDecorator
     private lateinit var valuePickerAdapter: ValuePickerRecyclerViewAdapter
 
@@ -112,24 +141,9 @@ class ValuePickerView @JvmOverloads constructor(
             field?.let { valuePickerItemDecorator.dividerDrawable = it }
         }
 
-    private val hasItems: Boolean
-        get() = items.isNotEmpty()
-
-    private val hasFixedItemSize: Boolean
-        get() = (fixedItemSize?.hasBothDimensions == true)
-
-    private val hasFixedItemWidth: Boolean
-        get() = (fixedItemSize?.hasWidth == true)
-
-    private val hasFixedItemHeight: Boolean
-        get() = (fixedItemSize?.hasHeight == true)
-
-    var areDividersEnabled by observeChanges(true) { _, newValue ->
-        valuePickerItemDecorator.areDividersEnabled = newValue
-    }
-
-    var isInfiniteScrollEnabled by observeChanges(false) { _, _ ->
-        valuePickerAdapter.scrollHelper = initScrollHelper()
+    var orientation by observeChanges(PickerOrientation.VERTICAL) { _, _ ->
+        initLayoutManager()
+        reconfigureRecyclerView()
         recreateItemViews()
     }
 
@@ -137,7 +151,7 @@ class ValuePickerView @JvmOverloads constructor(
 
 
     init {
-        initRecyclerView(context)
+        initRecyclerView()
         initValueItemConfig()
         initValueItemViewPaint()
         initDefaults()
@@ -152,25 +166,27 @@ class ValuePickerView @JvmOverloads constructor(
             attrs = R.styleable.ValuePickerView,
             defStyleAttr = defStyle
         ) {
-            maxVisibleItems = getInteger(R.styleable.ValuePickerView_valuePickerView_maxVisibleItems, maxVisibleItems)
-            textColor = getColor(R.styleable.ValuePickerView_valuePickerView_textColor, textColor)
-            dividerColor = getColor(R.styleable.ValuePickerView_valuePickerView_dividerColor, dividerColor)
-            textSize = getDimension(R.styleable.ValuePickerView_valuePickerView_textSize, textSize)
-            dividerDrawable = getDrawable(R.styleable.ValuePickerView_valuePickerView_divider, dividerDrawable)
-            areDividersEnabled = getBoolean(R.styleable.ValuePickerView_valuePickerView_areDividersEnabled, areDividersEnabled)
-            isInfiniteScrollEnabled = getBoolean(R.styleable.ValuePickerView_valuePickerView_isInfiniteScrollEnabled, isInfiniteScrollEnabled)
+            areDividersEnabled = getBoolean(R.styleable.ValuePickerView_vpv_areDividersEnabled, areDividersEnabled)
+            isInfiniteScrollEnabled = getBoolean(R.styleable.ValuePickerView_vpv_isInfiniteScrollEnabled, isInfiniteScrollEnabled)
+            maxVisibleItems = getInteger(R.styleable.ValuePickerView_vpv_maxVisibleItems, maxVisibleItems)
+            textColor = getColor(R.styleable.ValuePickerView_vpv_textColor, textColor)
+            dividerColor = getColor(R.styleable.ValuePickerView_vpv_dividerColor, dividerColor)
+            textSize = getDimension(R.styleable.ValuePickerView_vpv_textSize, textSize)
+            textTypeface = getFont(context, R.styleable.ValuePickerView_vpv_textTypeface, textTypeface)
+            dividerDrawable = getDrawable(R.styleable.ValuePickerView_vpv_divider, dividerDrawable)
+            orientation = getInt(R.styleable.ValuePickerView_vpv_orientation, orientation.id).asOrientation()
         }
     }
 
 
-    private fun initRecyclerView(context: Context) {
+    private fun initRecyclerView() {
         clipToPadding = false
         overScrollMode = OVER_SCROLL_NEVER
         disableAnimations()
         addItemDecoration(initValuePickerItemDecorator())
         initSnapHelper()
-        layoutManager = initLayoutManager(context)
-        adapter = initAdapter()
+        initLayoutManager()
+        initAdapter()
     }
 
 
@@ -179,7 +195,8 @@ class ValuePickerView @JvmOverloads constructor(
             areDividersEnabled = areDividersEnabled,
             dividerDrawable = requireNotNull(dividerDrawable),
             maxVisibleItems = maxVisibleItems,
-            valueItemConfigProvider = { valueItemConfig }
+            valueItemConfigProvider = { valueItemConfig },
+            orientationProvider = { orientation }
         ).also { valuePickerItemDecorator = it }
     }
 
@@ -189,9 +206,10 @@ class ValuePickerView @JvmOverloads constructor(
     }
 
 
-    private fun initLayoutManager(context: Context): LayoutManager {
-        return ValuePickerLayoutManager(context, VERTICAL, false)
+    private fun initLayoutManager() {
+        ValuePickerLayoutManager(context, orientation)
             .apply { onViewSelectedListener = ::handleItemViewSelection }
+            .also { layoutManager = it }
     }
 
 
@@ -207,19 +225,17 @@ class ValuePickerView @JvmOverloads constructor(
     }
 
 
-    private fun reportItemSelection(item: Item) {
-        onItemSelectionListener?.invoke(item)
-    }
-
-
-    private fun initAdapter(): ValuePickerRecyclerViewAdapter {
-        return ValuePickerRecyclerViewAdapter(
-            items = this.items,
-            valueItemConfig = this.valueItemConfig,
+    private fun initAdapter() {
+        ValuePickerRecyclerViewAdapter(
+            items = items,
+            valueItemConfig = valueItemConfig,
             scrollHelper = initScrollHelper()
         )
         .apply { onItemClickListener = ::handleItemClick }
-        .also { valuePickerAdapter = it }
+        .also {
+            adapter = it
+            valuePickerAdapter = it
+        }
     }
 
 
@@ -242,15 +258,18 @@ class ValuePickerView @JvmOverloads constructor(
     private fun initValueItemConfig() {
         valueItemConfig = ValueItemConfig(
             size = getDefaultValueItemSize(),
-            textColor = getColor(R.color.default_value_item_text_color),
-            textSize = getDimension(R.dimen.default_value_item_text_size),
-            typeface = Typeface.SANS_SERIF
+            textColor = defaultTextColor,
+            textSize = defaultValueItemTextSize,
+            textTypeface = Typeface.SANS_SERIF
         )
     }
 
 
     private fun getDefaultValueItemSize(): Size {
-        return sizeOf(defaultValueItemMinWidth, defaultValueItemMinHeight)
+        return sizeOf(
+            defaultValueItemMinWidth,
+            defaultValueItemMinHeight
+        )
     }
 
 
@@ -260,19 +279,21 @@ class ValuePickerView @JvmOverloads constructor(
             textAlign = Paint.Align.CENTER
             color = valueItemConfig.textColor
             textSize = valueItemConfig.textSize
-            typeface = valueItemConfig.typeface
+            typeface = valueItemConfig.textTypeface
         }
     }
 
 
     private fun initDefaults() {
+        areDividersEnabled = areDividersEnabled
+        isInfiniteScrollEnabled = isInfiniteScrollEnabled
         maxVisibleItems = maxVisibleItems
         textColor = textColor
         dividerColor = dividerColor
         textSize = textSize
+        textTypeface = textTypeface
         dividerDrawable = dividerDrawable
-        areDividersEnabled = areDividersEnabled
-        isInfiniteScrollEnabled = isInfiniteScrollEnabled
+        orientation = orientation
     }
 
 
@@ -295,15 +316,19 @@ class ValuePickerView @JvmOverloads constructor(
         val valueItemTextMaxSize = calculateValueItemTextMaxSize()
         val valueItemTextSizeRatio = (valueItemConfig.textSize / defaultValueItemTextSize)
         val valueItemPadding = (defaultValueItemPadding.toFloat() * valueItemTextSizeRatio).toInt()
+        val valueItemDividerWidth = getDividerDrawableWidth()
         val valueItemDividerHeight = getDividerDrawableHeight()
-        val valueItemWidth = (valueItemTextMaxSize.width + (valueItemPadding * 2))
+        val valueItemWidth = (valueItemTextMaxSize.width + (valueItemPadding * 2) + (valueItemDividerWidth * 2))
         val valueItemHeight = (valueItemTextMaxSize.height + (valueItemPadding * 2) + (valueItemDividerHeight * 2))
         val valueItemMinWidth = (defaultValueItemMinWidth.toFloat() * valueItemTextSizeRatio).toInt()
         val valueItemMinHeight = (defaultValueItemMinHeight.toFloat() * valueItemTextSizeRatio).toInt()
         val finalValueItemWidth = calculateFinalValueItemWidth(valueItemWidth, valueItemMinWidth)
         val finalValueItemHeight = calculateFinalValueItemHeight(valueItemHeight, valueItemMinHeight)
 
-        return sizeOf(width = finalValueItemWidth, height = finalValueItemHeight)
+        return sizeOf(
+            width = finalValueItemWidth,
+            height = finalValueItemHeight
+        )
     }
 
 
@@ -326,12 +351,28 @@ class ValuePickerView @JvmOverloads constructor(
             }
         }
 
-        return sizeOf(valueItemTextMaxWidth, valueItemTextMaxHeight)
+        return sizeOf(
+            valueItemTextMaxWidth,
+            valueItemTextMaxHeight
+        )
+    }
+
+
+    private fun getDividerDrawableWidth(): Int {
+        return if(areDividersEnabled && orientation.isHorizontal) {
+            checkNotNull(dividerDrawable).intrinsicWidth
+        } else {
+            0
+        }
     }
 
 
     private fun getDividerDrawableHeight(): Int {
-        return (if(areDividersEnabled) checkNotNull(dividerDrawable).intrinsicHeight else 0)
+        return if(areDividersEnabled && orientation.isVertical) {
+            checkNotNull(dividerDrawable).intrinsicHeight
+        } else {
+            0
+        }
     }
 
 
@@ -376,13 +417,34 @@ class ValuePickerView @JvmOverloads constructor(
 
 
     private fun reconfigureRecyclerView() {
+        when(orientation) {
+            PickerOrientation.VERTICAL -> reconfigureVerticalRecyclerView()
+            PickerOrientation.HORIZONTAL -> reconfigureHorizontalRecyclerView()
+        }
+    }
+
+
+    private fun reconfigureVerticalRecyclerView() {
         val valueItemViewHeight = valueItemConfig.size.height
         val rvHeight = (valueItemViewHeight * maxVisibleItems)
         val maxVisibleValuesFromCenter = (maxVisibleItems / 2)
         val verticalPadding = (valueItemViewHeight * maxVisibleValuesFromCenter)
 
-        layoutParamsHeight = rvHeight
+        setLayoutParamsSize(ViewGroup.LayoutParams.WRAP_CONTENT, rvHeight)
         setVerticalPadding(verticalPadding)
+        clearHorizontalPadding()
+    }
+
+
+    private fun reconfigureHorizontalRecyclerView() {
+        val valueItemViewWidth = valueItemConfig.size.width
+        val rvWidth = (valueItemViewWidth * maxVisibleItems)
+        val maxVisibleValuesFromCenter = (maxVisibleItems / 2)
+        val horizontalPadding = (valueItemViewWidth * maxVisibleValuesFromCenter)
+
+        setLayoutParamsSize(rvWidth, ViewGroup.LayoutParams.WRAP_CONTENT)
+        setHorizontalPadding(horizontalPadding)
+        clearVerticalPadding()
     }
 
 
@@ -407,9 +469,14 @@ class ValuePickerView @JvmOverloads constructor(
     }
 
 
+    private fun reportItemSelection(item: Item) {
+        onItemSelectionListener?.invoke(item)
+    }
+
+
     override fun fling(velocityX: Int, velocityY: Int): Boolean {
         return super.fling(
-            velocityX,
+            (velocityX * FLING_SPEED_FACTOR).toInt(),
             (velocityY * FLING_SPEED_FACTOR).toInt()
         )
     }

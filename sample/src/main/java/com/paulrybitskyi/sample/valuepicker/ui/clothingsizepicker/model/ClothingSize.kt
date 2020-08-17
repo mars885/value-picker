@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.sample.valuepicker
+package com.paulrybitskyi.sample.valuepicker.ui.clothingsizepicker.model
 
-import com.paulrybitskyi.valuepicker.model.Item
+internal enum class ClothingSize {
 
-internal class PickerItem(
-    override val id: Int,
-    override val title: String,
-    override val payload: Any? = null
-) : Item
+    XS,
+    S,
+    M,
+    L,
+    XL,
+    XXL
+
+}

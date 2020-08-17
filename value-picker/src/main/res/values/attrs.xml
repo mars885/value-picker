@@ -17,13 +17,18 @@
 <resources>
 
     <declare-styleable name="ValuePickerView">
-        <attr name="valuePickerView_maxVisibleItems" format="integer"/>
-        <attr name="valuePickerView_textColor" format="color"/>
-        <attr name="valuePickerView_dividerColor" format="color"/>
-        <attr name="valuePickerView_textSize" format="dimension"/>
-        <attr name="valuePickerView_divider" format="reference"/>
-        <attr name="valuePickerView_areDividersEnabled" format="boolean"/>
-        <attr name="valuePickerView_isInfiniteScrollEnabled" format="boolean"/>
+        <attr name="vpv_areDividersEnabled" format="boolean"/>
+        <attr name="vpv_isInfiniteScrollEnabled" format="boolean"/>
+        <attr name="vpv_maxVisibleItems" format="integer"/>
+        <attr name="vpv_textColor" format="color"/>
+        <attr name="vpv_dividerColor" format="color"/>
+        <attr name="vpv_textSize" format="dimension"/>
+        <attr name="vpv_textTypeface" format="reference"/>
+        <attr name="vpv_divider" format="reference"/>
+        <attr name="vpv_orientation" format="enum">
+            <enum name="vertical" value="1"/>
+            <enum name="horizontal" value="2"/>
+        </attr>
     </declare-styleable>
 
 </resources>

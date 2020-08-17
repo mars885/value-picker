@@ -14,61 +14,53 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.sample.valuepicker.ui.teampicker
+package com.paulrybitskyi.sample.valuepicker.ui.ratingpicker
 
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
-import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
-import com.paulrybitskyi.commons.ktx.getDrawable
 import com.paulrybitskyi.sample.valuepicker.PickerItem
 import com.paulrybitskyi.sample.valuepicker.R
-import com.paulrybitskyi.sample.valuepicker.ui.teampicker.model.Team
+import com.paulrybitskyi.sample.valuepicker.ui.ratingpicker.model.Rating
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
-import com.paulrybitskyi.valuepicker.model.Size
-import kotlinx.android.synthetic.main.fragment_team_picker.*
+import kotlinx.android.synthetic.main.fragment_rating_picker.*
 
-internal class TeamPickerFragment : Fragment(R.layout.fragment_team_picker) {
+internal class RatingPickerFragment : Fragment(R.layout.fragment_rating_picker) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initTeamPicker()
+        initRatingPicker()
     }
 
 
-    private fun initTeamPicker() = with(teamPicker) {
+    private fun initRatingPicker() = with(ratingPicker) {
         areDividersEnabled = true
         isInfiniteScrollEnabled = false
-        maxVisibleItems = 5
-        textSize = getDimension(R.dimen.team_picker_text_size)
+        maxVisibleItems = 3
+        textSize = getDimension(R.dimen.rating_picker_text_size)
         textColor = getColor(R.color.colorAccent)
-        textTypeface = (ResourcesCompat.getFont(context, R.font.ubuntu_mono_bold) ?: Typeface.SANS_SERIF)
-        dividerDrawable = getDrawable(R.drawable.team_picker_divider)
-        fixedItemSize = Size.withFixedSize(
-            width = getDimensionPixelSize(R.dimen.team_picker_item_width),
-            height = getDimensionPixelSize(R.dimen.team_picker_item_height)
-        )
-        orientation = Orientation.VERTICAL
-        onItemSelectionListener = { teamTv.text = (it.payload as Team).longName }
+        dividerColor = getColor(R.color.colorAccent)
+        textTypeface = Typeface.DEFAULT_BOLD
+        orientation = Orientation.HORIZONTAL
+        onItemSelectionListener = { ratingTv.text = (it.payload as Rating).title }
 
-        val teamPickerItems = generateTeamPickerItems()
-        items = teamPickerItems
-        setSelectedItem(teamPickerItems[2])
+        val ratingPickerItems = generateRatingPickerItems()
+        items = ratingPickerItems
+        setSelectedItem(ratingPickerItems[2])
     }
 
 
-    private fun generateTeamPickerItems(): List<Item> {
-        return Team.values().map {
+    private fun generateRatingPickerItems(): List<Item> {
+        return Rating.values().map {
             PickerItem(
                 id = it.ordinal,
-                title = it.longName,
+                title = it.number.toString(),
                 payload = it
             )
         }

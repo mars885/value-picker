@@ -20,7 +20,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="line">
 
-    <size android:height="8dp"/>
+    <size android:height="3dp"/>
 
     <stroke
         android:color="@color/colorAccent"

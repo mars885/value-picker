@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.model.toRvOrientation
 import kotlin.math.abs
 
 
@@ -12,9 +14,8 @@ private const val ALPHA_FACTOR = 0.5f
 
 internal class ValuePickerLayoutManager(
     context: Context,
-    orientation: Int,
-    reverseLayout: Boolean
-) : LinearLayoutManager(context, orientation, reverseLayout) {
+    private val orientation: Orientation
+) : LinearLayoutManager(context, orientation.toRvOrientation(), false) {
 
 
     var onViewSelectedListener: ((View) -> Unit)? = null
@@ -31,27 +32,45 @@ internal class ValuePickerLayoutManager(
 
 
     private fun updateChildrenAlpha() {
-        val recyclerViewCenterY = calculateRecyclerViewCenterY().toFloat()
+        val recyclerViewCenter = calculateRecyclerViewCenter().toFloat()
 
         for(i in 0 until childCount) {
             val child = (getChildAt(i) ?: continue)
-            val childCenterY = calculateChildCenterY(child)
-            val rvDistanceFrmChildCenter = abs(recyclerViewCenterY - childCenterY)
-            val alpha = (1 - (rvDistanceFrmChildCenter / (height * ALPHA_FACTOR)))
+            val childCenter = calculateChildCenter(child)
+            val rvDistanceFrmChildCenter = abs(recyclerViewCenter - childCenter)
+            val alpha = calculateChildAlpha(rvDistanceFrmChildCenter)
 
             child.alpha = alpha
         }
     }
 
 
-    private fun calculateRecyclerViewCenterY(): Int {
-        return (height / 2)
+    private fun calculateRecyclerViewCenter(): Int {
+        return when(orientation) {
+            Orientation.VERTICAL -> (height / 2)
+            Orientation.HORIZONTAL -> (width / 2)
+        }
     }
 
 
-    private fun calculateChildCenterY(child: View): Int {
-        return ((child.height / 2) + child.top)
+    private fun calculateChildCenter(child: View): Int {
+        return when(orientation) {
+            Orientation.VERTICAL -> ((child.height / 2) + child.top)
+            Orientation.HORIZONTAL -> ((child.width / 2) + child.left)
+        }
     }
+
+
+    private fun calculateChildAlpha(rvDistanceFrmChildCenter: Float): Float {
+        return (1 - (rvDistanceFrmChildCenter / (orientation.dimension * ALPHA_FACTOR)))
+    }
+
+
+    private val Orientation.dimension: Int
+        get() = when(this) {
+            Orientation.VERTICAL -> height
+            Orientation.HORIZONTAL -> width
+        }
 
 
     override fun scrollVerticallyBy(
@@ -59,12 +78,18 @@ internal class ValuePickerLayoutManager(
         recycler: RecyclerView.Recycler,
         state: RecyclerView.State
     ): Int {
-        return if(orientation == VERTICAL) {
-            super.scrollVerticallyBy(dy, recycler, state)
-                .also { updateChildrenAlpha() }
-        } else {
-            return 0
-        }
+        return super.scrollVerticallyBy(dy, recycler, state)
+            .also { updateChildrenAlpha() }
+    }
+
+
+    override fun scrollHorizontallyBy(
+        dx: Int,
+        recycler: RecyclerView.Recycler,
+        state: RecyclerView.State
+    ): Int {
+        return super.scrollHorizontallyBy(dx, recycler, state)
+            .also { updateChildrenAlpha() }
     }
 
 
@@ -72,14 +97,14 @@ internal class ValuePickerLayoutManager(
         super.onScrollStateChanged(state)
 
         if(state == RecyclerView.SCROLL_STATE_IDLE) {
-            val recyclerViewCenterY = calculateRecyclerViewCenterY()
-            var minDistance = height
+            val recyclerViewCenter = calculateRecyclerViewCenter()
+            var minDistance = orientation.dimension
             var selectedChild: View? = null
 
             for(i in 0 until childCount) {
                 val child = (getChildAt(i) ?: continue)
-                val childCenterY = calculateChildCenterY(child)
-                val childDistanceFromRvCenter = abs(childCenterY - recyclerViewCenterY)
+                val childCenter = calculateChildCenter(child)
+                val childDistanceFromRvCenter = abs(childCenter - recyclerViewCenter)
 
                 if(childDistanceFromRvCenter < minDistance) {
                     minDistance = childDistanceFromRvCenter

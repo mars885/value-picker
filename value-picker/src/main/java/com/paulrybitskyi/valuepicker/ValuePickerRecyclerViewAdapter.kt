@@ -10,6 +10,8 @@ import com.paulrybitskyi.commons.ktx.views.setTextSizeInPx
 import com.paulrybitskyi.valuepicker.ValuePickerRecyclerViewAdapter.ViewHolder
 import com.paulrybitskyi.valuepicker.scrollhelpers.ScrollHelper
 import com.paulrybitskyi.commons.utils.observeChanges
+import com.paulrybitskyi.valuepicker.model.Item
+import com.paulrybitskyi.valuepicker.model.ValueItemConfig
 
 internal class ValuePickerRecyclerViewAdapter(
     items: List<Item>,
@@ -40,7 +42,7 @@ internal class ValuePickerRecyclerViewAdapter(
             gravity = Gravity.CENTER
             setTextColor(valueItemConfig.textColor)
             setTextSizeInPx(valueItemConfig.textSize)
-            typeface = valueItemConfig.typeface
+            typeface = valueItemConfig.textTypeface
         }
     }
 

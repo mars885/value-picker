@@ -25,30 +25,54 @@
     </style>
 
     <style name="TimePicker">
-        <item name="valuePickerView_maxVisibleItems">3</item>
-        <item name="valuePickerView_textColor">@color/colorAccent</item>
-        <item name="valuePickerView_dividerColor">@color/colorAccent</item>
-        <item name="valuePickerView_textSize">@dimen/time_picker_text_size</item>
-        <item name="valuePickerView_areDividersEnabled">true</item>
-        <item name="valuePickerView_isInfiniteScrollEnabled">false</item>
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">false</item>
+        <item name="vpv_maxVisibleItems">3</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_dividerColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/time_picker_text_size</item>
+        <item name="vpv_orientation">vertical</item>
     </style>
 
     <style name="DatePicker">
-        <item name="valuePickerView_maxVisibleItems">5</item>
-        <item name="valuePickerView_textColor">@color/colorAccent</item>
-        <item name="valuePickerView_dividerColor">@color/colorAccent</item>
-        <item name="valuePickerView_textSize">@dimen/date_picker_text_size</item>
-        <item name="valuePickerView_areDividersEnabled">true</item>
-        <item name="valuePickerView_isInfiniteScrollEnabled">true</item>
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">true</item>
+        <item name="vpv_maxVisibleItems">5</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_dividerColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/date_picker_text_size</item>
+        <item name="vpv_orientation">vertical</item>
     </style>
 
     <style name="TeamPicker">
-        <item name="valuePickerView_maxVisibleItems">5</item>
-        <item name="valuePickerView_textColor">@color/colorAccent</item>
-        <item name="valuePickerView_textSize">@dimen/team_picker_text_size</item>
-        <item name="valuePickerView_divider">@drawable/team_picker_divider_drawable</item>
-        <item name="valuePickerView_areDividersEnabled">true</item>
-        <item name="valuePickerView_isInfiniteScrollEnabled">false</item>
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">false</item>
+        <item name="vpv_maxVisibleItems">5</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/team_picker_text_size</item>
+        <item name="vpv_textTypeface">@font/ubuntu_mono_bold</item>
+        <item name="vpv_divider">@drawable/team_picker_divider</item>
+        <item name="vpv_orientation">vertical</item>
+    </style>
+
+    <style name="RatingPicker">
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">false</item>
+        <item name="vpv_maxVisibleItems">3</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_dividerColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/rating_picker_text_size</item>
+        <item name="vpv_orientation">horizontal</item>
+    </style>
+
+    <style name="ClothingSizePicker">
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">true</item>
+        <item name="vpv_maxVisibleItems">3</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/clothing_size_picker_text_size</item>
+        <item name="vpv_divider">@drawable/clothing_size_picker_divider</item>
+        <item name="vpv_orientation">horizontal</item>
     </style>
 
 </resources>

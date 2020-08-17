@@ -38,4 +38,12 @@
         android:id="@+id/teamPickerFragment"
         android:name="com.paulrybitskyi.sample.valuepicker.ui.teampicker.TeamPickerFragment"/>
 
+    <fragment
+        android:id="@+id/ratingPickerFragment"
+        android:name="com.paulrybitskyi.sample.valuepicker.ui.ratingpicker.RatingPickerFragment"/>
+
+    <fragment
+        android:id="@+id/clothingSizePickerFragment"
+        android:name="com.paulrybitskyi.sample.valuepicker.ui.clothingsizepicker.ClothingSizePickerFragment"/>
+
 </navigation>

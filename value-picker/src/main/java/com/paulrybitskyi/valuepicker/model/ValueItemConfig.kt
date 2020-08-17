@@ -14,12 +14,23 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.sample.valuepicker
+package com.paulrybitskyi.valuepicker.model
 
-import com.paulrybitskyi.valuepicker.model.Item
+import android.graphics.Typeface
 
-internal class PickerItem(
-    override val id: Int,
-    override val title: String,
-    override val payload: Any? = null
-) : Item
+
+internal data class ValueItemConfig(
+    val size: Size,
+    val textColor: Int,
+    val textSize: Float,
+    val textTypeface: Typeface
+)
+
+
+internal val VALUE_ITEM_CONFIG_STUB =
+    ValueItemConfig(
+        size = sizeOf(width = 0, height = 0),
+        textColor = 0,
+        textSize = 0f,
+        textTypeface = Typeface.SANS_SERIF
+    )

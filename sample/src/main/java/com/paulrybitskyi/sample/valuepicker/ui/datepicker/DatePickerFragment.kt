@@ -25,8 +25,9 @@ import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.sample.valuepicker.PickerItem
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.ui.datepicker.model.Month
-import com.paulrybitskyi.valuepicker.Item
+import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.model.Orientation
 import kotlinx.android.synthetic.main.fragment_date_picker.*
 
 internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
@@ -46,19 +47,20 @@ internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
     }
 
 
-    private fun ValuePickerView.initAsDatePicker() {
+    private fun ValuePickerView.initDatePicker() {
+        areDividersEnabled = true
+        isInfiniteScrollEnabled = true
         maxVisibleItems = 5
         textSize = getDimension(R.dimen.date_picker_text_size)
         textColor = getColor(R.color.colorAccent)
         dividerColor = getColor(R.color.colorAccent)
-        typeface = Typeface.SANS_SERIF
-        areDividersEnabled = true
-        isInfiniteScrollEnabled = true
+        textTypeface = Typeface.SANS_SERIF
+        orientation = Orientation.VERTICAL
     }
 
 
     private fun initMonthPicker() = with(monthPicker) {
-        initAsDatePicker()
+        initDatePicker()
         onItemSelectionListener = { monthTv.text = "Month: ${(it.payload as Month).shortName}" }
 
         val monthPickerItems = generateMonthPickerItems(longMonthNames = true)
@@ -79,7 +81,7 @@ internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
 
 
     private fun initDayPicker() = with(dayPicker) {
-        initAsDatePicker()
+        initDatePicker()
         onItemSelectionListener = { dayTv.text = "Day: ${it.title}" }
 
         val dayPickerItems = generateDayPickerItems()
@@ -103,7 +105,7 @@ internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
 
 
     private fun initYearPicker() = with(yearPicker) {
-        initAsDatePicker()
+        initDatePicker()
         onItemSelectionListener = { yearTv.text = "Year: ${it.title}" }
 
         val yearPickerItems = generateYearPickerItems()

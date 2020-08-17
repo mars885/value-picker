@@ -21,10 +21,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
+import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.sample.valuepicker.PickerItem
 import com.paulrybitskyi.sample.valuepicker.R
-import com.paulrybitskyi.valuepicker.Item
+import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.model.Orientation
 import kotlinx.android.synthetic.main.fragment_time_picker.*
 
 internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
@@ -45,9 +47,14 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
 
 
     private fun ValuePickerView.initPicker() {
+        areDividersEnabled = true
+        isInfiniteScrollEnabled = false
+        maxVisibleItems = 3
         textColor = getColor(R.color.colorAccent)
         dividerColor = getColor(R.color.colorAccent)
-        typeface = Typeface.DEFAULT_BOLD
+        textSize = getDimension(R.dimen.time_picker_text_size)
+        textTypeface = Typeface.DEFAULT_BOLD
+        orientation = Orientation.VERTICAL
     }
 
 

@@ -1,4 +1,4 @@
-package com.paulrybitskyi.valuepicker
+package com.paulrybitskyi.valuepicker.model
 
 interface Item {
 
