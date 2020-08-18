@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.sample.valuepicker.utils.valueeffects
+package com.paulrybitskyi.sample.valuepicker.valueeffects
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

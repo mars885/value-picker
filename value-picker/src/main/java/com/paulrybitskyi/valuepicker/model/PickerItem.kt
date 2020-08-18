@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.sample.valuepicker.utils
+package com.paulrybitskyi.valuepicker.model
 
-import com.paulrybitskyi.valuepicker.model.Item
-
-internal class PickerItem(
+/**
+ * A simple representation of the items inside the value picker.
+ *
+ * see [Item]
+ */
+class PickerItem @JvmOverloads constructor(
     override val id: Int,
     override val title: String,
     override val payload: Any? = null

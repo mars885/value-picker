@@ -14,23 +14,29 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.sample.valuepicker.utils.valueeffects
+package com.paulrybitskyi.sample.valuepicker.valueeffects
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.valuepicker.model.Orientation
-import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
-
-internal class CompositeValueEffect(
-    private val itemEffects: List<ValueEffect>
-) : ValueEffect {
 
 
-    override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
-        for(itemEffect in itemEffects) {
-            itemEffect.applyEffect(child, recyclerView, orientation)
-        }
+internal fun RecyclerView.calculateCenter(orientation: Orientation): Float {
+    return (getDimension(orientation) * 0.5f)
+}
+
+
+internal fun RecyclerView.getDimension(orientation: Orientation): Int {
+    return when(orientation) {
+        Orientation.VERTICAL -> height
+        Orientation.HORIZONTAL -> width
     }
+}
 
 
+internal fun View.calculateChildCenter(orientation: Orientation): Int {
+    return when(orientation) {
+        Orientation.VERTICAL -> ((height / 2) + top)
+        Orientation.HORIZONTAL -> ((width / 2) + left)
+    }
 }

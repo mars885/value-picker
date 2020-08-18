@@ -25,13 +25,13 @@ import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.moviefilteringpicker.model.Genre
 import com.paulrybitskyi.sample.valuepicker.moviefilteringpicker.model.StreamingService
-import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
-import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.CompositeValueEffect
-import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.RotationValueEffect
+import com.paulrybitskyi.sample.valuepicker.valueeffects.CompositeValueEffect
+import com.paulrybitskyi.sample.valuepicker.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import kotlinx.android.synthetic.main.fragment_movie_filtering_picker.*
 

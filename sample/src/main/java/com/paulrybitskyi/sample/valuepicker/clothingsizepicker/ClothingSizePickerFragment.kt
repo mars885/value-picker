@@ -26,10 +26,10 @@ import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
 import com.paulrybitskyi.commons.ktx.getDrawable
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.clothingsizepicker.model.ClothingSize
-import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.model.Size
 import kotlinx.android.synthetic.main.fragment_clothing_size_picker.*
 

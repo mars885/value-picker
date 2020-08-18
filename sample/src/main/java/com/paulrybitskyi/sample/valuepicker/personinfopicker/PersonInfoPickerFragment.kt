@@ -24,13 +24,13 @@ import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
 import com.paulrybitskyi.sample.valuepicker.R
-import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
-import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.CompositeValueEffect
-import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.RotationValueEffect
+import com.paulrybitskyi.sample.valuepicker.valueeffects.CompositeValueEffect
+import com.paulrybitskyi.sample.valuepicker.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.model.Size
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect

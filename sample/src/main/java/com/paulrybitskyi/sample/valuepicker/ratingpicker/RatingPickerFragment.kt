@@ -24,10 +24,10 @@ import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.ratingpicker.model.Rating
-import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.model.PickerItem
 import kotlinx.android.synthetic.main.fragment_rating_picker.*
 
 internal class RatingPickerFragment : Fragment(R.layout.fragment_rating_picker) {
