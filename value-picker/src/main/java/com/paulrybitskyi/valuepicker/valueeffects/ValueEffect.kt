@@ -19,9 +19,25 @@ package com.paulrybitskyi.valuepicker.valueeffects
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
+import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 
+/**
+ * An interface responsible for applying cool visual effects to
+ * child views of the value picker.
+ */
 interface ValueEffect {
 
+    /**
+     * Applies visual effect to child views of the value picker.
+     *
+     * @param child The child view of the value picker
+     * @param recyclerView The recycler view of the value picker
+     * @param orientation The current orientation
+     *
+     * see [AlphaValueEffect]
+     * see [NoValueEffect]
+     */
     fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation)
 
 }

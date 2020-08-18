@@ -28,6 +28,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
+import androidx.annotation.Px
 import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -47,6 +48,7 @@ import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelperFactory
 import com.paulrybitskyi.valuepicker.utils.getColor
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
+import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 import java.util.*
 import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
 
@@ -60,6 +62,10 @@ private const val DEFAULT_FLING_SPEED_FACTOR = 0.3f
 private val DEFAULT_VALUE_EFFECT = AlphaValueEffect()
 
 
+/**
+ * A view that provides a way to specify a set of values
+ * one of which a user can pick.
+ */
 class ValuePickerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -67,17 +73,35 @@ class ValuePickerView @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
 
+    /**
+     * A boolean property value which represents whether dividers
+     * are drawn or not. Default is true.
+     *
+     * Dividers are drawables that are drawn to highlight the currently
+     * selected value.
+     */
     @set:JvmName("setDividersEnabled")
     @get:JvmName("areDividersEnabled")
     var areDividersEnabled: Boolean by observeChanges(true) { _, _ ->
         initValuePickerItemDecorator()
     }
 
+    /**
+     * A boolean property value which represents whether infinite
+     * scroll is enabled or not. Default is false.
+     *
+     * Infinite scrolling is the ability to scroll the value picker
+     * infinitely, even though it has a finite set of values.
+     */
     var isInfiniteScrollEnabled: Boolean by observeChanges(false) { _, _ ->
         valuePickerAdapter.scrollerHelper = initScrollerHelper()
         recreateItemViews()
     }
 
+    /**
+     * A boolean property value which represents whether scrolling
+     * is disabled or not. Default is false.
+     */
     var isScrollingDisabled: Boolean = false
 
     private val hasItems: Boolean
@@ -95,6 +119,16 @@ class ValuePickerView @JvmOverloads constructor(
     private val itemCount: Int
         get() = _items.size
 
+    /**
+     * An integer property representing a maximum number of visible
+     * items that are visible at any moment of time. Default is
+     * [DEFAULT_MAX_VISIBLE_ITEMS].
+     *
+     * IMPORTANT: This value has to be odd in order to have evenly
+     * distributed values in the picker.
+     *
+     * @throws IllegalArgumentException if the passed value is ood
+     */
     var maxVisibleItems: Int = DEFAULT_MAX_VISIBLE_ITEMS
         set(value) {
             require(value.isOdd) { "The max visible items value must be odd." }
@@ -103,6 +137,9 @@ class ValuePickerView @JvmOverloads constructor(
             recalculateRecyclerViewSizing()
         }
 
+    /**
+     * A color property representing a text color of the values.
+     */
     @get:ColorInt
     var textColor: Int
         set(@ColorInt value) {
@@ -111,11 +148,19 @@ class ValuePickerView @JvmOverloads constructor(
         }
         get() = valueItemConfig.textColor
 
+    /**
+     * A color property representing a divider color of the divider drawables.
+     */
     @get:ColorInt
     var dividerColor: Int? by observeChanges(null) { _, _ ->
         dividerDrawable = dividerDrawable
     }
 
+    /**
+     * A real property representing the speed factor of the fling gesture.
+     * Accepts values in the range from [DEFAULT_FLING_SPEED_FACTOR_MIN] to
+     * [DEFAULT_FLING_SPEED_FACTOR_MAX]. Default is [DEFAULT_FLING_SPEED_FACTOR].
+     */
     var flingSpeedFactor: Float = DEFAULT_FLING_SPEED_FACTOR
         set(value) {
             field = value.coerceIn(
@@ -124,6 +169,10 @@ class ValuePickerView @JvmOverloads constructor(
             )
         }
 
+    /**
+     * A real property representing a text size in pixels of the values.
+     */
+    @get:Px
     var textSize: Float
         set(value) {
             valueItemViewPaint.textSize = value
@@ -131,6 +180,9 @@ class ValuePickerView @JvmOverloads constructor(
         }
         get() = valueItemConfig.textSize
 
+    /**
+     * A typeface property representing a text font of the values.
+     */
     var textTypeface: Typeface
         set(value) {
             valueItemViewPaint.typeface = value
@@ -140,9 +192,22 @@ class ValuePickerView @JvmOverloads constructor(
 
     private var _selectedItem: Item? = null
 
+    /**
+     * A property representing a currently selected item of the picker.
+     * Can return a null value when there is no selected item at the
+     * moment (e.g., when the [items] property has not been set yet).
+     */
     val selectedItem: Item?
         get() = _selectedItem
 
+    /**
+     * A property representing a custom item size of the values.
+     * By default, the size is calculated by taking the maximum
+     * width and height of the passed values and adding some padding
+     * to them.
+     *
+     * See [Size] for more information.
+     */
     var fixedItemSize: Size? by observeChanges(null) { _, _ ->
         recalculateValueItemSize()
         recalculateRecyclerViewSizing()
@@ -163,6 +228,15 @@ class ValuePickerView @JvmOverloads constructor(
         scrollToSelectedItem()
     }
 
+    /**
+     * A property representing a current list of items of the picker.
+     *
+     * IMPORTANT: The list has to contain at least two items to provide
+     * a choice to the user what to pick.
+     *
+     * @throws IllegalArgumentException if the passed list contains less
+     * then two items
+     */
     var items: List<Item>
         set(value) {
             require(value.size > 1) { "The item list must contain at least two items." }
@@ -173,6 +247,13 @@ class ValuePickerView @JvmOverloads constructor(
     private lateinit var valueItemViewPaint: Paint
     private val valueItemViewTextBounds = Rect()
 
+    /**
+     * A property representing an effect to be applied to child
+     * views of the picker. Default is [DEFAULT_VALUE_EFFECT].
+     *
+     * see [AlphaValueEffect]
+     * see [NoValueEffect]
+     */
     var valueEffect: ValueEffect by observeChanges(DEFAULT_VALUE_EFFECT) { _, _ ->
         initLayoutManager()
         scrollToSelectedItem()
@@ -182,23 +263,48 @@ class ValuePickerView @JvmOverloads constructor(
 
     private lateinit var valuePickerAdapter: ValuePickerRecyclerViewAdapter
 
+    /**
+     * A property representing a drawable used as dividers of the picker
+     * to highlight the currently selected value. Default is
+     * [R.drawable.value_picker_divider_drawable].
+     *
+     * Accepts a null value as a way to disable them.
+     */
     var dividerDrawable: Drawable? = getDrawable(R.drawable.value_picker_divider_drawable)
         set(value) {
             field = dividerColor?.let { value?.setColor(it) } ?: value
             areDividersEnabled = (field != null)
         }
 
+    /**
+     * A property representing an orientation of the value picker.
+     * Default is [PickerOrientation.VERTICAL].
+     */
     var orientation: PickerOrientation by observeChanges(PickerOrientation.VERTICAL) { _, _ ->
         initLayoutManager()
         recalculateRecyclerViewSizing()
         scrollToSelectedItem()
     }
 
+    /**
+     * A property representing a listener to get notified when item
+     * selection events occur.
+     *
+     * see [OnItemSelectedListener]
+     */
     var onItemSelectedListener: OnItemSelectedListener? = null
 
 
+    /**
+     * A listener to get notified when the item selection events occur.
+     */
     fun interface OnItemSelectedListener {
 
+        /**
+         * A callback method that gets invoked on item selection events.
+         *
+         * @param item The currently selected item
+         */
         fun onItemSelected(item: Item)
 
     }
@@ -518,12 +624,13 @@ class ValuePickerView @JvmOverloads constructor(
     }
 
 
-    fun setSelectedItem(item: Item) {
-        setSelectedItem(item, scrollToPosition = true)
-    }
-
-
-    private fun setSelectedItem(item: Item, scrollToPosition: Boolean) {
+    /**
+     * Sets a currently selected item.
+     *
+     * @param item The item to selected
+     */
+    @JvmOverloads
+    fun setSelectedItem(item: Item, scrollToPosition: Boolean = true) {
         _selectedItem = item
 
         if(scrollToPosition) {

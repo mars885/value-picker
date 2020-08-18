@@ -21,6 +21,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 
+/**
+ * An implementation of the value effect that does nothing.
+ *
+ * see [ValueEffect]
+ */
 class NoValueEffect : ValueEffect {
 
 

@@ -22,6 +22,12 @@ import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 import kotlin.math.abs
 
+/**
+ * An implementation of the value effect that modifies child views'
+ * alpha property to create a fading effect.
+ *
+ * see [ValueEffect]
+ */
 class AlphaValueEffect : ValueEffect {
 
 

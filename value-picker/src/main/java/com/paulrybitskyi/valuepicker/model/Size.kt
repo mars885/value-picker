@@ -18,10 +18,15 @@
 
 package com.paulrybitskyi.valuepicker.model
 
+import androidx.annotation.Px
+
 
 private const val DIMENSION_NOT_SET = -1
 
 
+/**
+ * A size of the item inside the value picker.
+ */
 class Size internal constructor(
     val width: Int,
     val height: Int
@@ -30,24 +35,48 @@ class Size internal constructor(
 
     companion object {
 
+        /**
+         * Creates an item size with a specified fixed width. Height will be
+         * calculated based on the maximum height of the item text.
+         *
+         * @param width The width of the item in pixels
+         *
+         * @return The size with a fixed width and default height
+         */
         @JvmStatic
-        fun withFixedWidth(width: Int): Size {
+        fun withFixedWidth(@Px width: Int): Size {
             return Size(
                 width = width,
                 height = DIMENSION_NOT_SET
             )
         }
 
+        /**
+         * Creates an item size with a specified fixed height. Width will be
+         * calculated based on the maximum width of the item text.
+         *
+         * @param height The height of the item in pixels
+         *
+         * @return The size with a fixed height and default width
+         */
         @JvmStatic
-        fun withFixedHeight(height: Int): Size {
+        fun withFixedHeight(@Px height: Int): Size {
             return Size(
                 width = DIMENSION_NOT_SET,
                 height = height
             )
         }
 
+        /**
+         * Creates an item size with a specified fixed width and height.
+         *
+         * @param width The width of the item in pixels
+         * @param height The height of the item in pixels
+         *
+         * @return The size with a fixed width and height
+         */
         @JvmStatic
-        fun withFixedSize(width: Int, height: Int): Size {
+        fun withFixedSize(@Px width: Int, @Px height: Int): Size {
             return Size(
                 width = width,
                 height = height

@@ -16,10 +16,29 @@
 
 package com.paulrybitskyi.valuepicker.model
 
+import com.paulrybitskyi.valuepicker.ValuePickerView
+
+/**
+ * An abstraction for representing an item inside the value picker.
+ *
+ * @see [ValuePickerView]
+ * @see [ValuePickerView.items]
+ */
 interface Item {
 
+    /**
+     * The unique ID of the item.
+     */
     val id: Int
+
+    /**
+     * The text to be displayed.
+     */
     val title: String
+
+    /**
+     * The optional payload to attach to each of the items.
+     */
     val payload: Any?
 
 }

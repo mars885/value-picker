@@ -19,7 +19,14 @@
 package com.paulrybitskyi.valuepicker.model
 
 import androidx.recyclerview.widget.RecyclerView
+import com.paulrybitskyi.valuepicker.ValuePickerView
 
+/**
+ * An orientation of the value picker.
+ *
+ * @see [ValuePickerView]
+ * @see [ValuePickerView.orientation]
+ */
 enum class Orientation(internal val id: Int) {
 
 
