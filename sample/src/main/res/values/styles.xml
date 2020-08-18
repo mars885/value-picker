@@ -24,6 +24,24 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
+    <style name="Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginBottom">@dimen/title_margin_bottom</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:fontFamily">@string/font_family_medium</item>
+    </style>
+
+    <style name="Value">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/value_margin_bottom</item>
+        <item name="android:textSize">@dimen/value_text_size</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
     <style name="TimePicker">
         <item name="vpv_areDividersEnabled">true</item>
         <item name="vpv_isInfiniteScrollEnabled">false</item>

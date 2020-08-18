@@ -62,6 +62,7 @@ dependencies {
     implementation deps.appCompat
     implementation deps.navFragmentKtx
     implementation deps.navUiKtx
+    implementation deps.constraintLayout
     implementation deps.commonsKtx
 
     testImplementation deps.jUnit

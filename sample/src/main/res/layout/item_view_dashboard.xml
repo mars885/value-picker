@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
   ~
@@ -29,11 +30,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="@dimen/dashboard_item_title_margin"
+        android:layout_marginStart="@dimen/dashboard_item_title_margin"
+        android:layout_marginEnd="@dimen/dashboard_item_title_margin"
         android:fontFamily="@string/font_family_medium"
-        android:textSize="15sp"
+        android:textSize="@dimen/dashboard_item_title_text_size"
         android:textColor="@color/colorPrimaryText"
         tools:text="Vertical Picker"/>
 
@@ -41,18 +42,18 @@
         android:id="@+id/descriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:textSize="13sp"
+        android:layout_marginTop="@dimen/dashboard_item_description_margin_top"
+        android:layout_marginBottom="@dimen/dashboard_item_description_margin"
+        android:layout_marginStart="@dimen/dashboard_item_description_margin"
+        android:layout_marginEnd="@dimen/dashboard_item_description_margin"
+        android:textSize="@dimen/dashboard_item_description_text_size"
         android:textColor="@color/colorPrimaryText"
-        android:lineSpacingExtra="2dp"
+        android:lineSpacingExtra="@dimen/dashboard_item_description_line_spacing_extra"
         tools:text="A simple vertical picker that allows to pick time."/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/dashboard_item_divider_height"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimaryDark"/>
 
