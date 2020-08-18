@@ -32,7 +32,7 @@ import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
-import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
+import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import kotlinx.android.synthetic.main.fragment_movie_filtering_picker.*
 
 internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_filtering_picker) {
@@ -118,7 +118,7 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
     private fun initServicePicker() = with(servicePicker) {
         initMovieFilteringPicker()
         valueEffect = CompositeValueEffect(listOf(
-            AlphaValueEffect(),
+            FadingValueEffect(),
             RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
         ))
         onItemSelectedListener = OnItemSelectedListener {

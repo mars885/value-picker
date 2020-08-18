@@ -47,7 +47,7 @@ import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
 import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelperFactory
 import com.paulrybitskyi.valuepicker.utils.getColor
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
-import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
+import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 import java.util.*
 import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
@@ -59,7 +59,7 @@ private const val DEFAULT_FLING_SPEED_FACTOR_MIN = 0.1f
 private const val DEFAULT_FLING_SPEED_FACTOR_MAX = 1f
 private const val DEFAULT_FLING_SPEED_FACTOR = 0.3f
 
-private val DEFAULT_VALUE_EFFECT = AlphaValueEffect()
+private val DEFAULT_VALUE_EFFECT = FadingValueEffect()
 
 
 /**
@@ -251,7 +251,7 @@ class ValuePickerView @JvmOverloads constructor(
      * A property representing an effect to be applied to child
      * views of the picker. Default is [DEFAULT_VALUE_EFFECT].
      *
-     * see [AlphaValueEffect]
+     * see [FadingValueEffect]
      * see [NoValueEffect]
      */
     var valueEffect: ValueEffect by observeChanges(DEFAULT_VALUE_EFFECT) { _, _ ->

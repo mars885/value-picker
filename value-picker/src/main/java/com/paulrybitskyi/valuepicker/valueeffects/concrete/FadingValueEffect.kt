@@ -28,7 +28,7 @@ import kotlin.math.abs
  *
  * see [ValueEffect]
  */
-class AlphaValueEffect : ValueEffect {
+class FadingValueEffect : ValueEffect {
 
 
     override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {

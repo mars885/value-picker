@@ -32,7 +32,7 @@ import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.Size
-import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
+import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 import kotlinx.android.synthetic.main.fragment_person_info_picker.*
 
@@ -126,7 +126,7 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
     private fun initWeightPicker() = with(weightPicker) {
         initPersonInfoPicker()
         valueEffect = CompositeValueEffect(listOf(
-            AlphaValueEffect(),
+            FadingValueEffect(),
             RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
         ))
         onItemSelectedListener = OnItemSelectedListener {
