@@ -1,3 +1,19 @@
+/*
+ * Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 @file:JvmName("ValuePickerViewUtils")
 
 package com.paulrybitskyi.valuepicker
@@ -15,8 +31,6 @@ import androidx.annotation.ColorInt
 import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
-import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelperFactory
 import com.paulrybitskyi.commons.ktx.*
 import com.paulrybitskyi.commons.ktx.drawing.getTextBounds
 import com.paulrybitskyi.commons.recyclerview.utils.disableAnimations
@@ -28,14 +42,13 @@ import com.paulrybitskyi.valuepicker.decorators.ValuePickerItemDecoratorFactory.
 import com.paulrybitskyi.valuepicker.layoutmanager.ValuePickerLayoutManager
 import com.paulrybitskyi.valuepicker.model.*
 import com.paulrybitskyi.valuepicker.model.Orientation.Companion.asOrientation
-import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
-import com.paulrybitskyi.valuepicker.model.VALUE_ITEM_CONFIG_STUB
-import com.paulrybitskyi.valuepicker.model.ValueItemConfig
-import com.paulrybitskyi.valuepicker.model.sizeOf
+import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
+import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelperFactory
 import com.paulrybitskyi.valuepicker.utils.getColor
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
 import java.util.*
+import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
 
 
 private const val DEFAULT_MAX_VISIBLE_ITEMS = 3
@@ -56,16 +69,16 @@ class ValuePickerView @JvmOverloads constructor(
 
     @set:JvmName("setDividersEnabled")
     @get:JvmName("areDividersEnabled")
-    var areDividersEnabled by observeChanges(true) { _, _ ->
+    var areDividersEnabled: Boolean by observeChanges(true) { _, _ ->
         initValuePickerItemDecorator()
     }
 
-    var isInfiniteScrollEnabled by observeChanges(false) { _, _ ->
+    var isInfiniteScrollEnabled: Boolean by observeChanges(false) { _, _ ->
         valuePickerAdapter.scrollerHelper = initScrollerHelper()
         recreateItemViews()
     }
 
-    var isScrollingDisabled = false
+    var isScrollingDisabled: Boolean = false
 
     private val hasItems: Boolean
         get() = _items.isNotEmpty()
@@ -82,7 +95,7 @@ class ValuePickerView @JvmOverloads constructor(
     private val itemCount: Int
         get() = _items.size
 
-    var maxVisibleItems = DEFAULT_MAX_VISIBLE_ITEMS
+    var maxVisibleItems: Int = DEFAULT_MAX_VISIBLE_ITEMS
         set(value) {
             require(value.isOdd) { "The max visible items value must be odd." }
             field = value
@@ -99,11 +112,11 @@ class ValuePickerView @JvmOverloads constructor(
         get() = valueItemConfig.textColor
 
     @get:ColorInt
-    var dividerColor by observeChanges<Int?>(null) { _, _ ->
+    var dividerColor: Int? by observeChanges(null) { _, _ ->
         dividerDrawable = dividerDrawable
     }
 
-    var flingSpeedFactor = DEFAULT_FLING_SPEED_FACTOR
+    var flingSpeedFactor: Float = DEFAULT_FLING_SPEED_FACTOR
         set(value) {
             field = value.coerceIn(
                 DEFAULT_FLING_SPEED_FACTOR_MIN,
@@ -130,7 +143,7 @@ class ValuePickerView @JvmOverloads constructor(
     val selectedItem: Item?
         get() = _selectedItem
 
-    var fixedItemSize by observeChanges<Size?>(null) { _, _ ->
+    var fixedItemSize: Size? by observeChanges(null) { _, _ ->
         recalculateValueItemSize()
         recalculateRecyclerViewSizing()
     }
@@ -147,7 +160,7 @@ class ValuePickerView @JvmOverloads constructor(
         recalculateMaxVisibleItems(itemCount)
         recalculateRecyclerViewSizing()
         valuePickerAdapter.items = items
-        _selectedItem?.let(::scrollToItem) ?: setSelectedItem(items.first())
+        scrollToSelectedItem()
     }
 
     var items: List<Item>
@@ -160,8 +173,9 @@ class ValuePickerView @JvmOverloads constructor(
     private lateinit var valueItemViewPaint: Paint
     private val valueItemViewTextBounds = Rect()
 
-    var valueEffect by observeChanges<ValueEffect>(DEFAULT_VALUE_EFFECT) { _, _ ->
+    var valueEffect: ValueEffect by observeChanges(DEFAULT_VALUE_EFFECT) { _, _ ->
         initLayoutManager()
+        scrollToSelectedItem()
     }
 
     private var valuePickerItemDecorator: ValuePickerItemDecorator? = null
@@ -174,9 +188,10 @@ class ValuePickerView @JvmOverloads constructor(
             areDividersEnabled = (field != null)
         }
 
-    var orientation by observeChanges(PickerOrientation.VERTICAL) { _, _ ->
+    var orientation: PickerOrientation by observeChanges(PickerOrientation.VERTICAL) { _, _ ->
         initLayoutManager()
         recalculateRecyclerViewSizing()
+        scrollToSelectedItem()
     }
 
     var onItemSelectedListener: OnItemSelectedListener? = null
@@ -526,6 +541,18 @@ class ValuePickerView @JvmOverloads constructor(
 
     private fun reportItemSelection(item: Item) {
         onItemSelectedListener?.onItemSelected(item)
+    }
+
+
+    private fun scrollToSelectedItem() {
+        if(_selectedItem != null) {
+            scrollToItem(checkNotNull(_selectedItem))
+            return
+        }
+
+        if(hasItems) {
+            setSelectedItem(_items.first())
+        }
     }
 
 

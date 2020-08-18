@@ -27,8 +27,8 @@
         android:type="linear"
         android:angle="90"/>
 
-    <corners android:radius="2dp"/>
+    <corners android:radius="@dimen/clothing_size_picker_divider_corner_radius"/>
 
-    <size android:width="2dp"/>
+    <size android:width="@dimen/clothing_size_picker_divider_width"/>
 
 </shape>

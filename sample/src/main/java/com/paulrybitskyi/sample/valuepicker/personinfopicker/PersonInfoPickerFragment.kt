@@ -20,9 +20,9 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.paulrybitskyi.commons.ktx.dpToPx
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
+import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
 import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.CompositeValueEffect
@@ -62,8 +62,8 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
         dividerColor = getColor(R.color.colorAccent)
         textTypeface = Typeface.DEFAULT_BOLD
         fixedItemSize = Size.withFixedSize(
-            width = 90.dpToPx(requireContext()),
-            height = 50.dpToPx(requireContext())
+            width = getDimensionPixelSize(R.dimen.person_info_picker_item_width),
+            height = getDimensionPixelSize(R.dimen.person_info_picker_item_height)
         )
         orientation = Orientation.HORIZONTAL
     }

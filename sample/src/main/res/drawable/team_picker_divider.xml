@@ -20,12 +20,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="line">
 
-    <size android:height="3dp"/>
+    <size android:height="@dimen/team_picker_divider_height"/>
 
     <stroke
         android:color="@color/colorAccent"
-        android:dashWidth="4dp"
-        android:dashGap="4dp"
-        android:width="2dp"/>
+        android:dashWidth="@dimen/team_picker_divider_stroke_dash_width"
+        android:dashGap="@dimen/team_picker_divider_stroke_dash_gap"
+        android:width="@dimen/team_picker_divider_stroke_width"/>
 
 </shape>
