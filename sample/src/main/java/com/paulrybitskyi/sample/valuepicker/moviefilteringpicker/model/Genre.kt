@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.valuepicker.utils
+package com.paulrybitskyi.sample.valuepicker.moviefilteringpicker.model
 
-import android.content.res.TypedArray
-import androidx.annotation.StyleableRes
+internal enum class Genre(val title: String) {
 
+    ACTION("Action"),
+    HORROR("Horror"),
+    THRILLER("Thriller"),
+    SCI_FI("Sci-Fi"),
+    CRIME("Crime"),
+    COMEDY("Comedy"),
+    DRAMA("Drama"),
+    WESTERN("Western"),
 
-internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
-    return getColor(id, -1)
-        .takeIf { it != -1 }
-        ?: default
 }

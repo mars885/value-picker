@@ -14,14 +14,22 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.valuepicker.utils
+package com.paulrybitskyi.valuepicker.layoutmanager
 
-import android.content.res.TypedArray
-import androidx.annotation.StyleableRes
+import android.content.Context
+import android.util.DisplayMetrics
+import androidx.recyclerview.widget.LinearSmoothScroller
 
 
-internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
-    return getColor(id, -1)
-        .takeIf { it != -1 }
-        ?: default
+private const val MILLISECONDS_PER_INCH = 150f
+
+
+internal class ValuePickerSmoothScroller(context: Context) : LinearSmoothScroller(context) {
+
+
+    override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
+        return (MILLISECONDS_PER_INCH / displayMetrics.densityDpi)
+    }
+
+
 }

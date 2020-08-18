@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.valuepicker.utils
+package com.paulrybitskyi.valuepicker.valueeffects.concrete
 
-import android.content.res.TypedArray
-import androidx.annotation.StyleableRes
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import com.paulrybitskyi.valuepicker.model.Orientation
+import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
+
+class NoValueEffect : ValueEffect {
 
 
-internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
-    return getColor(id, -1)
-        .takeIf { it != -1 }
-        ?: default
+    override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
+        // Stub
+    }
+
+
 }

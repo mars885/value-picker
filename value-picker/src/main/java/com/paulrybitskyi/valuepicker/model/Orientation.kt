@@ -50,9 +50,8 @@ internal val Orientation.isHorizontal: Boolean
     get() = (this == Orientation.HORIZONTAL)
 
 
-internal fun Orientation.toRvOrientation(): Int {
-    return when(this) {
+internal val Orientation.rvOrientation: Int
+    get() = when(this) {
         Orientation.VERTICAL -> RecyclerView.VERTICAL
         Orientation.HORIZONTAL -> RecyclerView.HORIZONTAL
     }
-}

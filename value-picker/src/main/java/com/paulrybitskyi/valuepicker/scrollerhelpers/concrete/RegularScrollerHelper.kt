@@ -14,14 +14,25 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.valuepicker.utils
+package com.paulrybitskyi.valuepicker.scrollerhelpers.concrete
 
-import android.content.res.TypedArray
-import androidx.annotation.StyleableRes
+import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
+
+internal class RegularScrollerHelper(override var dataSetItemCount: Int) : ScrollerHelper {
 
 
-internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
-    return getColor(id, -1)
-        .takeIf { it != -1 }
-        ?: default
+    override val adapterItemCount: Int
+        get() = dataSetItemCount
+
+
+    override fun calculateAdapterPosition(dataSetPosition: Int): Int {
+        return dataSetPosition
+    }
+
+
+    override fun calculateDataSetPosition(adapterPosition: Int): Int {
+        return adapterPosition
+    }
+
+
 }

@@ -55,6 +55,16 @@
         <item name="vpv_orientation">vertical</item>
     </style>
 
+    <style name="MovieFilteringPicker">
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">true</item>
+        <item name="vpv_maxVisibleItems">5</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_dividerColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/movie_filtering_picker_text_size</item>
+        <item name="vpv_orientation">vertical</item>
+    </style>
+
     <style name="RatingPicker">
         <item name="vpv_areDividersEnabled">true</item>
         <item name="vpv_isInfiniteScrollEnabled">false</item>
@@ -72,6 +82,16 @@
         <item name="vpv_textColor">@color/colorAccent</item>
         <item name="vpv_textSize">@dimen/clothing_size_picker_text_size</item>
         <item name="vpv_divider">@drawable/clothing_size_picker_divider</item>
+        <item name="vpv_orientation">horizontal</item>
+    </style>
+
+    <style name="PersonInfoPicker">
+        <item name="vpv_areDividersEnabled">true</item>
+        <item name="vpv_isInfiniteScrollEnabled">true</item>
+        <item name="vpv_maxVisibleItems">3</item>
+        <item name="vpv_textColor">@color/colorAccent</item>
+        <item name="vpv_dividerColor">@color/colorAccent</item>
+        <item name="vpv_textSize">@dimen/person_info_picker_text_size</item>
         <item name="vpv_orientation">horizontal</item>
     </style>
 

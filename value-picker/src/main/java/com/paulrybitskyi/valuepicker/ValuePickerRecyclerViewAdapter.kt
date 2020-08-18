@@ -5,10 +5,11 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.commons.ktx.views.setTextSizeInPx
 import com.paulrybitskyi.valuepicker.ValuePickerRecyclerViewAdapter.ViewHolder
-import com.paulrybitskyi.valuepicker.scrollhelpers.ScrollHelper
+import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
 import com.paulrybitskyi.commons.utils.observeChanges
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.ValueItemConfig
@@ -16,12 +17,12 @@ import com.paulrybitskyi.valuepicker.model.ValueItemConfig
 internal class ValuePickerRecyclerViewAdapter(
     items: List<Item>,
     var valueItemConfig: ValueItemConfig,
-    var scrollHelper: ScrollHelper
+    var scrollerHelper: ScrollerHelper
 ) : RecyclerView.Adapter<ViewHolder>() {
 
 
     var items by observeChanges(items) { _, newItems ->
-        scrollHelper.realItemCount = newItems.size
+        scrollerHelper.dataSetItemCount = newItems.size
         notifyDataSetChanged()
     }
 
@@ -34,7 +35,7 @@ internal class ValuePickerRecyclerViewAdapter(
 
 
     private fun createTextView(context: Context): TextView {
-        return TextView(context).apply {
+        return AppCompatTextView(context).apply {
             layoutParams = RecyclerView.LayoutParams(
                 valueItemConfig.size.width,
                 valueItemConfig.size.height
@@ -47,26 +48,28 @@ internal class ValuePickerRecyclerViewAdapter(
     }
 
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.valueTv) {
-        text = items[scrollHelper.calculateCurrentPosition(position)].title
+    override fun onBindViewHolder(holder: ViewHolder, adapterPosition: Int) = with(holder.valueTv) {
+        text = items[scrollerHelper.calculateDataSetPosition(adapterPosition)].title
         setOnClickListener(onItemClickListener)
     }
 
 
     override fun getItemCount(): Int {
-        return scrollHelper.adapterItemCount
+        return scrollerHelper.adapterItemCount
     }
 
 
-    fun getItemPosition(item: Item): Int? {
+    fun getItemAdapterPosition(item: Item): Int? {
         return items.indexOfFirst { it.id == item.id }
             .takeIf { it != -1 }
-            ?.let { scrollHelper.calculateInitialPosition(it) }
+            ?.let { dataSetPosition ->
+                scrollerHelper.calculateAdapterPosition(dataSetPosition)
+            }
     }
 
 
-    fun getItem(position: Int): Item? {
-        return items.getOrNull(scrollHelper.calculateCurrentPosition(position))
+    fun getItem(adapterPosition: Int): Item? {
+        return items.getOrNull(scrollerHelper.calculateDataSetPosition(adapterPosition))
     }
 
 

@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.valuepicker.utils
+package com.paulrybitskyi.sample.valuepicker.clothingsizepicker.model
 
-import android.content.res.TypedArray
-import androidx.annotation.StyleableRes
+internal enum class ClothingSize {
 
+    XS,
+    S,
+    M,
+    L,
+    XL,
+    XXL
 
-internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
-    return getColor(id, -1)
-        .takeIf { it != -1 }
-        ?: default
 }

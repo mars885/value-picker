@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package com.paulrybitskyi.valuepicker.utils
+package com.paulrybitskyi.sample.valuepicker.utils
 
-import android.content.res.TypedArray
-import androidx.annotation.StyleableRes
+import com.paulrybitskyi.valuepicker.model.Item
 
-
-internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
-    return getColor(id, -1)
-        .takeIf { it != -1 }
-        ?: default
-}
+internal class PickerItem(
+    override val id: Int,
+    override val title: String,
+    override val payload: Any? = null
+) : Item

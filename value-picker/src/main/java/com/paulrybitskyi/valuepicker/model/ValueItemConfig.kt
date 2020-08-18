@@ -27,10 +27,9 @@ internal data class ValueItemConfig(
 )
 
 
-internal val VALUE_ITEM_CONFIG_STUB =
-    ValueItemConfig(
-        size = sizeOf(width = 0, height = 0),
-        textColor = 0,
-        textSize = 0f,
-        textTypeface = Typeface.SANS_SERIF
-    )
+internal val VALUE_ITEM_CONFIG_STUB = ValueItemConfig(
+    size = sizeOf(width = 0, height = 0),
+    textColor = 0,
+    textSize = 0f,
+    textTypeface = Typeface.SANS_SERIF
+)

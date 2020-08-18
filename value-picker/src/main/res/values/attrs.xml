@@ -12,7 +12,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
+-->
 
 <resources>
 
@@ -22,6 +22,7 @@
         <attr name="vpv_maxVisibleItems" format="integer"/>
         <attr name="vpv_textColor" format="color"/>
         <attr name="vpv_dividerColor" format="color"/>
+        <attr name="vpv_flingSpeedFactor" format="float"/>
         <attr name="vpv_textSize" format="dimension"/>
         <attr name="vpv_textTypeface" format="reference"/>
         <attr name="vpv_divider" format="reference"/>

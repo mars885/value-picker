@@ -24,26 +24,34 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.paulrybitskyi.sample.valuepicker.ui.dashboard.DashboardFragment"/>
+        android:name="com.paulrybitskyi.sample.valuepicker.dashboard.DashboardFragment"/>
 
     <fragment
         android:id="@+id/timePickerFragment"
-        android:name="com.paulrybitskyi.sample.valuepicker.ui.timepicker.TimePickerFragment"/>
+        android:name="com.paulrybitskyi.sample.valuepicker.timepicker.TimePickerFragment"/>
 
     <fragment
         android:id="@+id/datePickerFragment"
-        android:name="com.paulrybitskyi.sample.valuepicker.ui.datepicker.DatePickerFragment"/>
+        android:name="com.paulrybitskyi.sample.valuepicker.datepicker.DatePickerFragment"/>
 
     <fragment
         android:id="@+id/teamPickerFragment"
-        android:name="com.paulrybitskyi.sample.valuepicker.ui.teampicker.TeamPickerFragment"/>
+        android:name="com.paulrybitskyi.sample.valuepicker.teampicker.TeamPickerFragment"/>
+
+    <fragment
+        android:id="@+id/movieFilteringPicker"
+        android:name="com.paulrybitskyi.sample.valuepicker.moviefilteringpicker.MovieFilteringPickerFragment"/>
 
     <fragment
         android:id="@+id/ratingPickerFragment"
-        android:name="com.paulrybitskyi.sample.valuepicker.ui.ratingpicker.RatingPickerFragment"/>
+        android:name="com.paulrybitskyi.sample.valuepicker.ratingpicker.RatingPickerFragment"/>
 
     <fragment
         android:id="@+id/clothingSizePickerFragment"
-        android:name="com.paulrybitskyi.sample.valuepicker.ui.clothingsizepicker.ClothingSizePickerFragment"/>
+        android:name="com.paulrybitskyi.sample.valuepicker.clothingsizepicker.ClothingSizePickerFragment"/>
+
+    <fragment
+        android:id="@+id/personInfoPickerFragment"
+        android:name="com.paulrybitskyi.sample.valuepicker.personinfopicker.PersonInfoPickerFragment"/>
 
 </navigation>
