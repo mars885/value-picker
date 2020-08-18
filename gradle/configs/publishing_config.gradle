@@ -17,8 +17,8 @@
 ext {
     publishingConfig = [
         releaseRepoName: "maven",
-        releaseGroupId: "com.paulrybitskyi.persistentsearchview",
-        releaseWebsite: "https://github.com/mars885/persistent-search-view",
+        releaseGroupId: "com.paulrybitskyi.valuepicker",
+        releaseWebsite: "https://github.com/mars885/value-picker",
         releaseLicense: ["Apache-2.0"],
         releaseNotesFile: "CHANGELOG.md",
         licenseName: "The Apache Software License, Version 2.0",
@@ -27,8 +27,8 @@ ext {
         developerId: "mars885",
         developerName: "Paul Rybitskyi",
         developerEmail: "paul.rybitskyi.work@gmail.com",
-        siteUrl: "https://github.com/mars885/persistent-search-view",
-        gitUrl: "https://github.com/mars885/persistent-search-view.git",
-        issueTracker: "https://github.com/mars885/persistent-search-view/issues"
+        siteUrl: "https://github.com/mars885/value-picker",
+        gitUrl: "https://github.com/mars885/value-picker.git",
+        issueTracker: "https://github.com/mars885/value-picker/issues"
     ]
 }
