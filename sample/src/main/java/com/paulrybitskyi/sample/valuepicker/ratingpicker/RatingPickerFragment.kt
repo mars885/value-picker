@@ -25,6 +25,8 @@ import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.ratingpicker.model.Rating
 import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
+import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import kotlinx.android.synthetic.main.fragment_rating_picker.*
@@ -48,7 +50,9 @@ internal class RatingPickerFragment : Fragment(R.layout.fragment_rating_picker) 
         dividerColor = getColor(R.color.colorAccent)
         textTypeface = Typeface.DEFAULT_BOLD
         orientation = Orientation.HORIZONTAL
-        onItemSelectionListener = { ratingTv.text = (it.payload as Rating).title }
+        onItemSelectedListener = OnItemSelectedListener {
+            ratingTv.text = (it.payload as Rating).title
+        }
 
         val ratingPickerItems = generateRatingPickerItems()
         items = ratingPickerItems

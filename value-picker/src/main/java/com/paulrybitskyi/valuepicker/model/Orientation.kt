@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
+@file:JvmName("OrientationUtils")
+
 package com.paulrybitskyi.valuepicker.model
 
 import androidx.recyclerview.widget.RecyclerView
 
-enum class Orientation(
-    internal val id: Int
-) {
+enum class Orientation(internal val id: Int) {
 
 
     VERTICAL(id = 1),

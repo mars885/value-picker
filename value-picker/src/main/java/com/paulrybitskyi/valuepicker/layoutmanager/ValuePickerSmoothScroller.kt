@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:JvmName("ValuePickerSmoothScrollerUtils")
+
 package com.paulrybitskyi.valuepicker.layoutmanager
 
 import android.content.Context

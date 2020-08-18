@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:JvmName("ValueItemConfigUtils")
+
 package com.paulrybitskyi.valuepicker.model
 
 import android.graphics.Typeface
@@ -27,6 +29,7 @@ internal data class ValueItemConfig(
 )
 
 
+@JvmField
 internal val VALUE_ITEM_CONFIG_STUB = ValueItemConfig(
     size = sizeOf(width = 0, height = 0),
     textColor = 0,

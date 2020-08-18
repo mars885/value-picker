@@ -25,6 +25,7 @@ import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
 import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import kotlinx.android.synthetic.main.fragment_time_picker.*
@@ -60,7 +61,9 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
 
     private fun initHourPicker() = with(hourPicker) {
         initPicker()
-        onItemSelectionListener = { hourTv.text = "Hour: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener{
+            hourTv.text = "Hour: ${it.title}"
+        }
 
         val hourPickerItems = generateHourPickerItems()
         items = hourPickerItems
@@ -84,7 +87,9 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
 
     private fun initMinutePicker() = with(minutePicker) {
         initPicker()
-        onItemSelectionListener = { minuteTv.text = "Minute: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            minuteTv.text = "Minute: ${it.title}"
+        }
 
         val minutePickerItems = generateMinutePickerItems()
         items = minutePickerItems
@@ -108,7 +113,9 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
 
     private fun initPeriodPicker() = with(periodPicker) {
         initPicker()
-        onItemSelectionListener = { periodTv.text = "Period: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            periodTv.text = "Period: ${it.title}"
+        }
 
         val periodPickerItems = generatePeriodPickerItems()
         items = periodPickerItems

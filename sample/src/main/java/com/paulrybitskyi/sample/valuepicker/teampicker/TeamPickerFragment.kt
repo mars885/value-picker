@@ -28,6 +28,7 @@ import com.paulrybitskyi.commons.ktx.getDrawable
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.teampicker.model.Team
 import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
+import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.Size
@@ -56,7 +57,9 @@ internal class TeamPickerFragment : Fragment(R.layout.fragment_team_picker) {
             height = getDimensionPixelSize(R.dimen.team_picker_item_height)
         )
         orientation = Orientation.VERTICAL
-        onItemSelectionListener = { teamTv.text = (it.payload as Team).longName }
+        onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
+            teamTv.text = (it.payload as Team).longName
+        }
 
         val teamPickerItems = generateTeamPickerItems()
         items = teamPickerItems

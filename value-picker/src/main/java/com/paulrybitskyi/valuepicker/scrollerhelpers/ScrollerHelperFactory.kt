@@ -6,6 +6,7 @@ import com.paulrybitskyi.valuepicker.scrollerhelpers.concrete.RegularScrollerHel
 internal object ScrollerHelperFactory {
 
 
+    @JvmStatic
     fun create(isInfinite: Boolean, dataSetItemCount: Int): ScrollerHelper {
         return if(isInfinite) {
             InfiniteScrollerHelper(dataSetItemCount)

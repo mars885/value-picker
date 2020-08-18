@@ -28,6 +28,7 @@ import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
 import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.CompositeValueEffect
 import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.Size
@@ -71,7 +72,9 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
     private fun initAgePicker() = with(agePicker) {
         initPersonInfoPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
-        onItemSelectionListener = { ageTv.text = "Age: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            ageTv.text = "Age: ${it.title}"
+        }
 
         val agePickerItems = generateAgePickerItems()
         items = agePickerItems
@@ -96,7 +99,9 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
     private fun initHeightPicker() = with(heightPicker) {
         initPersonInfoPicker()
         valueEffect = NoValueEffect()
-        onItemSelectionListener = { heightTv.text = "Height: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            heightTv.text = "Height: ${it.title}"
+        }
 
         val heightPickerItems = generateHeightPickerItems()
         items = heightPickerItems
@@ -124,7 +129,9 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
             AlphaValueEffect(),
             RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
         ))
-        onItemSelectionListener = { weightTv.text = "Weight: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            weightTv.text = "Weight: ${it.title}"
+        }
 
         val weightPickerItems = generateWeightPickerItems()
         items = weightPickerItems

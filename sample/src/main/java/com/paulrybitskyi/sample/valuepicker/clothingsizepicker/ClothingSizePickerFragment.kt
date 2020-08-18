@@ -27,6 +27,8 @@ import com.paulrybitskyi.commons.ktx.getDrawable
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.clothingsizepicker.model.ClothingSize
 import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
+import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.Size
@@ -55,7 +57,9 @@ internal class ClothingSizePickerFragment : Fragment(R.layout.fragment_clothing_
             height = getDimensionPixelSize(R.dimen.clothing_size_picker_item_height)
         )
         orientation = Orientation.HORIZONTAL
-        onItemSelectionListener = { clothingSizeTv.text = it.title }
+        onItemSelectedListener = OnItemSelectedListener {
+            clothingSizeTv.text = it.title
+        }
 
         val clothingSizePickerItems = generateClothingSizePickerItems()
         items = clothingSizePickerItems

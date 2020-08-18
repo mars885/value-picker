@@ -24,6 +24,7 @@ import com.paulrybitskyi.valuepicker.model.ValueItemConfig
 internal object ValuePickerItemDecoratorFactory {
 
 
+    @JvmStatic
     fun createVerticalDecorator(
         maxVisibleItems: Int,
         dividerDrawable: Drawable,
@@ -37,6 +38,7 @@ internal object ValuePickerItemDecoratorFactory {
     }
 
 
+    @JvmStatic
     fun createHorizontalDecorator(
         maxVisibleItems: Int,
         dividerDrawable: Drawable,

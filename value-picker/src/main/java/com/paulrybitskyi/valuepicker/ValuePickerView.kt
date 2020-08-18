@@ -1,3 +1,5 @@
+@file:JvmName("ValuePickerViewUtils")
+
 package com.paulrybitskyi.valuepicker
 
 import android.content.Context
@@ -33,6 +35,7 @@ import com.paulrybitskyi.valuepicker.model.sizeOf
 import com.paulrybitskyi.valuepicker.utils.getColor
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
+import java.util.*
 
 
 private const val DEFAULT_MAX_VISIBLE_ITEMS = 3
@@ -51,6 +54,8 @@ class ValuePickerView @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
 
+    @set:JvmName("setDividersEnabled")
+    @get:JvmName("areDividersEnabled")
     var areDividersEnabled by observeChanges(true) { _, _ ->
         initValuePickerItemDecorator()
     }
@@ -63,7 +68,7 @@ class ValuePickerView @JvmOverloads constructor(
     var isScrollingDisabled = false
 
     private val hasItems: Boolean
-        get() = items.isNotEmpty()
+        get() = _items.isNotEmpty()
 
     private val hasFixedItemSize: Boolean
         get() = (fixedItemSize?.hasBothDimensions == true)
@@ -75,7 +80,7 @@ class ValuePickerView @JvmOverloads constructor(
         get() = (fixedItemSize?.hasHeight == true)
 
     private val itemCount: Int
-        get() = items.size
+        get() = _items.size
 
     var maxVisibleItems = DEFAULT_MAX_VISIBLE_ITEMS
         set(value) {
@@ -137,15 +142,20 @@ class ValuePickerView @JvmOverloads constructor(
         recreateItemViews()
     }
 
-    var items by observeChanges<List<Item>>(listOf()) { _, items ->
-        require(itemCount > 1) { "The item list must contain at least two items." }
-
+    private var _items by observeChanges<List<Item>>(listOf()) { _, items ->
         recalculateValueItemSize()
         recalculateMaxVisibleItems(itemCount)
         recalculateRecyclerViewSizing()
         valuePickerAdapter.items = items
         _selectedItem?.let(::scrollToItem) ?: setSelectedItem(items.first())
     }
+
+    var items: List<Item>
+        set(value) {
+            require(value.size > 1) { "The item list must contain at least two items." }
+            _items = value.toList()
+        }
+        get() = Collections.unmodifiableList(_items)
 
     private lateinit var valueItemViewPaint: Paint
     private val valueItemViewTextBounds = Rect()
@@ -169,7 +179,14 @@ class ValuePickerView @JvmOverloads constructor(
         recalculateRecyclerViewSizing()
     }
 
-    var onItemSelectionListener: ((Item) -> Unit)? = null
+    var onItemSelectedListener: OnItemSelectedListener? = null
+
+
+    fun interface OnItemSelectedListener {
+
+        fun onItemSelected(item: Item)
+
+    }
 
 
     init {
@@ -245,7 +262,7 @@ class ValuePickerView @JvmOverloads constructor(
 
     private fun initAdapter() {
         ValuePickerRecyclerViewAdapter(
-            items = items,
+            items = _items,
             valueItemConfig = valueItemConfig,
             scrollerHelper = initScrollerHelper()
         )
@@ -357,7 +374,7 @@ class ValuePickerView @JvmOverloads constructor(
         var valueItemTextMaxWidth = 0
         var valueItemTextMaxHeight = 0
 
-        for(item in items) {
+        for(item in _items) {
             valueItemViewPaint.getTextBounds(item.title, valueItemViewTextBounds)
 
             val valueItemTextWidth = valueItemViewTextBounds.width()
@@ -508,7 +525,7 @@ class ValuePickerView @JvmOverloads constructor(
 
 
     private fun reportItemSelection(item: Item) {
-        onItemSelectionListener?.invoke(item)
+        onItemSelectedListener?.onItemSelected(item)
     }
 
 

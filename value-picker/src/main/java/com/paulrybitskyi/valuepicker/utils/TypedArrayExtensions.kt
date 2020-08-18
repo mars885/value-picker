@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:JvmName("TypedArrayUtils")
+
 package com.paulrybitskyi.valuepicker.utils
 
 import android.content.res.TypedArray

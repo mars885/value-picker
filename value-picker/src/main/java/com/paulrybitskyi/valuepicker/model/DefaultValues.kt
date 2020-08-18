@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:JvmName("DefaultValuesUtils")
+
 package com.paulrybitskyi.valuepicker.model
 
 import android.content.Context

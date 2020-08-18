@@ -29,6 +29,7 @@ import com.paulrybitskyi.sample.valuepicker.utils.PickerItem
 import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.CompositeValueEffect
 import com.paulrybitskyi.sample.valuepicker.utils.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.ValuePickerView
+import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.AlphaValueEffect
@@ -66,7 +67,9 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
     private fun initGenrePicker() = with(genrePicker) {
         initMovieFilteringPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
-        onItemSelectionListener = { genreTv.text = "Genre: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            genreTv.text = "Genre: ${it.title}"
+        }
 
         val genrePickerItems = generateGenrePickerItems()
         items = genrePickerItems
@@ -88,7 +91,9 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
     private fun initYearPicker() = with(yearPicker) {
         initMovieFilteringPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
-        onItemSelectionListener = { yearTv.text = "Year: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            yearTv.text = "Year: ${it.title}"
+        }
 
         val yearPickerItems = generateYearPickerItems()
         items = yearPickerItems
@@ -116,7 +121,9 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
             AlphaValueEffect(),
             RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
         ))
-        onItemSelectionListener = { serviceTv.text = "Service: ${it.title}" }
+        onItemSelectedListener = OnItemSelectedListener {
+            serviceTv.text = "Service: ${it.title}"
+        }
 
         val servicePickerItems = generateServicePickerItems()
         items = servicePickerItems

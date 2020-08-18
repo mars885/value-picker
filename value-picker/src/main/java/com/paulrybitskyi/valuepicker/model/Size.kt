@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:JvmName("SizeUtils")
+
 package com.paulrybitskyi.valuepicker.model
 
 
@@ -28,6 +30,7 @@ class Size internal constructor(
 
     companion object {
 
+        @JvmStatic
         fun withFixedWidth(width: Int): Size {
             return Size(
                 width = width,
@@ -35,7 +38,7 @@ class Size internal constructor(
             )
         }
 
-
+        @JvmStatic
         fun withFixedHeight(height: Int): Size {
             return Size(
                 width = DIMENSION_NOT_SET,
@@ -43,7 +46,7 @@ class Size internal constructor(
             )
         }
 
-
+        @JvmStatic
         fun withFixedSize(width: Int, height: Int): Size {
             return Size(
                 width = width,
