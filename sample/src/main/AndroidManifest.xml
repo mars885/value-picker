@@ -16,7 +16,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.paulrybitskyi.sample.valuepicker">
+    package="com.paulrybitskyi.valuepicker.sample">
 
     <application
         android:allowBackup="true"
@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.paulrybitskyi.sample.valuepicker.root.RootActivity">
+        <activity android:name="com.paulrybitskyi.valuepicker.sample.root.RootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
