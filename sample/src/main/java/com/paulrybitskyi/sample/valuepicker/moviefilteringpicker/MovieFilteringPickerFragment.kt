@@ -17,12 +17,12 @@
 package com.paulrybitskyi.sample.valuepicker.moviefilteringpicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentMovieFilteringPickerBinding
 import com.paulrybitskyi.sample.valuepicker.moviefilteringpicker.model.Genre
 import com.paulrybitskyi.sample.valuepicker.moviefilteringpicker.model.StreamingService
 import com.paulrybitskyi.sample.valuepicker.valueeffects.CompositeValueEffect
@@ -33,13 +33,17 @@ import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
-import kotlinx.android.synthetic.main.fragment_movie_filtering_picker.*
 
-internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_filtering_picker) {
+internal class MovieFilteringPickerFragment : BaseFragment<
+    FragmentMovieFilteringPickerBinding
+>(R.layout.fragment_movie_filtering_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentMovieFilteringPickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initPickers()
     }
@@ -64,11 +68,11 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
     }
 
 
-    private fun initGenrePicker() = with(genrePicker) {
+    private fun initGenrePicker() = with(viewBinding.genrePicker) {
         initMovieFilteringPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
         onItemSelectedListener = OnItemSelectedListener {
-            genreTv.text = "Genre: ${it.title}"
+            viewBinding.genreTv.text = "Genre: ${it.title}"
         }
 
         val genrePickerItems = generateGenrePickerItems()
@@ -88,11 +92,11 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
     }
 
 
-    private fun initYearPicker() = with(yearPicker) {
+    private fun initYearPicker() = with(viewBinding.yearPicker) {
         initMovieFilteringPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
         onItemSelectedListener = OnItemSelectedListener {
-            yearTv.text = "Year: ${it.title}"
+            viewBinding.yearTv.text = "Year: ${it.title}"
         }
 
         val yearPickerItems = generateYearPickerItems()
@@ -115,14 +119,14 @@ internal class MovieFilteringPickerFragment : Fragment(R.layout.fragment_movie_f
     }
 
 
-    private fun initServicePicker() = with(servicePicker) {
+    private fun initServicePicker() = with(viewBinding.servicePicker) {
         initMovieFilteringPicker()
         valueEffect = CompositeValueEffect(listOf(
             FadingValueEffect(),
             RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
         ))
         onItemSelectedListener = OnItemSelectedListener {
-            serviceTv.text = "Service: ${it.title}"
+            viewBinding.serviceTv.text = "Service: ${it.title}"
         }
 
         val servicePickerItems = generateServicePickerItems()

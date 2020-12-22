@@ -17,34 +17,38 @@
 package com.paulrybitskyi.sample.valuepicker.teampicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
 import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
 import com.paulrybitskyi.commons.ktx.getDrawable
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentTeamPickerBinding
 import com.paulrybitskyi.sample.valuepicker.teampicker.model.Team
 import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.model.Size
-import kotlinx.android.synthetic.main.fragment_team_picker.*
 
-internal class TeamPickerFragment : Fragment(R.layout.fragment_team_picker) {
+internal class TeamPickerFragment : BaseFragment<
+    FragmentTeamPickerBinding
+>(R.layout.fragment_team_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentTeamPickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initTeamPicker()
     }
 
 
-    private fun initTeamPicker() = with(teamPicker) {
+    private fun initTeamPicker() = with(viewBinding.teamPicker) {
         areDividersEnabled = true
         isInfiniteScrollEnabled = false
         maxVisibleItems = 5
@@ -58,7 +62,7 @@ internal class TeamPickerFragment : Fragment(R.layout.fragment_team_picker) {
         )
         orientation = Orientation.VERTICAL
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
-            teamTv.text = (it.payload as Team).longName
+            viewBinding.teamTv.text = (it.payload as Team).longName
         }
 
         val teamPickerItems = generateTeamPickerItems()

@@ -17,33 +17,37 @@
 package com.paulrybitskyi.sample.valuepicker.clothingsizepicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
 import com.paulrybitskyi.commons.ktx.getDrawable
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
 import com.paulrybitskyi.sample.valuepicker.clothingsizepicker.model.ClothingSize
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentClothingSizePickerBinding
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.model.Size
-import kotlinx.android.synthetic.main.fragment_clothing_size_picker.*
 
-internal class ClothingSizePickerFragment : Fragment(R.layout.fragment_clothing_size_picker) {
+internal class ClothingSizePickerFragment : BaseFragment<
+    FragmentClothingSizePickerBinding
+>(R.layout.fragment_clothing_size_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentClothingSizePickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initClothingSizePicker()
     }
 
 
-    private fun initClothingSizePicker() = with(clothingSizePicker) {
+    private fun initClothingSizePicker() = with(viewBinding.clothingSizePicker) {
         areDividersEnabled = true
         isInfiniteScrollEnabled = true
         maxVisibleItems = 3
@@ -57,7 +61,7 @@ internal class ClothingSizePickerFragment : Fragment(R.layout.fragment_clothing_
         )
         orientation = Orientation.HORIZONTAL
         onItemSelectedListener = OnItemSelectedListener {
-            clothingSizeTv.text = it.title
+            viewBinding.clothingSizeTv.text = it.title
         }
 
         val clothingSizePickerItems = generateClothingSizePickerItems()

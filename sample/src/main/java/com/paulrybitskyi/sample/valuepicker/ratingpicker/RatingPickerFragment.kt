@@ -17,30 +17,34 @@
 package com.paulrybitskyi.sample.valuepicker.ratingpicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentRatingPickerBinding
 import com.paulrybitskyi.sample.valuepicker.ratingpicker.model.Rating
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.PickerItem
-import kotlinx.android.synthetic.main.fragment_rating_picker.*
 
-internal class RatingPickerFragment : Fragment(R.layout.fragment_rating_picker) {
+internal class RatingPickerFragment : BaseFragment<
+    FragmentRatingPickerBinding
+>(R.layout.fragment_rating_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentRatingPickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initRatingPicker()
     }
 
 
-    private fun initRatingPicker() = with(ratingPicker) {
+    private fun initRatingPicker() = with(viewBinding.ratingPicker) {
         areDividersEnabled = true
         isInfiniteScrollEnabled = false
         maxVisibleItems = 3
@@ -50,7 +54,7 @@ internal class RatingPickerFragment : Fragment(R.layout.fragment_rating_picker) 
         textTypeface = Typeface.DEFAULT_BOLD
         orientation = Orientation.HORIZONTAL
         onItemSelectedListener = OnItemSelectedListener {
-            ratingTv.text = (it.payload as Rating).title
+            viewBinding.ratingTv.text = (it.payload as Rating).title
         }
 
         val ratingPickerItems = generateRatingPickerItems()

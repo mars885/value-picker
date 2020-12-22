@@ -17,13 +17,13 @@
 package com.paulrybitskyi.sample.valuepicker.personinfopicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentPersonInfoPickerBinding
 import com.paulrybitskyi.sample.valuepicker.valueeffects.CompositeValueEffect
 import com.paulrybitskyi.sample.valuepicker.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.ValuePickerView
@@ -34,13 +34,17 @@ import com.paulrybitskyi.valuepicker.model.PickerItem
 import com.paulrybitskyi.valuepicker.model.Size
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
-import kotlinx.android.synthetic.main.fragment_person_info_picker.*
 
-internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info_picker) {
+internal class PersonInfoPickerFragment : BaseFragment<
+    FragmentPersonInfoPickerBinding
+>(R.layout.fragment_person_info_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentPersonInfoPickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initPickers()
     }
@@ -69,11 +73,11 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
     }
 
 
-    private fun initAgePicker() = with(agePicker) {
+    private fun initAgePicker() = with(viewBinding.agePicker) {
         initPersonInfoPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
         onItemSelectedListener = OnItemSelectedListener {
-            ageTv.text = "Age: ${it.title}"
+            viewBinding.ageTv.text = "Age: ${it.title}"
         }
 
         val agePickerItems = generateAgePickerItems()
@@ -96,11 +100,11 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
     }
 
 
-    private fun initHeightPicker() = with(heightPicker) {
+    private fun initHeightPicker() = with(viewBinding.heightPicker) {
         initPersonInfoPicker()
         valueEffect = NoValueEffect()
         onItemSelectedListener = OnItemSelectedListener {
-            heightTv.text = "Height: ${it.title}"
+            viewBinding.heightTv.text = "Height: ${it.title}"
         }
 
         val heightPickerItems = generateHeightPickerItems()
@@ -123,14 +127,14 @@ internal class PersonInfoPickerFragment : Fragment(R.layout.fragment_person_info
     }
 
 
-    private fun initWeightPicker() = with(weightPicker) {
+    private fun initWeightPicker() = with(viewBinding.weightPicker) {
         initPersonInfoPicker()
         valueEffect = CompositeValueEffect(listOf(
             FadingValueEffect(),
             RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
         ))
         onItemSelectedListener = OnItemSelectedListener {
-            weightTv.text = "Weight: ${it.title}"
+            viewBinding.weightTv.text = "Weight: ${it.title}"
         }
 
         val weightPickerItems = generateWeightPickerItems()

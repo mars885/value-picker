@@ -17,24 +17,28 @@
 package com.paulrybitskyi.sample.valuepicker.timepicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentTimePickerBinding
 import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.PickerItem
-import kotlinx.android.synthetic.main.fragment_time_picker.*
 
-internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
+internal class TimePickerFragment : BaseFragment<
+    FragmentTimePickerBinding
+>(R.layout.fragment_time_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentTimePickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initPickers()
     }
@@ -59,10 +63,10 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
     }
 
 
-    private fun initHourPicker() = with(hourPicker) {
+    private fun initHourPicker() = with(viewBinding.hourPicker) {
         initPicker()
         onItemSelectedListener = OnItemSelectedListener{
-            hourTv.text = "Hour: ${it.title}"
+            viewBinding.hourTv.text = "Hour: ${it.title}"
         }
 
         val hourPickerItems = generateHourPickerItems()
@@ -85,10 +89,10 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
     }
 
 
-    private fun initMinutePicker() = with(minutePicker) {
+    private fun initMinutePicker() = with(viewBinding.minutePicker) {
         initPicker()
         onItemSelectedListener = OnItemSelectedListener {
-            minuteTv.text = "Minute: ${it.title}"
+            viewBinding.minuteTv.text = "Minute: ${it.title}"
         }
 
         val minutePickerItems = generateMinutePickerItems()
@@ -111,10 +115,10 @@ internal class TimePickerFragment : Fragment(R.layout.fragment_time_picker) {
     }
 
 
-    private fun initPeriodPicker() = with(periodPicker) {
+    private fun initPeriodPicker() = with(viewBinding.periodPicker) {
         initPicker()
         onItemSelectedListener = OnItemSelectedListener {
-            periodTv.text = "Period: ${it.title}"
+            viewBinding.periodTv.text = "Period: ${it.title}"
         }
 
         val periodPickerItems = generatePeriodPickerItems()

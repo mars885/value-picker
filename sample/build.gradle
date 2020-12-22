@@ -15,9 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion appConfig.compileSdkVersion
@@ -38,6 +36,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     lintOptions {
@@ -63,6 +65,7 @@ dependencies {
     implementation deps.navFragmentKtx
     implementation deps.navUiKtx
     implementation deps.constraintLayout
+    implementation deps.commonsCore
     implementation deps.commonsKtx
 
     testImplementation deps.jUnit

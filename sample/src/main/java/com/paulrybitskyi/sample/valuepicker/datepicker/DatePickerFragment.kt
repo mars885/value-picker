@@ -17,25 +17,29 @@
 package com.paulrybitskyi.sample.valuepicker.datepicker
 
 import android.graphics.Typeface
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import com.paulrybitskyi.commons.ktx.getColor
 import com.paulrybitskyi.commons.ktx.getDimension
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentDatePickerBinding
 import com.paulrybitskyi.sample.valuepicker.datepicker.model.Month
 import com.paulrybitskyi.valuepicker.ValuePickerView
 import com.paulrybitskyi.valuepicker.ValuePickerView.OnItemSelectedListener
 import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.model.PickerItem
-import kotlinx.android.synthetic.main.fragment_date_picker.*
 
-internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
+internal class DatePickerFragment : BaseFragment<
+    FragmentDatePickerBinding
+>(R.layout.fragment_date_picker) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentDatePickerBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initPickers()
     }
@@ -60,10 +64,10 @@ internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
     }
 
 
-    private fun initMonthPicker() = with(monthPicker) {
+    private fun initMonthPicker() = with(viewBinding.monthPicker) {
         initDatePicker()
         onItemSelectedListener = OnItemSelectedListener {
-            monthTv.text = "Month: ${(it.payload as Month).shortName}"
+            viewBinding.monthTv.text = "Month: ${(it.payload as Month).shortName}"
         }
 
         val monthPickerItems = generateMonthPickerItems(longMonthNames = true)
@@ -83,10 +87,10 @@ internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
     }
 
 
-    private fun initDayPicker() = with(dayPicker) {
+    private fun initDayPicker() = with(viewBinding.dayPicker) {
         initDatePicker()
         onItemSelectedListener = OnItemSelectedListener {
-            dayTv.text = "Day: ${it.title}"
+            viewBinding.dayTv.text = "Day: ${it.title}"
         }
 
         val dayPickerItems = generateDayPickerItems()
@@ -109,10 +113,10 @@ internal class DatePickerFragment : Fragment(R.layout.fragment_date_picker) {
     }
 
 
-    private fun initYearPicker() = with(yearPicker) {
+    private fun initYearPicker() = with(viewBinding.yearPicker) {
         initDatePicker()
         onItemSelectedListener = OnItemSelectedListener {
-            yearTv.text = "Year: ${it.title}"
+            viewBinding.yearTv.text = "Year: ${it.title}"
         }
 
         val yearPickerItems = generateYearPickerItems()

@@ -16,24 +16,28 @@
 
 package com.paulrybitskyi.sample.valuepicker.dashboard
 
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.paulrybitskyi.commons.utils.viewBinding
+import com.paulrybitskyi.sample.valuepicker.BaseFragment
 import com.paulrybitskyi.sample.valuepicker.R
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import com.paulrybitskyi.sample.valuepicker.databinding.FragmentDashboardBinding
 
-internal class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
+internal class DashboardFragment : BaseFragment<
+    FragmentDashboardBinding
+>(R.layout.fragment_dashboard) {
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewBinding by viewBinding(FragmentDashboardBinding::bind)
+
+
+    override fun onInit() {
+        super.onInit()
 
         initRecyclerView()
     }
 
 
-    private fun initRecyclerView() = with(recyclerView) {
+    private fun initRecyclerView() = with(viewBinding.recyclerView) {
         adapter = initAdapter()
     }
 
