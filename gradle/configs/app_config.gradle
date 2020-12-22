@@ -28,19 +28,19 @@ ext {
     ]
 
     depVersions = [
-        kotlinVersion: "1.4.0",
-        gradlePluginVersion: "4.0.1",
-        gradleVersionsPluginVersion: "0.29.0",
+        kotlinVersion: "1.4.21",
+        gradlePluginVersion: "4.1.1",
+        gradleVersionsPluginVersion: "0.36.0",
         mavenGradlePlugin: "2.1",
         bintrayUploadPlugin: "1.8.5",
-        appCompatVersion: "1.1.0",
+        appCompatVersion: "1.2.0",
         recyclerViewVersion: "1.1.0",
-        navFragmentKtxVersion: "2.3.0",
-        navUiKtxVersion: "2.3.0",
-        constraintLayoutVersion: "1.1.3",
+        navFragmentKtxVersion: "2.3.2",
+        navUiKtxVersion: "2.3.2",
+        constraintLayoutVersion: "2.0.2",
         coreKtxVersion: "1.3.1",
         commonsCoreVersion: "1.0.1",
-        commonsKtxVersion: "1.0.0",
+        commonsKtxVersion: "1.0.1",
         commonsRecyclerViewVersion: "1.0.0",
         jUnitVersion: "4.13",
         jUnitExtVersion: "1.1.1"
