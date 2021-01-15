@@ -167,7 +167,7 @@ Let's see how we can do that by following the steps listed above:
 
 ## Advanced Usage
 
-See the [Sample app](https://github.com/mars885/value-picker/tree/master/sample/src/main/java/com/paulrybitskyi/sample/valuepicker).
+See the [Sample app](https://github.com/mars885/value-picker/tree/master/sample/src/main/java/com/paulrybitskyi/valuepicker/sample).
 
 ## License
 
