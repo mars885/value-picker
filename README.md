@@ -3,7 +3,7 @@ An Android library that provides a simple and customizable ValuePicker.
 
 ![](https://img.shields.io/badge/API-21%2B-orange.svg?style=flat)
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
-[![Download](https://api.bintray.com/packages/mars885/maven/valuepicker/images/download.svg)](https://bintray.com/mars885/maven/valuepicker/_latestVersion)
+[![Download](https://img.shields.io/maven-central/v/com.paulrybitskyi.valuepicker/valuepicker.svg?label=Download)](https://search.maven.org/search?q=com.paulrybitskyi.valuepicker)
 [![Build](https://github.com/mars885/value-picker/workflows/Build/badge.svg?branch=master)](https://github.com/mars885/value-picker/actions)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ValuePicker-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/8212)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -24,14 +24,14 @@ An Android library that provides a simple and customizable ValuePicker.
 
 ## Installation
 
-1. Make sure that you've added the `jcenter()` repository to your top-level `build.gradle` file.
+1. Make sure that you've added the `mavenCentral()` repository to your top-level `build.gradle` file.
 
 ````groovy
 buildscript {
     //...
     repositories {
         //...
-        jcenter()
+        mavenCentral()
     }
     //...
 }
