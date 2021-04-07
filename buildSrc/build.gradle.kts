@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
+ * Copyright 2021 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,21 @@
  * limitations under the License.
  */
 
-ext {
-    libraryConfig = [
-        versionCode: 1,
-        versionName: "1.0.0",
-        artifactName: "valuepicker",
-        artifactDescription: "An Android library that provides a simple and customizable ValuePicker.",
-    ]
+plugins {
+    `kotlin-dsl`
+}
+
+kotlinDslPluginOptions {
+    experimentalWarning.set(false)
+}
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+}
+
+dependencies {
+    implementation("com.android.tools.build:gradle:4.1.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
 }
