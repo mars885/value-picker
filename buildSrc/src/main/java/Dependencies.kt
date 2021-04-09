@@ -60,7 +60,7 @@ object publishingConfig {
 
 object versions {
 
-    const val kotlin = "1.4.21" // also in buildSrc build.gradle.kts file
+    const val kotlin = "1.4.32" // also in buildSrc build.gradle.kts file
     const val gradlePlugin = "4.1.3" // also in buildSrc build.gradle.kts file
     const val gradleVersionsPlugin = "0.38.0"
     const val dokkaPlugin = "1.4.30"
