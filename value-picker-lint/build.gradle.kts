@@ -15,35 +15,9 @@
  */
 
 plugins {
-    gradleVersions()
-    dokka()
+    kotlin()
 }
 
-buildscript {
-    val kotlin_version by extra("1.4.32")
-    repositories {
-        mavenCentral()
-        google()
-        jcenter()
-    }
-
-    dependencies {
-        classpath(deps.plugins.androidGradle)
-        classpath(deps.plugins.kotlinGradle)
-        classpath(deps.plugins.gradleVersions)
-        classpath(deps.plugins.dokka)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
-    }
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-        jcenter()
-    }
-}
-
-val clean by tasks.registering(Delete::class) {
-    delete(buildDir)
+dependencies {
+    //
 }
