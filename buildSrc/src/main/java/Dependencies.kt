@@ -61,7 +61,7 @@ object publishingConfig {
 object versions {
 
     const val kotlin = "1.4.32" // also in buildSrc build.gradle.kts file
-    const val gradlePlugin = "4.1.3" // also in buildSrc build.gradle.kts file
+    const val gradlePlugin = "4.1.3" // also in buildSrc build.gradle.kts file and lint version
     const val gradleVersionsPlugin = "0.38.0"
     const val dokkaPlugin = "1.4.30"
     const val appCompat = "1.2.0"
@@ -73,7 +73,7 @@ object versions {
     const val commonsCore = "1.0.2"
     const val commonsKtx = "1.0.2"
     const val commonsRecyclerView = "1.0.0"
-    const val lint = "27.1.3"
+    const val lint = "27.1.3"   // lintVersion = gradlePluginVersion + 23.0.0
     const val jUnit = "4.13.2"
     const val jUnitExt = "1.1.2"
 

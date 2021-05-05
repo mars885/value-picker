@@ -16,6 +16,7 @@
 
 plugins {
     kotlin()
+    lint()
 }
 
 dependencies {
