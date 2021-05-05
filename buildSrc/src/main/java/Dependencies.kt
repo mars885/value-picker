@@ -73,6 +73,7 @@ object versions {
     const val commonsCore = "1.0.2"
     const val commonsKtx = "1.0.2"
     const val commonsRecyclerView = "1.0.0"
+    const val autoService = "1.0"
     const val lint = "27.1.3"   // lintVersion = gradlePluginVersion + 23.0.0
     const val jUnit = "4.13.2"
     const val jUnitExt = "1.1.2"
@@ -108,6 +109,7 @@ object deps {
     const val commonsCore = "com.paulrybitskyi.commons:commons-core:${versions.commonsCore}"
     const val commonsKtx = "com.paulrybitskyi.commons:commons-ktx:${versions.commonsKtx}"
     const val commonsRecyclerView = "com.paulrybitskyi.commons:commons-recyclerview:${versions.commonsRecyclerView}"
+    const val autoService = "com.google.auto.service:auto-service:${versions.autoService}"
     const val lintApi = "com.android.tools.lint:lint-api:${versions.lint}"
     const val lintTests = "com.android.tools.lint:lint-tests:${versions.lint}"
     const val jUnit = "junit:junit:${versions.jUnit}"

@@ -24,6 +24,7 @@ const val PLUGIN_DOKKA = "org.jetbrains.dokka"
 const val PLUGIN_ANDROID_APPLICATION = "com.android.application"
 const val PLUGIN_ANDROID_LIBRARY = "com.android.library"
 const val PLUGIN_KOTLIN = "kotlin"
+const val PLUGIN_KOTLIN_KAPT = "kotlin-kapt"
 const val PLUGIN_KOTLIN_ANDROID = "kotlin-android"
 const val PLUGIN_LINT = "com.android.lint"
 const val PLUGIN_MAVEN_PUBLISH = "maven-publish"
@@ -52,6 +53,11 @@ fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec {
 
 fun PluginDependenciesSpec.kotlin(): PluginDependencySpec {
     return id(PLUGIN_KOTLIN)
+}
+
+
+fun PluginDependenciesSpec.kotlinKapt(): PluginDependencySpec {
+    return id(PLUGIN_KOTLIN_KAPT)
 }
 
 

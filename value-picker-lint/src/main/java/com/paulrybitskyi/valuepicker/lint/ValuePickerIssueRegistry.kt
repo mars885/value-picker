@@ -18,14 +18,13 @@ package com.paulrybitskyi.valuepicker.lint
 
 import com.android.tools.lint.client.api.IssueRegistry
 import com.android.tools.lint.detector.api.CURRENT_API
-import com.android.tools.lint.detector.api.Issue
+import com.google.auto.service.AutoService
 
+@AutoService(IssueRegistry::class)
 internal class ValuePickerIssueRegistry : IssueRegistry() {
 
 
-    override val issues = listOf<Issue>(
-
-    )
+    override val issues = listOf(NumberPickerUsageDetector.ISSUE)
 
 
     override val api = CURRENT_API

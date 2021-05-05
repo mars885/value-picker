@@ -17,17 +17,12 @@
 plugins {
     `java-library`
     kotlin()
+    kotlinKapt()
     lint()
 }
 
 java.sourceCompatibility = appConfig.javaCompatibilityVersion
 java.targetCompatibility = appConfig.javaCompatibilityVersion
-
-tasks.jar {
-    manifest {
-        attributes("Lint-Registry-v2" to "com.paulrybitskyi.valuepicker.lint.ValuePickerIssueRegistry")
-    }
-}
 
 dependencies {
     compileOnly(deps.lintApi)
@@ -35,6 +30,9 @@ dependencies {
     // See this for why stdLib is needed:
     // https://pspdfkit.com/blog/2020/how-updating-to-kotlin-14-broke-our-linter-rules/
     compileOnly(deps.stdLib)
+
+    compileOnly(deps.autoService)
+    kapt(deps.autoService)
 
     testImplementation(deps.lintTests)
 }
