@@ -15,11 +15,20 @@
  */
 
 plugins {
+    `java-library`
     kotlin()
     lint()
 }
 
+java.sourceCompatibility = appConfig.javaCompatibilityVersion
+java.targetCompatibility = appConfig.javaCompatibilityVersion
+
 dependencies {
     compileOnly(deps.lintApi)
+
+    // See this for why stdLib is needed:
+    // https://pspdfkit.com/blog/2020/how-updating-to-kotlin-14-broke-our-linter-rules/
+    compileOnly(deps.stdLib)
+
     testImplementation(deps.lintTests)
 }

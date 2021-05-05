@@ -14,34 +14,16 @@
  * limitations under the License.
  */
 
-plugins {
-    gradleVersions()
-    dokka()
-}
+package com.paulrybitskyi.valuepicker.lint
 
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-        jcenter()
-    }
+import com.android.tools.lint.client.api.IssueRegistry
+import com.android.tools.lint.detector.api.Issue
 
-    dependencies {
-        classpath(deps.plugins.androidGradle)
-        classpath(deps.plugins.kotlinGradle)
-        classpath(deps.plugins.gradleVersions)
-        classpath(deps.plugins.dokka)
-    }
-}
+internal class ValuePickerIssueRegistry : IssueRegistry() {
 
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-        jcenter()
-    }
-}
 
-val clean by tasks.registering(Delete::class) {
-    delete(buildDir)
+    override val issues: List<Issue>
+        get() = emptyList()
+
+
 }

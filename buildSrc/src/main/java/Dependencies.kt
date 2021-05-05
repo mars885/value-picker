@@ -98,6 +98,7 @@ object deps {
 
     }
 
+    const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     const val appCompat = "androidx.appcompat:appcompat:${versions.appCompat}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${versions.recyclerView}"
     const val navFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${versions.navFragmentKtx}"
