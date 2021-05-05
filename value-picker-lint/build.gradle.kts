@@ -19,5 +19,6 @@ plugins {
 }
 
 dependencies {
-    //
+    compileOnly(deps.lintApi)
+    testImplementation(deps.lintTests)
 }
