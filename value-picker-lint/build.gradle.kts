@@ -23,6 +23,12 @@ plugins {
 java.sourceCompatibility = appConfig.javaCompatibilityVersion
 java.targetCompatibility = appConfig.javaCompatibilityVersion
 
+tasks.jar {
+    manifest {
+        attributes("Lint-Registry-v2" to "com.paulrybitskyi.valuepicker.lint.ValuePickerIssueRegistry")
+    }
+}
+
 dependencies {
     compileOnly(deps.lintApi)
 

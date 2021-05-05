@@ -16,19 +16,13 @@
 
 package com.paulrybitskyi.valuepicker.lint
 
-import com.android.tools.lint.client.api.IssueRegistry
-import com.android.tools.lint.detector.api.CURRENT_API
-import com.android.tools.lint.detector.api.Issue
+import com.android.tools.lint.detector.api.Detector
+import com.android.tools.lint.detector.api.SourceCodeScanner
 
-internal class ValuePickerIssueRegistry : IssueRegistry() {
-
-
-    override val issues = listOf<Issue>(
-
-    )
+internal class NumberPickerXmlUsageDetector : Detector(), SourceCodeScanner {
 
 
-    override val api = CURRENT_API
+
 
 
 }
