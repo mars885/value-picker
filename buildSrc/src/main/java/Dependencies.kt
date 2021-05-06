@@ -52,7 +52,7 @@ object publishingConfig {
     const val hostRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
 
     const val artifactName = "valuepicker"
-    const val artifactVersion = "1.0.0"
+    const val artifactVersion = "1.0.1"
     const val artifactDescription = "An Android library that provides a simple and customizable ValuePicker."
 
 }
