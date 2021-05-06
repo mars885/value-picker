@@ -56,6 +56,8 @@ dependencies {
     implementation(deps.commonsKtx)
     implementation(deps.commonsRecyclerView)
 
+    lintPublish(project(deps.local.valuePickerLint))
+
     testImplementation(deps.jUnit)
     androidTestImplementation(deps.jUnitExt)
 }

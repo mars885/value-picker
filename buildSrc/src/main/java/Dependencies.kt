@@ -61,7 +61,7 @@ object publishingConfig {
 object versions {
 
     const val kotlin = "1.4.32" // also in buildSrc build.gradle.kts file
-    const val gradlePlugin = "4.1.3" // also in buildSrc build.gradle.kts file
+    const val gradlePlugin = "4.1.3" // also in buildSrc build.gradle.kts file and lint version
     const val gradleVersionsPlugin = "0.38.0"
     const val dokkaPlugin = "1.4.30"
     const val appCompat = "1.2.0"
@@ -73,6 +73,8 @@ object versions {
     const val commonsCore = "1.0.2"
     const val commonsKtx = "1.0.2"
     const val commonsRecyclerView = "1.0.0"
+    const val autoService = "1.0"
+    const val lint = "27.1.3"   // lintVersion = gradlePluginVersion + 23.0.0
     const val jUnit = "4.13.2"
     const val jUnitExt = "1.1.2"
 
@@ -93,9 +95,11 @@ object deps {
     object local {
 
         const val valuePicker = ":value-picker"
+        const val valuePickerLint = ":value-picker-lint"
 
     }
 
+    const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     const val appCompat = "androidx.appcompat:appcompat:${versions.appCompat}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${versions.recyclerView}"
     const val navFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${versions.navFragmentKtx}"
@@ -105,6 +109,9 @@ object deps {
     const val commonsCore = "com.paulrybitskyi.commons:commons-core:${versions.commonsCore}"
     const val commonsKtx = "com.paulrybitskyi.commons:commons-ktx:${versions.commonsKtx}"
     const val commonsRecyclerView = "com.paulrybitskyi.commons:commons-recyclerview:${versions.commonsRecyclerView}"
+    const val autoService = "com.google.auto.service:auto-service:${versions.autoService}"
+    const val lintApi = "com.android.tools.lint:lint-api:${versions.lint}"
+    const val lintTests = "com.android.tools.lint:lint-tests:${versions.lint}"
     const val jUnit = "junit:junit:${versions.jUnit}"
     const val jUnitExt = "androidx.test.ext:junit:${versions.jUnitExt}"
 
