@@ -42,7 +42,7 @@ buildscript {
 ````groovy
 dependencies {
     //...
-    implementation "com.paulrybitskyi.valuepicker:valuepicker:1.0.0"
+    implementation "com.paulrybitskyi.valuepicker:valuepicker:1.0.1"
     //...
 }
 ````
