@@ -24,7 +24,7 @@ object appConfig {
     const val compileSdkVersion = 30
     const val targetSdkVersion = 30
     const val minSdkVersion = 21
-    const val buildToolsVersion = "29.0.3"
+    const val buildToolsVersion = "30.0.0"
     const val applicationId = "com.paulrybitskyi.valuepicker.sample"
 
     val javaCompatibilityVersion = JavaVersion.VERSION_1_8
@@ -63,7 +63,7 @@ object versions {
     const val kotlin = "1.4.32" // also in buildSrc build.gradle.kts file
     const val gradlePlugin = "4.1.3" // also in buildSrc build.gradle.kts file and lint version
     const val gradleVersionsPlugin = "0.38.0"
-    const val dokkaPlugin = "1.4.30"
+    const val dokkaPlugin = "1.4.32"
     const val appCompat = "1.2.0"
     const val recyclerView = "1.2.0"
     const val navFragmentKtx = "2.3.5"
