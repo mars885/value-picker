@@ -17,11 +17,18 @@
 package com.paulrybitskyi.valuepicker.lint
 
 import com.android.tools.lint.client.api.IssueRegistry
+import com.android.tools.lint.client.api.Vendor
 import com.android.tools.lint.detector.api.CURRENT_API
 import com.google.auto.service.AutoService
+
+private val VENDOR = Vendor(
+    vendorName = "Value Picker",
+    feedbackUrl = "https://github.com/mars885/value-picker/issues/new",
+)
 
 @AutoService(IssueRegistry::class)
 internal class ValuePickerIssueRegistry : IssueRegistry() {
     override val issues = listOf(NumberPickerUsageDetector.ISSUE)
     override val api = CURRENT_API
+    override val vendor = VENDOR
 }
