@@ -22,7 +22,7 @@ import com.android.tools.lint.detector.api.CURRENT_API
 import com.google.auto.service.AutoService
 
 private val VENDOR = Vendor(
-    vendorName = "Value Picker",
+    vendorName = "ValuePicker Android Library",
     feedbackUrl = "https://github.com/mars885/value-picker/issues/new",
 )
 
