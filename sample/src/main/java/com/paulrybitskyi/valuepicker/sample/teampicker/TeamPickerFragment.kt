@@ -36,7 +36,7 @@ import com.paulrybitskyi.valuepicker.sample.teampicker.model.Team
 @Suppress("MagicNumber")
 internal class TeamPickerFragment : BaseFragment<
     FragmentTeamPickerBinding
-    >(R.layout.fragment_team_picker) {
+>(R.layout.fragment_team_picker) {
 
     override val viewBinding by viewBinding(FragmentTeamPickerBinding::bind)
 

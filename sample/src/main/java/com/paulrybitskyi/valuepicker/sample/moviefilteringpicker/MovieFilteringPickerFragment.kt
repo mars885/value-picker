@@ -36,7 +36,7 @@ import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 @Suppress("MagicNumber")
 internal class MovieFilteringPickerFragment : BaseFragment<
     FragmentMovieFilteringPickerBinding
-    >(R.layout.fragment_movie_filtering_picker) {
+>(R.layout.fragment_movie_filtering_picker) {
 
     override val viewBinding by viewBinding(FragmentMovieFilteringPickerBinding::bind)
 

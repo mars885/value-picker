@@ -24,7 +24,6 @@ internal enum class DashboardDestination(
     val description: String,
     @IdRes val destinationId: Int
 ) {
-
     TIME_PICKER(
         title = "Time Picker",
         description = "Three vertical pickers for picking time.",

@@ -24,7 +24,7 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentDashboardBinding
 
 internal class DashboardFragment : BaseFragment<
     FragmentDashboardBinding
-    >(R.layout.fragment_dashboard) {
+>(R.layout.fragment_dashboard) {
 
     override val viewBinding by viewBinding(FragmentDashboardBinding::bind)
 

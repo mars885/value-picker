@@ -35,7 +35,7 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentClothingSizePick
 @Suppress("MagicNumber")
 internal class ClothingSizePickerFragment : BaseFragment<
     FragmentClothingSizePickerBinding
-    >(R.layout.fragment_clothing_size_picker) {
+>(R.layout.fragment_clothing_size_picker) {
 
     override val viewBinding by viewBinding(FragmentClothingSizePickerBinding::bind)
 

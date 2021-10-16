@@ -20,7 +20,6 @@ internal enum class Month(
     val longName: String,
     val shortName: String
 ) {
-
     JANUARY(
         longName = "January",
         shortName = "Jan"

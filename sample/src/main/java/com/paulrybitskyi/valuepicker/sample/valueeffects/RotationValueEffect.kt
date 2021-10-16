@@ -54,7 +54,6 @@ internal class RotationValueEffect(
         }
 
     internal enum class Property {
-
         ROTATION_X,
         ROTATION_Y
     }

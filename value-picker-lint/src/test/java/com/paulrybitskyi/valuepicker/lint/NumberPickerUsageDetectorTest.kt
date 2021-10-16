@@ -128,7 +128,6 @@ internal class NumberPickerUsageDetectorTest {
                         public NumberPicker create(Context context) {
                             return new NumberPicker(context);
                         }
-
                     }
                     """
                 ).indented()
@@ -170,7 +169,6 @@ internal class NumberPickerUsageDetectorTest {
                         public NumberPicker create(Context context, AttributeSet attrs) {
                             return new NumberPicker(context, attrs);
                         }
-
                     }
                     """
                 ).indented()
@@ -212,7 +210,6 @@ internal class NumberPickerUsageDetectorTest {
                         public NumberPicker create(Context context, AttributeSet attrs, int defStyleAttr) {
                             return new NumberPicker(context, attrs, defStyleAttr);
                         }
-
                     }
                     """
                 ).indented()
@@ -254,7 +251,6 @@ internal class NumberPickerUsageDetectorTest {
                         public NumberPicker create(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
                             return new NumberPicker(context, attrs, defStyleAttr, defStyleRes);
                         }
-
                     }
                     """
                 ).indented()
@@ -286,7 +282,6 @@ internal class NumberPickerUsageDetectorTest {
                         public android.widget.NumberPicker create(Context context) {
                             return new android.widget.NumberPicker(context);
                         }
-
                     }
                     """
                 ).indented()
@@ -327,7 +322,6 @@ internal class NumberPickerUsageDetectorTest {
                         public NumberPicker create(Context context) {
                             return null;
                         }
-
                     }
                     """
                 ).indented()

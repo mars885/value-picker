@@ -37,7 +37,7 @@ import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 @Suppress("MagicNumber")
 internal class PersonInfoPickerFragment : BaseFragment<
     FragmentPersonInfoPickerBinding
-    >(R.layout.fragment_person_info_picker) {
+>(R.layout.fragment_person_info_picker) {
 
     override val viewBinding by viewBinding(FragmentPersonInfoPickerBinding::bind)
 

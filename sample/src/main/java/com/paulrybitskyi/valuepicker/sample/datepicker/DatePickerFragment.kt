@@ -32,7 +32,7 @@ import com.paulrybitskyi.valuepicker.sample.datepicker.model.Month
 @Suppress("MagicNumber")
 internal class DatePickerFragment : BaseFragment<
     FragmentDatePickerBinding
-    >(R.layout.fragment_date_picker) {
+>(R.layout.fragment_date_picker) {
 
     override val viewBinding by viewBinding(FragmentDatePickerBinding::bind)
 

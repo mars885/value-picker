@@ -27,7 +27,7 @@ import androidx.viewbinding.ViewBinding
 
 internal abstract class BaseFragment<
     VB : ViewBinding
-    >(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
+>(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
 
     private var isViewCreated = false
 

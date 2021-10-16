@@ -17,7 +17,6 @@
 package com.paulrybitskyi.valuepicker.sample.teampicker.model
 
 internal enum class Team(val longName: String) {
-
     BOSTON_CELTICS(longName = "Boston Celtics"),
     MINNESOTA_TIMBERWOLVES(longName = "Minnesota Timberwolves"),
     OKLAHOMA_CITY_THUNDER(longName = "Oklahoma City Thunder"),

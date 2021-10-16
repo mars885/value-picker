@@ -31,7 +31,7 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentTimePickerBindin
 @Suppress("MagicNumber")
 internal class TimePickerFragment : BaseFragment<
     FragmentTimePickerBinding
-    >(R.layout.fragment_time_picker) {
+>(R.layout.fragment_time_picker) {
 
     override val viewBinding by viewBinding(FragmentTimePickerBinding::bind)
 

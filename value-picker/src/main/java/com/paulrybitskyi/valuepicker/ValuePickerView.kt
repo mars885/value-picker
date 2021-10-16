@@ -391,11 +391,11 @@ class ValuePickerView @JvmOverloads constructor(
             valueItemConfig = valueItemConfig,
             scrollerHelper = initScrollerHelper()
         )
-            .apply { onItemClickListener = ::handleItemClick }
-            .also {
-                adapter = it
-                valuePickerAdapter = it
-            }
+        .apply { onItemClickListener = ::handleItemClick }
+        .also {
+            adapter = it
+            valuePickerAdapter = it
+        }
     }
 
     private fun initScrollerHelper(): ScrollerHelper {

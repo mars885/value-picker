@@ -17,7 +17,6 @@
 package com.paulrybitskyi.valuepicker.sample.moviefilteringpicker.model
 
 internal enum class Genre(val title: String) {
-
     ACTION("Action"),
     HORROR("Horror"),
     THRILLER("Thriller"),
