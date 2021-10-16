@@ -24,11 +24,9 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentDashboardBinding
 
 internal class DashboardFragment : BaseFragment<
     FragmentDashboardBinding
->(R.layout.fragment_dashboard) {
-
+    >(R.layout.fragment_dashboard) {
 
     override val viewBinding by viewBinding(FragmentDashboardBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
@@ -36,11 +34,9 @@ internal class DashboardFragment : BaseFragment<
         initRecyclerView()
     }
 
-
     private fun initRecyclerView() = with(viewBinding.recyclerView) {
         adapter = initAdapter()
     }
-
 
     private fun initAdapter(): DashboardRecyclerViewAdapter {
         return DashboardRecyclerViewAdapter(
@@ -50,10 +46,7 @@ internal class DashboardFragment : BaseFragment<
         )
     }
 
-
     private fun navigateToDestination(destination: DashboardDestination) {
         findNavController().navigate(destination.destinationId)
     }
-
-
 }

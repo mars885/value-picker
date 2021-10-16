@@ -30,13 +30,12 @@ import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.XmlContext
 import com.android.tools.lint.detector.api.XmlScanner
 import com.intellij.psi.PsiMethod
+import java.util.EnumSet
 import org.jetbrains.uast.UCallExpression
 import org.jetbrains.uast.getQualifiedName
 import org.w3c.dom.Element
-import java.util.*
 
 internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeScanner {
-
 
     companion object {
 
@@ -45,7 +44,7 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
             id = "NumberPickerUsage",
             briefDescription = NUMBER_PICKER_USAGE_BRIEF_DESC,
             explanation = """
-                Since `ValuePickerView` is included in the project, it is likely 
+                Since `ValuePickerView` is included in the project, it is likely
                 that **it** should be used instead of `NumberPicker`.
             """,
             category = Category.CORRECTNESS,
@@ -58,14 +57,11 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
                 Scope.JAVA_FILE_SCOPE
             )
         )
-
     }
-
 
     override fun appliesTo(folderType: ResourceFolderType): Boolean {
         return (folderType == ResourceFolderType.LAYOUT)
     }
-
 
     override fun run(context: Context) {
         // The infrastructure should never call this method on an xml detector since
@@ -74,14 +70,11 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
         assert(false)
     }
 
-
     override fun getApplicableElements(): Collection<String> {
         return listOf(NUMBER_PICKER_SIMPLE_NAME, NUMBER_PICKER_CANONICAL_NAME)
     }
 
-
     // The below handles usages in XML Layout Files
-
 
     override fun visitElement(context: XmlContext, element: Element) {
         context.report(
@@ -92,7 +85,6 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
         )
     }
 
-
     private fun computeQuickFixForXmlUsage(element: Element): LintFix {
         return fix()
             .replace().text(element.tagName)
@@ -100,14 +92,11 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
             .build()
     }
 
-
     // The below handles usages in Java/Kotlin Source Files
-
 
     override fun getApplicableConstructorTypes(): List<String> {
         return listOf(NUMBER_PICKER_CANONICAL_NAME)
     }
-
 
     override fun visitConstructor(
         context: JavaContext,
@@ -122,13 +111,12 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
         )
     }
 
-
     private fun computeQuickFixForSourceUsage(node: UCallExpression): LintFix? {
         // ValuePickerView does not support 4 arg constructor
         @Suppress("MagicNumber")
-        if(node.valueArgumentCount == 4) return null
+        if (node.valueArgumentCount == 4) return null
 
-        val textToReplace = if(node.asSourceString().contains(NUMBER_PICKER_CANONICAL_NAME)) {
+        val textToReplace = if (node.asSourceString().contains(NUMBER_PICKER_CANONICAL_NAME)) {
             node.classReference.getQualifiedName()
         } else {
             node.classReference!!.resolvedName
@@ -141,6 +129,4 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
             .reformat(true)
             .build()
     }
-
-
 }

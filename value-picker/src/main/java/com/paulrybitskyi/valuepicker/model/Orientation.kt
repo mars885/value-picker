@@ -29,10 +29,8 @@ import com.paulrybitskyi.valuepicker.ValuePickerView
  */
 enum class Orientation(internal val id: Int) {
 
-
     VERTICAL(id = 1),
     HORIZONTAL(id = 2);
-
 
     companion object {
 
@@ -42,23 +40,17 @@ enum class Orientation(internal val id: Int) {
             return values().find { it.id == this }
                 ?: throw IllegalArgumentException("Could not find the orientation for the specified ID: $this.")
         }
-
     }
-
-
 }
-
 
 internal val Orientation.isVertical: Boolean
     get() = (this == Orientation.VERTICAL)
 
-
 internal val Orientation.isHorizontal: Boolean
     get() = (this == Orientation.HORIZONTAL)
 
-
 internal val Orientation.rvOrientation: Int
-    get() = when(this) {
+    get() = when (this) {
         Orientation.VERTICAL -> RecyclerView.VERTICAL
         Orientation.HORIZONTAL -> RecyclerView.HORIZONTAL
     }

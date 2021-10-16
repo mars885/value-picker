@@ -31,11 +31,9 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentTimePickerBindin
 @Suppress("MagicNumber")
 internal class TimePickerFragment : BaseFragment<
     FragmentTimePickerBinding
->(R.layout.fragment_time_picker) {
-
+    >(R.layout.fragment_time_picker) {
 
     override val viewBinding by viewBinding(FragmentTimePickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
@@ -43,13 +41,11 @@ internal class TimePickerFragment : BaseFragment<
         initPickers()
     }
 
-
     private fun initPickers() {
         initHourPicker()
         initMinutePicker()
         initPeriodPicker()
     }
-
 
     private fun ValuePickerView.initPicker() {
         areDividersEnabled = true
@@ -62,7 +58,6 @@ internal class TimePickerFragment : BaseFragment<
         orientation = Orientation.VERTICAL
     }
 
-
     private fun initHourPicker() = with(viewBinding.hourPicker) {
         initPicker()
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
@@ -74,10 +69,9 @@ internal class TimePickerFragment : BaseFragment<
         setSelectedItem(hourPickerItems[10])
     }
 
-
     private fun generateHourPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(hour in 1..12) {
+            for (hour in 1..12) {
                 add(
                     PickerItem(
                         id = hour,
@@ -87,7 +81,6 @@ internal class TimePickerFragment : BaseFragment<
             }
         }
     }
-
 
     private fun initMinutePicker() = with(viewBinding.minutePicker) {
         initPicker()
@@ -100,10 +93,9 @@ internal class TimePickerFragment : BaseFragment<
         setSelectedItem(minutePickerItems[30])
     }
 
-
     private fun generateMinutePickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(minute in 0..59) {
+            for (minute in 0..59) {
                 add(
                     PickerItem(
                         id = minute,
@@ -113,7 +105,6 @@ internal class TimePickerFragment : BaseFragment<
             }
         }
     }
-
 
     private fun initPeriodPicker() = with(viewBinding.periodPicker) {
         initPicker()
@@ -125,7 +116,6 @@ internal class TimePickerFragment : BaseFragment<
         items = periodPickerItems
         setSelectedItem(periodPickerItems[1])
     }
-
 
     private fun generatePeriodPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
@@ -143,6 +133,4 @@ internal class TimePickerFragment : BaseFragment<
             )
         }
     }
-
-
 }

@@ -34,15 +34,13 @@ internal class ValuePickerLayoutManager(
     false
 ) {
 
-
     private val dimension: Int
-        get() = when(orientation) {
+        get() = when (orientation) {
             Orientation.HORIZONTAL -> width
             Orientation.VERTICAL -> height
         }
 
     var onViewSelectedListener: ((View) -> Unit)? = null
-
 
     override fun onLayoutChildren(
         recycler: RecyclerView.Recycler,
@@ -53,15 +51,13 @@ internal class ValuePickerLayoutManager(
         applyEffectToChildren()
     }
 
-
     private fun applyEffectToChildren() {
-        for(i in 0 until childCount) {
+        for (i in 0 until childCount) {
             getChildAt(i)?.also { child ->
                 valueItemEffect.applyEffect(child, recyclerView, orientation)
             }
         }
     }
-
 
     override fun scrollVerticallyBy(
         dy: Int,
@@ -72,7 +68,6 @@ internal class ValuePickerLayoutManager(
             .also { applyEffectToChildren() }
     }
 
-
     override fun scrollHorizontallyBy(
         dx: Int,
         recycler: RecyclerView.Recycler,
@@ -82,25 +77,23 @@ internal class ValuePickerLayoutManager(
             .also { applyEffectToChildren() }
     }
 
-
     override fun onScrollStateChanged(state: Int) {
         reportViewSelectionEvent(state)
     }
 
-
     private fun reportViewSelectionEvent(state: Int) {
-        if(state != RecyclerView.SCROLL_STATE_IDLE) return
+        if (state != RecyclerView.SCROLL_STATE_IDLE) return
 
         val recyclerViewCenter = calculateRecyclerViewCenter()
         var minDistance = dimension
         var selectedChild: View? = null
 
-        for(i in 0 until childCount) {
+        for (i in 0 until childCount) {
             val child = (getChildAt(i) ?: continue)
             val childCenter = calculateChildCenter(child)
             val childDistanceFromRvCenter = abs(childCenter - recyclerViewCenter)
 
-            if(childDistanceFromRvCenter < minDistance) {
+            if (childDistanceFromRvCenter < minDistance) {
                 minDistance = childDistanceFromRvCenter
                 selectedChild = child
             }
@@ -109,19 +102,16 @@ internal class ValuePickerLayoutManager(
         selectedChild?.let { onViewSelectedListener?.invoke(it) }
     }
 
-
     private fun calculateRecyclerViewCenter(): Int {
         return (dimension / 2)
     }
 
-
     private fun calculateChildCenter(child: View): Int {
-        return when(orientation) {
+        return when (orientation) {
             Orientation.VERTICAL -> ((child.height / 2) + child.top)
             Orientation.HORIZONTAL -> ((child.width / 2) + child.left)
         }
     }
-
 
     override fun smoothScrollToPosition(
         recyclerView: RecyclerView,
@@ -131,7 +121,6 @@ internal class ValuePickerLayoutManager(
         attachCustomSmoothScroller(recyclerView, position)
     }
 
-
     private fun attachCustomSmoothScroller(
         recyclerView: RecyclerView,
         position: Int
@@ -140,6 +129,4 @@ internal class ValuePickerLayoutManager(
             .apply { targetPosition = position }
             .also(::startSmoothScroll)
     }
-
-
 }

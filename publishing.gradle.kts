@@ -24,7 +24,7 @@ project.version = publishingConfig.artifactVersion
 val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
 
-    if(project.plugins.hasPlugin(PLUGIN_ANDROID_LIBRARY)) {
+    if (project.plugins.hasPlugin(PLUGIN_ANDROID_LIBRARY)) {
         val libExt = checkNotNull(project.extensions.findByType(com.android.build.gradle.LibraryExtension::class.java))
         val libMainSourceSet = libExt.sourceSets.getByName("main")
 
@@ -54,7 +54,7 @@ afterEvaluate {
                 artifactId = publishingConfig.artifactName
                 version = publishingConfig.artifactVersion
 
-                if(project.plugins.hasPlugin(PLUGIN_ANDROID_LIBRARY)) {
+                if (project.plugins.hasPlugin(PLUGIN_ANDROID_LIBRARY)) {
                     from(components["release"])
                 } else {
                     from(components["java"])

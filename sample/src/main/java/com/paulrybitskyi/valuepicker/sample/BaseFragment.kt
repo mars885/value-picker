@@ -27,13 +27,11 @@ import androidx.viewbinding.ViewBinding
 
 internal abstract class BaseFragment<
     VB : ViewBinding
->(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
-
+    >(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
 
     private var isViewCreated = false
 
     protected abstract val viewBinding: VB
-
 
     final override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,13 +39,12 @@ internal abstract class BaseFragment<
         savedInstanceState: Bundle?
     ): View? {
         // Prevent the view from recreation until onDestroy is called
-        return if(isViewCreated) {
+        return if (isViewCreated) {
             viewBinding.root
         } else {
             super.onCreateView(inflater, container, savedInstanceState)
         }
     }
-
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,23 +52,19 @@ internal abstract class BaseFragment<
         val wasViewCreated = isViewCreated
         isViewCreated = true
 
-        if(!wasViewCreated) {
+        if (!wasViewCreated) {
             onInit()
         }
     }
-
 
     @CallSuper
     protected open fun onInit() {
         // Stub
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
 
         isViewCreated = false
     }
-
-
 }

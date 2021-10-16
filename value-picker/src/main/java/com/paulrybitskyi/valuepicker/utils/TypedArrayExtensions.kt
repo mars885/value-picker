@@ -21,7 +21,6 @@ package com.paulrybitskyi.valuepicker.utils
 import android.content.res.TypedArray
 import androidx.annotation.StyleableRes
 
-
 internal fun TypedArray.getColor(@StyleableRes id: Int, default: Int?): Int? {
     return getColor(id, -1)
         .takeIf { it != -1 }

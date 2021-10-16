@@ -69,5 +69,4 @@ internal enum class Month(
         longName = "December",
         shortName = "Dec"
     )
-
 }

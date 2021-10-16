@@ -37,11 +37,9 @@ import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 @Suppress("MagicNumber")
 internal class PersonInfoPickerFragment : BaseFragment<
     FragmentPersonInfoPickerBinding
->(R.layout.fragment_person_info_picker) {
-
+    >(R.layout.fragment_person_info_picker) {
 
     override val viewBinding by viewBinding(FragmentPersonInfoPickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
@@ -49,13 +47,11 @@ internal class PersonInfoPickerFragment : BaseFragment<
         initPickers()
     }
 
-
     private fun initPickers() {
         initAgePicker()
         initHeightPicker()
         initWeightPicker()
     }
-
 
     private fun ValuePickerView.initPersonInfoPicker() {
         areDividersEnabled = true
@@ -72,7 +68,6 @@ internal class PersonInfoPickerFragment : BaseFragment<
         orientation = Orientation.HORIZONTAL
     }
 
-
     private fun initAgePicker() = with(viewBinding.agePicker) {
         initPersonInfoPicker()
         valueEffect = RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
@@ -85,10 +80,9 @@ internal class PersonInfoPickerFragment : BaseFragment<
         setSelectedItem(agePickerItems[19])
     }
 
-
     private fun generateAgePickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(age in 1..100) {
+            for (age in 1..100) {
                 add(
                     PickerItem(
                         id = age,
@@ -98,7 +92,6 @@ internal class PersonInfoPickerFragment : BaseFragment<
             }
         }
     }
-
 
     private fun initHeightPicker() = with(viewBinding.heightPicker) {
         initPersonInfoPicker()
@@ -112,10 +105,9 @@ internal class PersonInfoPickerFragment : BaseFragment<
         setSelectedItem(heightPickerItems[130])
     }
 
-
     private fun generateHeightPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(cm in 50..250) {
+            for (cm in 50..250) {
                 add(
                     PickerItem(
                         id = cm,
@@ -126,13 +118,14 @@ internal class PersonInfoPickerFragment : BaseFragment<
         }
     }
 
-
     private fun initWeightPicker() = with(viewBinding.weightPicker) {
         initPersonInfoPicker()
-        valueEffect = CompositeValueEffect(listOf(
-            FadingValueEffect(),
-            RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
-        ))
+        valueEffect = CompositeValueEffect(
+            listOf(
+                FadingValueEffect(),
+                RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
+            )
+        )
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
             viewBinding.weightTv.text = "Weight: ${it.title}"
         }
@@ -142,10 +135,9 @@ internal class PersonInfoPickerFragment : BaseFragment<
         setSelectedItem(weightPickerItems[60])
     }
 
-
     private fun generateWeightPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(kg in 10..150) {
+            for (kg in 10..150) {
                 add(
                     PickerItem(
                         id = kg,
@@ -155,6 +147,4 @@ internal class PersonInfoPickerFragment : BaseFragment<
             }
         }
     }
-
-
 }

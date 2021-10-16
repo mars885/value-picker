@@ -20,10 +20,8 @@ import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
 
 internal class InfiniteScrollerHelper(override var dataSetItemCount: Int) : ScrollerHelper {
 
-
     override val adapterItemCount: Int
-        get() = (if(dataSetItemCount == 0) 0 else Integer.MAX_VALUE)
-
+        get() = (if (dataSetItemCount == 0) 0 else Integer.MAX_VALUE)
 
     override fun calculateAdapterPosition(dataSetPosition: Int): Int {
         val halfAdapterItemCount = (adapterItemCount / 2)
@@ -32,10 +30,7 @@ internal class InfiniteScrollerHelper(override var dataSetItemCount: Int) : Scro
         return (baseAdapterPosition + dataSetPosition)
     }
 
-
     override fun calculateDataSetPosition(adapterPosition: Int): Int {
         return (adapterPosition % dataSetItemCount)
     }
-
-
 }

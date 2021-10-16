@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *     
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +18,6 @@
 
 import org.gradle.api.JavaVersion
 
-
 object appConfig {
 
     const val compileSdkVersion = 30
@@ -28,9 +27,7 @@ object appConfig {
 
     val javaCompatibilityVersion = JavaVersion.VERSION_11
     val kotlinCompatibilityVersion = JavaVersion.VERSION_11
-
 }
-
 
 object publishingConfig {
 
@@ -53,15 +50,14 @@ object publishingConfig {
     const val artifactName = "valuepicker"
     const val artifactVersion = "1.0.1"
     const val artifactDescription = "An Android library that provides a simple and customizable ValuePicker."
-
 }
-
 
 object versions {
 
     const val kotlin = "1.5.31" // also in buildSrc build.gradle.kts file
     const val gradlePlugin = "7.0.3" // also in buildSrc build.gradle.kts file and lint version
     const val detektPlugin = "1.18.1"
+    const val ktlintPlugin = "10.2.0"
     const val gradleVersionsPlugin = "0.39.0"
     const val dokkaPlugin = "1.5.31"
     const val appCompat = "1.3.1"
@@ -77,9 +73,7 @@ object versions {
     const val lint = "30.0.3"   // lintVersion = gradlePluginVersion + 23.0.0
     const val jUnit = "4.13.2"
     const val jUnitExt = "1.1.2"
-
 }
-
 
 object deps {
 
@@ -114,5 +108,4 @@ object deps {
     const val lintTests = "com.android.tools.lint:lint-tests:${versions.lint}"
     const val jUnit = "junit:junit:${versions.jUnit}"
     const val jUnitExt = "androidx.test.ext:junit:${versions.jUnitExt}"
-
 }

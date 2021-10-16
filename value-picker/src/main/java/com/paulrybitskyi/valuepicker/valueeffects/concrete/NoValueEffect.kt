@@ -28,10 +28,7 @@ import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
  */
 class NoValueEffect : ValueEffect {
 
-
     override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
         // Stub
     }
-
-
 }

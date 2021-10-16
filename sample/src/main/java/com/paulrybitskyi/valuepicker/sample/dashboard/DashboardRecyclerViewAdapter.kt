@@ -29,11 +29,9 @@ internal class DashboardRecyclerViewAdapter(
     context: Context,
     private val items: List<DashboardDestination>,
     private val onItemClickListener: (DashboardDestination) -> Unit
-): RecyclerView.Adapter<ViewHolder>() {
-
+) : RecyclerView.Adapter<ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -44,7 +42,6 @@ internal class DashboardRecyclerViewAdapter(
             )
         )
     }
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder) {
         val item = items[position]
@@ -57,18 +54,13 @@ internal class DashboardRecyclerViewAdapter(
         }
     }
 
-
     override fun getItemCount(): Int {
         return items.size
     }
 
-
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         internal val title = itemView.findViewById<TextView>(R.id.titleTv)
         internal val description = itemView.findViewById<TextView>(R.id.descriptionTv)
-
     }
-
-
 }

@@ -22,9 +22,7 @@ internal interface ScrollerHelper {
 
     var dataSetItemCount: Int
 
-
     fun calculateAdapterPosition(dataSetPosition: Int): Int
 
     fun calculateDataSetPosition(adapterPosition: Int): Int
-
 }

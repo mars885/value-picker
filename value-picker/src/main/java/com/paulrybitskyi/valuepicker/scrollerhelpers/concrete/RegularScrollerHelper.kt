@@ -20,19 +20,14 @@ import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
 
 internal class RegularScrollerHelper(override var dataSetItemCount: Int) : ScrollerHelper {
 
-
     override val adapterItemCount: Int
         get() = dataSetItemCount
-
 
     override fun calculateAdapterPosition(dataSetPosition: Int): Int {
         return dataSetPosition
     }
 
-
     override fun calculateDataSetPosition(adapterPosition: Int): Int {
         return adapterPosition
     }
-
-
 }

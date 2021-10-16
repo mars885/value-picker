@@ -20,14 +20,12 @@ package com.paulrybitskyi.valuepicker.model
 
 import android.graphics.Typeface
 
-
 internal data class ValueItemConfig(
     val size: Size,
     val textColor: Int,
     val textSize: Float,
     val textTypeface: Typeface
 )
-
 
 @JvmField
 internal val VALUE_ITEM_CONFIG_STUB = ValueItemConfig(

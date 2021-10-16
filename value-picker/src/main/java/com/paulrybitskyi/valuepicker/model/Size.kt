@@ -20,9 +20,7 @@ package com.paulrybitskyi.valuepicker.model
 
 import androidx.annotation.Px
 
-
 private const val DIMENSION_NOT_SET = -1
-
 
 /**
  * A size of the item inside the value picker.
@@ -31,7 +29,6 @@ class Size internal constructor(
     val width: Int,
     val height: Int
 ) {
-
 
     companion object {
 
@@ -82,24 +79,17 @@ class Size internal constructor(
                 height = height
             )
         }
-
     }
-
 
     internal val hasWidth: Boolean
         get() = (width != DIMENSION_NOT_SET)
 
-
     internal val hasHeight: Boolean
         get() = (height != DIMENSION_NOT_SET)
 
-
     internal val hasBothDimensions: Boolean
         get() = (hasWidth && hasHeight)
-
-
 }
-
 
 internal fun sizeOf(width: Int, height: Int): Size {
     return Size(width, height)

@@ -24,5 +24,4 @@ internal enum class ClothingSize {
     L,
     XL,
     XXL
-
 }

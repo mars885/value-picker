@@ -32,11 +32,9 @@ import com.paulrybitskyi.valuepicker.sample.datepicker.model.Month
 @Suppress("MagicNumber")
 internal class DatePickerFragment : BaseFragment<
     FragmentDatePickerBinding
->(R.layout.fragment_date_picker) {
-
+    >(R.layout.fragment_date_picker) {
 
     override val viewBinding by viewBinding(FragmentDatePickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
@@ -44,13 +42,11 @@ internal class DatePickerFragment : BaseFragment<
         initPickers()
     }
 
-
     private fun initPickers() {
         initMonthPicker()
         initDayPicker()
         initYearPicker()
     }
-
 
     private fun ValuePickerView.initDatePicker() {
         areDividersEnabled = true
@@ -63,7 +59,6 @@ internal class DatePickerFragment : BaseFragment<
         orientation = Orientation.VERTICAL
     }
 
-
     private fun initMonthPicker() = with(viewBinding.monthPicker) {
         initDatePicker()
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
@@ -75,7 +70,6 @@ internal class DatePickerFragment : BaseFragment<
         setSelectedItem(monthPickerItems[7])
     }
 
-
     private fun generateMonthPickerItems(longMonthNames: Boolean): List<Item> {
         return Month.values().map {
             PickerItem(
@@ -85,7 +79,6 @@ internal class DatePickerFragment : BaseFragment<
             )
         }
     }
-
 
     private fun initDayPicker() = with(viewBinding.dayPicker) {
         initDatePicker()
@@ -98,10 +91,9 @@ internal class DatePickerFragment : BaseFragment<
         setSelectedItem(dayPickerItems[8])
     }
 
-
     private fun generateDayPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(day in 1..31) {
+            for (day in 1..31) {
                 add(
                     PickerItem(
                         id = day,
@@ -111,7 +103,6 @@ internal class DatePickerFragment : BaseFragment<
             }
         }
     }
-
 
     private fun initYearPicker() = with(viewBinding.yearPicker) {
         initDatePicker()
@@ -124,10 +115,9 @@ internal class DatePickerFragment : BaseFragment<
         setSelectedItem(yearPickerItems[0])
     }
 
-
     private fun generateYearPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(year in 2020..2030) {
+            for (year in 2020..2030) {
                 add(
                     PickerItem(
                         id = year,
@@ -137,6 +127,4 @@ internal class DatePickerFragment : BaseFragment<
             }
         }
     }
-
-
 }

@@ -26,5 +26,4 @@ internal enum class Genre(val title: String) {
     COMEDY("Comedy"),
     DRAMA("Drama"),
     WESTERN("Western"),
-
 }

@@ -61,5 +61,4 @@ internal enum class Rating(
         number = 10,
         title = "Ten"
     )
-
 }

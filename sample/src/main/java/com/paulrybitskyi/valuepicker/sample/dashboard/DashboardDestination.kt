@@ -62,5 +62,4 @@ internal enum class DashboardDestination(
         description = "Three horizontal pickers each with a custom effect for picking person's information.",
         destinationId = R.id.personInfoPickerFragment
     )
-
 }

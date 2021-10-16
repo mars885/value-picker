@@ -25,7 +25,6 @@ import com.paulrybitskyi.commons.ktx.getDimension
 import com.paulrybitskyi.commons.ktx.getDimensionPixelSize
 import com.paulrybitskyi.valuepicker.R
 
-
 internal class DefaultValues(
     val valueItemTextColor: Int,
     val valueItemMinWidth: Int,
@@ -35,13 +34,11 @@ internal class DefaultValues(
     val valueItemTextTypeface: Typeface
 )
 
-
 internal val DefaultValues.valueItemSize: Size
     get() = sizeOf(
         width = valueItemMinWidth,
         height = valueItemMinHeight
     )
-
 
 internal fun initDefaultValues(context: Context): DefaultValues {
     return DefaultValues(

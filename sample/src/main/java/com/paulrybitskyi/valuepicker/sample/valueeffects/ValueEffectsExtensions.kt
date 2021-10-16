@@ -20,22 +20,19 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.valuepicker.model.Orientation
 
-
 internal fun RecyclerView.calculateCenter(orientation: Orientation): Float {
     return (getDimension(orientation) / 2f)
 }
 
-
 internal fun RecyclerView.getDimension(orientation: Orientation): Int {
-    return when(orientation) {
+    return when (orientation) {
         Orientation.VERTICAL -> height
         Orientation.HORIZONTAL -> width
     }
 }
 
-
 internal fun View.calculateChildCenter(orientation: Orientation): Int {
-    return when(orientation) {
+    return when (orientation) {
         Orientation.VERTICAL -> ((height / 2) + top)
         Orientation.HORIZONTAL -> ((width / 2) + left)
     }

@@ -23,11 +23,7 @@ import com.google.auto.service.AutoService
 @AutoService(IssueRegistry::class)
 internal class ValuePickerIssueRegistry : IssueRegistry() {
 
-
     override val issues = listOf(NumberPickerUsageDetector.ISSUE)
 
-
     override val api = CURRENT_API
-
-
 }
