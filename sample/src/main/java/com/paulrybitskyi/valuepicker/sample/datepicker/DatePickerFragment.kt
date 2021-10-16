@@ -29,6 +29,7 @@ import com.paulrybitskyi.valuepicker.sample.R
 import com.paulrybitskyi.valuepicker.sample.databinding.FragmentDatePickerBinding
 import com.paulrybitskyi.valuepicker.sample.datepicker.model.Month
 
+@Suppress("MagicNumber")
 internal class DatePickerFragment : BaseFragment<
     FragmentDatePickerBinding
 >(R.layout.fragment_date_picker) {

@@ -32,6 +32,7 @@ import com.paulrybitskyi.valuepicker.sample.R
 import com.paulrybitskyi.valuepicker.sample.clothingsizepicker.model.ClothingSize
 import com.paulrybitskyi.valuepicker.sample.databinding.FragmentClothingSizePickerBinding
 
+@Suppress("MagicNumber")
 internal class ClothingSizePickerFragment : BaseFragment<
     FragmentClothingSizePickerBinding
 >(R.layout.fragment_clothing_size_picker) {

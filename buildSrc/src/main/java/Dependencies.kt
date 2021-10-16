@@ -61,6 +61,7 @@ object versions {
 
     const val kotlin = "1.5.31" // also in buildSrc build.gradle.kts file
     const val gradlePlugin = "7.0.3" // also in buildSrc build.gradle.kts file and lint version
+    const val detektPlugin = "1.18.1"
     const val gradleVersionsPlugin = "0.39.0"
     const val dokkaPlugin = "1.5.31"
     const val appCompat = "1.3.1"

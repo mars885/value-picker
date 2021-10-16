@@ -42,7 +42,7 @@ class FadingValueEffect : ValueEffect {
 
 
     private fun RecyclerView.calculateCenter(orientation: Orientation): Float {
-        return (getDimension(orientation) * 0.5f)
+        return (getDimension(orientation) / 2f)
     }
 
 
@@ -63,7 +63,7 @@ class FadingValueEffect : ValueEffect {
 
 
     private fun calculateChildAlpha(rvDistanceFrmChildCenter: Float, rvDimension: Int): Float {
-        return (1 - (rvDistanceFrmChildCenter / (rvDimension * 0.5f)))
+        return (1 - (rvDistanceFrmChildCenter / (rvDimension / 2f)))
     }
 
 

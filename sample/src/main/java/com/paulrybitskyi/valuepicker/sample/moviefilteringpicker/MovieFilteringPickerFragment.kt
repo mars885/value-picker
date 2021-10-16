@@ -33,6 +33,7 @@ import com.paulrybitskyi.valuepicker.sample.valueeffects.CompositeValueEffect
 import com.paulrybitskyi.valuepicker.sample.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 
+@Suppress("MagicNumber")
 internal class MovieFilteringPickerFragment : BaseFragment<
     FragmentMovieFilteringPickerBinding
 >(R.layout.fragment_movie_filtering_picker) {
