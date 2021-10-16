@@ -24,6 +24,14 @@ plugins {
 java.sourceCompatibility = appConfig.javaCompatibilityVersion
 java.targetCompatibility = appConfig.javaCompatibilityVersion
 
+kotlin.target {
+    compilations.all {
+        kotlinOptions {
+            jvmTarget = appConfig.kotlinCompatibilityVersion.toString()
+        }
+    }
+}
+
 dependencies {
     compileOnly(deps.lintApi)
 
@@ -34,5 +42,7 @@ dependencies {
     compileOnly(deps.autoService)
     kapt(deps.autoService)
 
+    testImplementation(deps.jUnit)
+    testImplementation(deps.lintApi)
     testImplementation(deps.lintTests)
 }
