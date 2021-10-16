@@ -38,9 +38,7 @@ internal class MovieFilteringPickerFragment : BaseFragment<
     FragmentMovieFilteringPickerBinding
 >(R.layout.fragment_movie_filtering_picker) {
 
-
     override val viewBinding by viewBinding(FragmentMovieFilteringPickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
@@ -48,13 +46,11 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         initPickers()
     }
 
-
     private fun initPickers() {
         initGenrePicker()
         initYearPicker()
         initServicePicker()
     }
-
 
     private fun ValuePickerView.initMovieFilteringPicker() {
         areDividersEnabled = true
@@ -66,7 +62,6 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         textTypeface = Typeface.SANS_SERIF
         orientation = Orientation.VERTICAL
     }
-
 
     private fun initGenrePicker() = with(viewBinding.genrePicker) {
         initMovieFilteringPicker()
@@ -80,7 +75,6 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         setSelectedItem(genrePickerItems[3])
     }
 
-
     private fun generateGenrePickerItems(): List<Item> {
         return Genre.values().map {
             PickerItem(
@@ -90,7 +84,6 @@ internal class MovieFilteringPickerFragment : BaseFragment<
             )
         }
     }
-
 
     private fun initYearPicker() = with(viewBinding.yearPicker) {
         initMovieFilteringPicker()
@@ -104,10 +97,9 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         setSelectedItem(yearPickerItems.last())
     }
 
-
     private fun generateYearPickerItems(): List<Item> {
         return mutableListOf<Item>().apply {
-            for(year in 1930..2020) {
+            for (year in 1930..2020) {
                 add(
                     PickerItem(
                         id = year,
@@ -118,13 +110,14 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         }
     }
 
-
     private fun initServicePicker() = with(viewBinding.servicePicker) {
         initMovieFilteringPicker()
-        valueEffect = CompositeValueEffect(listOf(
-            FadingValueEffect(),
-            RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
-        ))
+        valueEffect = CompositeValueEffect(
+            listOf(
+                FadingValueEffect(),
+                RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
+            )
+        )
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
             viewBinding.serviceTv.text = "Service: ${it.title}"
         }
@@ -133,7 +126,6 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         items = servicePickerItems
         setSelectedItem(servicePickerItems[0])
     }
-
 
     private fun generateServicePickerItems(): List<Item> {
         return StreamingService.values().map {
@@ -144,6 +136,4 @@ internal class MovieFilteringPickerFragment : BaseFragment<
             )
         }
     }
-
-
 }

@@ -17,12 +17,10 @@
 package com.paulrybitskyi.valuepicker.sample.moviefilteringpicker.model
 
 internal enum class StreamingService(val title: String) {
-
     NETFLIX("Netflix"),
     PRIME("Prime"),
     HULU("Hulu"),
     HBO_MAX("HBO"),
     DISNEY("Disney"),
     APPLE_TV("Apple")
-
 }

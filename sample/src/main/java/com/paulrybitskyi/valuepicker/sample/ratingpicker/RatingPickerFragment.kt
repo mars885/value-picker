@@ -34,16 +34,13 @@ internal class RatingPickerFragment : BaseFragment<
     FragmentRatingPickerBinding
 >(R.layout.fragment_rating_picker) {
 
-
     override val viewBinding by viewBinding(FragmentRatingPickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
 
         initRatingPicker()
     }
-
 
     private fun initRatingPicker() = with(viewBinding.ratingPicker) {
         areDividersEnabled = true
@@ -63,7 +60,6 @@ internal class RatingPickerFragment : BaseFragment<
         setSelectedItem(ratingPickerItems[2])
     }
 
-
     private fun generateRatingPickerItems(): List<Item> {
         return Rating.values().map {
             PickerItem(
@@ -73,6 +69,4 @@ internal class RatingPickerFragment : BaseFragment<
             )
         }
     }
-
-
 }

@@ -16,7 +16,6 @@
 
 package com.paulrybitskyi.valuepicker.lint
 
-
 internal const val NUMBER_PICKER_SIMPLE_NAME = "NumberPicker"
 internal const val NUMBER_PICKER_CANONICAL_NAME = "android.widget.NumberPicker"
 internal const val NUMBER_PICKER_USAGE_BRIEF_DESC = "Using 'NumberPicker' instead of 'ValuePickerView'"

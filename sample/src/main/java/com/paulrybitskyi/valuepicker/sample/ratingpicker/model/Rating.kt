@@ -20,7 +20,6 @@ internal enum class Rating(
     val number: Int,
     val title: String
 ) {
-
     ONE(
         number = 1,
         title = "One"
@@ -61,5 +60,4 @@ internal enum class Rating(
         number = 10,
         title = "Ten"
     )
-
 }

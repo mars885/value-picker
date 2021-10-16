@@ -39,5 +39,4 @@ interface ValueEffect {
      * see [NoValueEffect]
      */
     fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation)
-
 }

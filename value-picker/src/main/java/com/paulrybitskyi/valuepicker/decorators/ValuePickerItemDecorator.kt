@@ -27,15 +27,11 @@ internal abstract class ValuePickerItemDecorator(
     protected val valueItemConfigProvider: () -> ValueItemConfig
 ) : RecyclerView.ItemDecoration() {
 
-
     override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(canvas, parent, state)
 
         drawDividers(canvas, parent)
     }
 
-
     abstract fun drawDividers(canvas: Canvas, parent: RecyclerView)
-
-
 }

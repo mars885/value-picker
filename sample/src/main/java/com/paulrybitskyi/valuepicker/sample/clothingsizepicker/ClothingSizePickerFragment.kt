@@ -37,16 +37,13 @@ internal class ClothingSizePickerFragment : BaseFragment<
     FragmentClothingSizePickerBinding
 >(R.layout.fragment_clothing_size_picker) {
 
-
     override val viewBinding by viewBinding(FragmentClothingSizePickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
 
         initClothingSizePicker()
     }
-
 
     private fun initClothingSizePicker() = with(viewBinding.clothingSizePicker) {
         areDividersEnabled = true
@@ -70,7 +67,6 @@ internal class ClothingSizePickerFragment : BaseFragment<
         setSelectedItem(clothingSizePickerItems[2])
     }
 
-
     private fun generateClothingSizePickerItems(): List<Item> {
         return ClothingSize.values().map {
             PickerItem(
@@ -79,6 +75,4 @@ internal class ClothingSizePickerFragment : BaseFragment<
             )
         }
     }
-
-
 }

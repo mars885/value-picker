@@ -17,12 +17,10 @@
 package com.paulrybitskyi.valuepicker.sample.clothingsizepicker.model
 
 internal enum class ClothingSize {
-
     XS,
     S,
     M,
     L,
     XL,
     XXL
-
 }

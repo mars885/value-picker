@@ -25,12 +25,9 @@ internal class CompositeValueEffect(
     private val itemEffects: List<ValueEffect>
 ) : ValueEffect {
 
-
     override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
-        for(itemEffect in itemEffects) {
+        for (itemEffect in itemEffects) {
             itemEffect.applyEffect(child, recyclerView, orientation)
         }
     }
-
-
 }

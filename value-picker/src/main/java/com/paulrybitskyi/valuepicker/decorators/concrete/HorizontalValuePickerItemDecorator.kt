@@ -31,12 +31,10 @@ internal class HorizontalValuePickerItemDecorator(
     valueItemConfigProvider: () -> ValueItemConfig
 ) : ValuePickerItemDecorator(maxVisibleItems, dividerDrawable, valueItemConfigProvider) {
 
-
     override fun drawDividers(canvas: Canvas, parent: RecyclerView) = with(canvas) {
         drawLeftDivider(parent)
         drawRightDivider(parent)
     }
-
 
     private fun Canvas.drawLeftDivider(parent: RecyclerView) {
         val config = valueItemConfigProvider()
@@ -53,7 +51,6 @@ internal class HorizontalValuePickerItemDecorator(
         dividerDrawable.draw(this)
     }
 
-
     private fun Canvas.drawRightDivider(parent: RecyclerView) {
         val config = valueItemConfigProvider()
         val indexOfCenterValue = ceil(maxVisibleItems / 2f).toInt()
@@ -68,6 +65,4 @@ internal class HorizontalValuePickerItemDecorator(
         )
         dividerDrawable.draw(this)
     }
-
-
 }

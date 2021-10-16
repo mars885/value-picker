@@ -36,7 +36,6 @@ internal class ValuePickerRecyclerViewAdapter(
     var scrollerHelper: ScrollerHelper
 ) : RecyclerView.Adapter<ViewHolder>() {
 
-
     var items by observeChanges(items) { _, newItems ->
         scrollerHelper.dataSetItemCount = newItems.size
         notifyDataSetChanged()
@@ -44,11 +43,9 @@ internal class ValuePickerRecyclerViewAdapter(
 
     var onItemClickListener: ((View) -> Unit)? = null
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(createTextView(parent.context))
     }
-
 
     private fun createTextView(context: Context): TextView {
         return AppCompatTextView(context).apply {
@@ -63,17 +60,14 @@ internal class ValuePickerRecyclerViewAdapter(
         }
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, adapterPosition: Int) = with(holder.valueTv) {
         text = items[scrollerHelper.calculateDataSetPosition(adapterPosition)].title
         setOnClickListener(onItemClickListener)
     }
 
-
     override fun getItemCount(): Int {
         return scrollerHelper.adapterItemCount
     }
-
 
     fun getItemAdapterPosition(item: Item): Int? {
         return items.indexOfFirst { it.id == item.id }
@@ -83,13 +77,9 @@ internal class ValuePickerRecyclerViewAdapter(
             }
     }
 
-
     fun getItem(adapterPosition: Int): Item? {
         return items.getOrNull(scrollerHelper.calculateDataSetPosition(adapterPosition))
     }
 
-
     class ViewHolder(val valueTv: TextView) : RecyclerView.ViewHolder(valueTv)
-
-
 }

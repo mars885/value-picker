@@ -25,7 +25,6 @@ import org.junit.Test
 @Suppress("MaxLineLength")
 internal class NumberPickerUsageDetectorTest {
 
-
     @Test
     fun `Detects NumberPicker simple name usage in XML layout file`() {
         lint()
@@ -59,7 +58,6 @@ internal class NumberPickerUsageDetectorTest {
                 """
             )
     }
-
 
     @Test
     fun `Detects NumberPicker canonical name usage in XML layout file`() {
@@ -95,7 +93,6 @@ internal class NumberPickerUsageDetectorTest {
             )
     }
 
-
     @Test
     fun `Does not detect NumberPicker usage in XML layout file`() {
         lint()
@@ -115,7 +112,6 @@ internal class NumberPickerUsageDetectorTest {
             .expectClean()
     }
 
-
     @Test
     fun `Detects imported NumberPicker instantiation using 1st constructor in Java file`() {
         lint()
@@ -126,13 +122,12 @@ internal class NumberPickerUsageDetectorTest {
 
                     import android.content.Context;
                     import android.widget.NumberPicker;
-                    
+
                     public class NumberPickerFactory {
-                        
+
                         public NumberPicker create(Context context) {
                             return new NumberPicker(context);
                         }
-                        
                     }
                     """
                 ).indented()
@@ -157,7 +152,6 @@ internal class NumberPickerUsageDetectorTest {
             )
     }
 
-
     @Test
     fun `Detects imported NumberPicker instantiation using 2nd constructor in Java file`() {
         lint()
@@ -169,13 +163,12 @@ internal class NumberPickerUsageDetectorTest {
                     import android.content.Context;
                     import android.util.AttributeSet;
                     import android.widget.NumberPicker;
-                    
+
                     public class NumberPickerFactory {
-                        
+
                         public NumberPicker create(Context context, AttributeSet attrs) {
                             return new NumberPicker(context, attrs);
                         }
-                        
                     }
                     """
                 ).indented()
@@ -200,7 +193,6 @@ internal class NumberPickerUsageDetectorTest {
             )
     }
 
-
     @Test
     fun `Detects imported NumberPicker instantiation using 3rd constructor in Java file`() {
         lint()
@@ -212,13 +204,12 @@ internal class NumberPickerUsageDetectorTest {
                     import android.content.Context;
                     import android.util.AttributeSet;
                     import android.widget.NumberPicker;
-                    
+
                     public class NumberPickerFactory {
-                        
+
                         public NumberPicker create(Context context, AttributeSet attrs, int defStyleAttr) {
                             return new NumberPicker(context, attrs, defStyleAttr);
                         }
-                        
                     }
                     """
                 ).indented()
@@ -243,7 +234,6 @@ internal class NumberPickerUsageDetectorTest {
             )
     }
 
-
     @Test
     fun `Detects imported NumberPicker instantiation using 4th constructor in Java file`() {
         lint()
@@ -255,13 +245,12 @@ internal class NumberPickerUsageDetectorTest {
                     import android.content.Context;
                     import android.util.AttributeSet;
                     import android.widget.NumberPicker;
-                    
+
                     public class NumberPickerFactory {
-                        
+
                         public NumberPicker create(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
                             return new NumberPicker(context, attrs, defStyleAttr, defStyleRes);
                         }
-                        
                     }
                     """
                 ).indented()
@@ -278,7 +267,6 @@ internal class NumberPickerUsageDetectorTest {
             )
     }
 
-
     @Test
     fun `Detects fully qualified NumberPicker instantiation in Java file`() {
         lint()
@@ -288,13 +276,12 @@ internal class NumberPickerUsageDetectorTest {
                     package test.pkg;
 
                     import android.content.Context;
-                    
+
                     public class NumberPickerFactory {
-                        
+
                         public android.widget.NumberPicker create(Context context) {
                             return new android.widget.NumberPicker(context);
                         }
-                        
                     }
                     """
                 ).indented()
@@ -319,7 +306,6 @@ internal class NumberPickerUsageDetectorTest {
             )
     }
 
-
     @Test
     fun `Does not detect NumberPicker instantiation in Java file`() {
         lint()
@@ -330,13 +316,12 @@ internal class NumberPickerUsageDetectorTest {
 
                     import android.content.Context;
                     import android.widget.NumberPicker;
-                    
+
                     public class NumberPickerFactory {
-                        
+
                         public NumberPicker create(Context context) {
                             return null;
                         }
-                        
                     }
                     """
                 ).indented()
@@ -345,7 +330,6 @@ internal class NumberPickerUsageDetectorTest {
             .run()
             .expectClean()
     }
-
 
     @Test
     fun `Detects NumberPicker instantiation in Kotlin file`() {
@@ -357,13 +341,13 @@ internal class NumberPickerUsageDetectorTest {
 
                     import android.content.Context
                     import android.widget.NumberPicker
-                    
+
                     object NumberPickerFactory {
-                        
+
                         fun create(context: Context): NumberPicker {
                             return NumberPicker(context)
                         }
-                        
+
                     }
                     """
                 ).indented()
@@ -387,7 +371,4 @@ internal class NumberPickerUsageDetectorTest {
                 """
             )
     }
-
-
-
 }

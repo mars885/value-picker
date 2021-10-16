@@ -40,5 +40,4 @@ interface Item {
      * The optional payload to attach to each of the items.
      */
     val payload: Any?
-
 }

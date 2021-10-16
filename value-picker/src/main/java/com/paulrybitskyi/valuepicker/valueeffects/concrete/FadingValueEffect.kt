@@ -30,7 +30,6 @@ import kotlin.math.abs
  */
 class FadingValueEffect : ValueEffect {
 
-
     override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
         val rvCenter = recyclerView.calculateCenter(orientation)
         val childCenter = child.calculateChildCenter(orientation)
@@ -40,31 +39,25 @@ class FadingValueEffect : ValueEffect {
         child.alpha = alpha
     }
 
-
     private fun RecyclerView.calculateCenter(orientation: Orientation): Float {
         return (getDimension(orientation) / 2f)
     }
 
-
     private fun RecyclerView.getDimension(orientation: Orientation): Int {
-        return when(orientation) {
+        return when (orientation) {
             Orientation.VERTICAL -> height
             Orientation.HORIZONTAL -> width
         }
     }
 
-
     private fun View.calculateChildCenter(orientation: Orientation): Int {
-        return when(orientation) {
+        return when (orientation) {
             Orientation.VERTICAL -> ((height / 2) + top)
             Orientation.HORIZONTAL -> ((width / 2) + left)
         }
     }
 
-
     private fun calculateChildAlpha(rvDistanceFrmChildCenter: Float, rvDimension: Int): Float {
         return (1 - (rvDistanceFrmChildCenter / (rvDimension / 2f)))
     }
-
-
 }

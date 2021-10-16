@@ -38,16 +38,13 @@ internal class TeamPickerFragment : BaseFragment<
     FragmentTeamPickerBinding
 >(R.layout.fragment_team_picker) {
 
-
     override val viewBinding by viewBinding(FragmentTeamPickerBinding::bind)
-
 
     override fun onInit() {
         super.onInit()
 
         initTeamPicker()
     }
-
 
     private fun initTeamPicker() = with(viewBinding.teamPicker) {
         areDividersEnabled = true
@@ -71,7 +68,6 @@ internal class TeamPickerFragment : BaseFragment<
         setSelectedItem(teamPickerItems[2])
     }
 
-
     private fun generateTeamPickerItems(): List<Item> {
         return Team.values().map {
             PickerItem(
@@ -81,6 +77,4 @@ internal class TeamPickerFragment : BaseFragment<
             )
         }
     }
-
-
 }
