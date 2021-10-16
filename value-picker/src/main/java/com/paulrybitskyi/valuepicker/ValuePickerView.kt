@@ -244,18 +244,9 @@ class ValuePickerView @JvmOverloads constructor(
 
     /**
      * A property representing a current list of items of the picker.
-     *
-     * IMPORTANT: The list has to contain at least two items to provide
-     * a choice to the user what to pick.
-     *
-     * @throws IllegalArgumentException if the passed list contains less
-     * then two items
      */
     var items: List<Item>
-        set(value) {
-            require(value.size > 1) { "The item list must contain at least two items." }
-            _items = value.toList()
-        }
+        set(value) { _items = value.toList() }
         get() = Collections.unmodifiableList(_items)
 
     private lateinit var valueItemViewPaint: Paint
