@@ -33,6 +33,7 @@ import com.paulrybitskyi.valuepicker.sample.R
 import com.paulrybitskyi.valuepicker.sample.databinding.FragmentTeamPickerBinding
 import com.paulrybitskyi.valuepicker.sample.teampicker.model.Team
 
+@Suppress("MagicNumber")
 internal class TeamPickerFragment : BaseFragment<
     FragmentTeamPickerBinding
 >(R.layout.fragment_team_picker) {

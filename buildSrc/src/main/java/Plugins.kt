@@ -19,6 +19,7 @@ import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
 
+const val PLUGIN_DETEKT = "io.gitlab.arturbosch.detekt"
 const val PLUGIN_GRADLE_VERSIONS = "com.github.ben-manes.versions"
 const val PLUGIN_DOKKA = "org.jetbrains.dokka"
 const val PLUGIN_ANDROID_APPLICATION = "com.android.application"
@@ -29,6 +30,11 @@ const val PLUGIN_KOTLIN_ANDROID = "kotlin-android"
 const val PLUGIN_LINT = "com.android.lint"
 const val PLUGIN_MAVEN_PUBLISH = "maven-publish"
 const val PLUGIN_SIGNING = "org.gradle.signing"
+
+
+fun PluginDependenciesSpec.detekt(): PluginDependencySpec {
+    return (id(PLUGIN_DETEKT) version versions.detektPlugin)
+}
 
 
 fun PluginDependenciesSpec.gradleVersions(): PluginDependencySpec {

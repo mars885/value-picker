@@ -34,6 +34,7 @@ import com.paulrybitskyi.valuepicker.sample.valueeffects.RotationValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 
+@Suppress("MagicNumber")
 internal class PersonInfoPickerFragment : BaseFragment<
     FragmentPersonInfoPickerBinding
 >(R.layout.fragment_person_info_picker) {

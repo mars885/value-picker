@@ -22,7 +22,7 @@ import com.paulrybitskyi.valuepicker.model.Orientation
 
 
 internal fun RecyclerView.calculateCenter(orientation: Orientation): Float {
-    return (getDimension(orientation) * 0.5f)
+    return (getDimension(orientation) / 2f)
 }
 
 

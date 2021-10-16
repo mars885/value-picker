@@ -21,6 +21,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 
+
+private const val PROPERTY_ROTATION_X_START_ANGLE = 90f
+private const val PROPERTY_ROTATION_Y_START_ANGLE = -90f
+
+
 internal class RotationValueEffect(
     private val property: Property
 ) : ValueEffect {
@@ -43,14 +48,14 @@ internal class RotationValueEffect(
 
 
     private fun calculateChildRotation(rvDistanceFrmChildCenter: Float, rvDimension: Int): Float {
-        return (property.starAngle * (rvDistanceFrmChildCenter / (rvDimension * 0.5f)))
+        return (property.starAngle * (rvDistanceFrmChildCenter / (rvDimension / 2f)))
     }
 
 
     private val Property.starAngle: Float
         get() = when(this) {
-            Property.ROTATION_X -> 90f
-            Property.ROTATION_Y -> -90f
+            Property.ROTATION_X -> PROPERTY_ROTATION_X_START_ANGLE
+            Property.ROTATION_Y -> PROPERTY_ROTATION_Y_START_ANGLE
         }
 
 

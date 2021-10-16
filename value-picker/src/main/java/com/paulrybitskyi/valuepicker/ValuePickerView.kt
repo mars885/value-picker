@@ -32,8 +32,16 @@ import androidx.annotation.Px
 import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.paulrybitskyi.commons.ktx.*
+import com.paulrybitskyi.commons.ktx.clearHorizontalPadding
+import com.paulrybitskyi.commons.ktx.clearVerticalPadding
 import com.paulrybitskyi.commons.ktx.drawing.getTextBounds
+import com.paulrybitskyi.commons.ktx.getDrawable
+import com.paulrybitskyi.commons.ktx.getFont
+import com.paulrybitskyi.commons.ktx.isOdd
+import com.paulrybitskyi.commons.ktx.setColor
+import com.paulrybitskyi.commons.ktx.setHorizontalPadding
+import com.paulrybitskyi.commons.ktx.setLayoutParamsSize
+import com.paulrybitskyi.commons.ktx.setVerticalPadding
 import com.paulrybitskyi.commons.recyclerview.utils.disableAnimations
 import com.paulrybitskyi.commons.recyclerview.utils.recreateItemViews
 import com.paulrybitskyi.commons.utils.observeChanges
@@ -41,15 +49,23 @@ import com.paulrybitskyi.valuepicker.decorators.ValuePickerItemDecorator
 import com.paulrybitskyi.valuepicker.decorators.ValuePickerItemDecoratorFactory.createHorizontalDecorator
 import com.paulrybitskyi.valuepicker.decorators.ValuePickerItemDecoratorFactory.createVerticalDecorator
 import com.paulrybitskyi.valuepicker.layoutmanager.ValuePickerLayoutManager
-import com.paulrybitskyi.valuepicker.model.*
+import com.paulrybitskyi.valuepicker.model.Item
 import com.paulrybitskyi.valuepicker.model.Orientation.Companion.asOrientation
+import com.paulrybitskyi.valuepicker.model.Size
+import com.paulrybitskyi.valuepicker.model.VALUE_ITEM_CONFIG_STUB
+import com.paulrybitskyi.valuepicker.model.ValueItemConfig
+import com.paulrybitskyi.valuepicker.model.initDefaultValues
+import com.paulrybitskyi.valuepicker.model.isHorizontal
+import com.paulrybitskyi.valuepicker.model.isVertical
+import com.paulrybitskyi.valuepicker.model.sizeOf
+import com.paulrybitskyi.valuepicker.model.valueItemSize
 import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
 import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelperFactory
 import com.paulrybitskyi.valuepicker.utils.getColor
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
-import java.util.*
+import java.util.Collections
 import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
 
 
@@ -66,6 +82,7 @@ private val DEFAULT_VALUE_EFFECT = FadingValueEffect()
  * A view that provides a way to specify a set of values
  * one of which a user can pick.
  */
+@Suppress("TooManyFunctions")
 class ValuePickerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -454,7 +471,10 @@ class ValuePickerView @JvmOverloads constructor(
             defStyleAttr = defStyle
         ) {
             areDividersEnabled = getBoolean(R.styleable.ValuePickerView_vpv_areDividersEnabled, areDividersEnabled)
-            isInfiniteScrollEnabled = getBoolean(R.styleable.ValuePickerView_vpv_isInfiniteScrollEnabled, isInfiniteScrollEnabled)
+            isInfiniteScrollEnabled = getBoolean(
+                R.styleable.ValuePickerView_vpv_isInfiniteScrollEnabled,
+                isInfiniteScrollEnabled
+            )
             maxVisibleItems = getInteger(R.styleable.ValuePickerView_vpv_maxVisibleItems, maxVisibleItems)
             textColor = getColor(R.styleable.ValuePickerView_vpv_textColor, textColor)
             dividerColor = getColor(R.styleable.ValuePickerView_vpv_dividerColor, dividerColor)

@@ -17,7 +17,18 @@
 package com.paulrybitskyi.valuepicker.lint
 
 import com.android.resources.ResourceFolderType
-import com.android.tools.lint.detector.api.*
+import com.android.tools.lint.detector.api.Category
+import com.android.tools.lint.detector.api.Context
+import com.android.tools.lint.detector.api.Detector
+import com.android.tools.lint.detector.api.Implementation
+import com.android.tools.lint.detector.api.Issue
+import com.android.tools.lint.detector.api.JavaContext
+import com.android.tools.lint.detector.api.LintFix
+import com.android.tools.lint.detector.api.Scope
+import com.android.tools.lint.detector.api.Severity
+import com.android.tools.lint.detector.api.SourceCodeScanner
+import com.android.tools.lint.detector.api.XmlContext
+import com.android.tools.lint.detector.api.XmlScanner
 import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.UCallExpression
 import org.jetbrains.uast.getQualifiedName
@@ -114,6 +125,7 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
 
     private fun computeQuickFixForSourceUsage(node: UCallExpression): LintFix? {
         // ValuePickerView does not support 4 arg constructor
+        @Suppress("MagicNumber")
         if(node.valueArgumentCount == 4) return null
 
         val textToReplace = if(node.asSourceString().contains(NUMBER_PICKER_CANONICAL_NAME)) {

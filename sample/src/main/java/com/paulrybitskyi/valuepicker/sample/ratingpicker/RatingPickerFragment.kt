@@ -29,6 +29,7 @@ import com.paulrybitskyi.valuepicker.sample.R
 import com.paulrybitskyi.valuepicker.sample.databinding.FragmentRatingPickerBinding
 import com.paulrybitskyi.valuepicker.sample.ratingpicker.model.Rating
 
+@Suppress("MagicNumber")
 internal class RatingPickerFragment : BaseFragment<
     FragmentRatingPickerBinding
 >(R.layout.fragment_rating_picker) {

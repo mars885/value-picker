@@ -28,6 +28,7 @@ import com.paulrybitskyi.valuepicker.sample.BaseFragment
 import com.paulrybitskyi.valuepicker.sample.R
 import com.paulrybitskyi.valuepicker.sample.databinding.FragmentTimePickerBinding
 
+@Suppress("MagicNumber")
 internal class TimePickerFragment : BaseFragment<
     FragmentTimePickerBinding
 >(R.layout.fragment_time_picker) {
