@@ -25,8 +25,8 @@ object appConfig {
     const val minSdkVersion = 21
     const val applicationId = "com.paulrybitskyi.valuepicker.sample"
 
-    val javaCompatibilityVersion = JavaVersion.VERSION_11
-    val kotlinCompatibilityVersion = JavaVersion.VERSION_11
+    val javaCompatibilityVersion = JavaVersion.VERSION_1_8
+    val kotlinCompatibilityVersion = JavaVersion.VERSION_1_8
 }
 
 object publishingConfig {
