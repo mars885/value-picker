@@ -20,8 +20,8 @@ import org.gradle.api.JavaVersion
 
 object appConfig {
 
-    const val compileSdkVersion = 30
-    const val targetSdkVersion = 30
+    const val compileSdkVersion = 32
+    const val targetSdkVersion = 32
     const val minSdkVersion = 21
     const val applicationId = "com.paulrybitskyi.valuepicker.sample"
 
@@ -54,23 +54,22 @@ object publishingConfig {
 
 object versions {
 
-    const val kotlin = "1.5.31" // also in buildSrc build.gradle.kts file
-    const val gradlePlugin = "7.0.3" // also in buildSrc build.gradle.kts file and lint version
-    const val detektPlugin = "1.18.1"
-    const val ktlintPlugin = "10.2.0"
-    const val gradleVersionsPlugin = "0.39.0"
-    const val dokkaPlugin = "1.5.31"
-    const val appCompat = "1.3.1"
+    const val kotlin = "1.7.0" // also in buildSrc build.gradle.kts file
+    const val gradlePlugin = "7.2.2" // also in buildSrc build.gradle.kts file and lint version
+    const val detektPlugin = "1.20.0"
+    const val ktlintPlugin = "10.3.0"
+    const val gradleVersionsPlugin = "0.42.0"
+    const val dokkaPlugin = "1.7.0"
+    const val appCompat = "1.4.2"
     const val recyclerView = "1.2.1"
-    const val navFragmentKtx = "2.3.5"
-    const val navUiKtx = "2.3.5"
-    const val constraintLayout = "2.1.1"
-    const val coreKtx = "1.6.0"
+    const val navigation = "2.5.1"
+    const val constraintLayout = "2.1.4"
+    const val coreKtx = "1.8.0"
     const val commonsCore = "1.0.3"
     const val commonsKtx = "1.0.3"
     const val commonsRecyclerView = "1.0.1"
     const val autoService = "1.0"
-    const val lint = "30.0.3"   // lintVersion = gradlePluginVersion + 23.0.0
+    const val lint = "30.2.2"   // lintVersion = gradlePluginVersion + 23.0.0
     const val jUnit = "4.13.2"
     const val jUnitExt = "1.1.2"
 }
@@ -96,8 +95,8 @@ object deps {
     const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     const val appCompat = "androidx.appcompat:appcompat:${versions.appCompat}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${versions.recyclerView}"
-    const val navFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${versions.navFragmentKtx}"
-    const val navUiKtx = "androidx.navigation:navigation-ui-ktx:${versions.navUiKtx}"
+    const val navFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
+    const val navUiKtx = "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
     const val coreKtx = "androidx.core:core-ktx:${versions.coreKtx}"
     const val commonsCore = "com.paulrybitskyi.commons:commons-core:${versions.commonsCore}"

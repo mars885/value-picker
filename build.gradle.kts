@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import io.gitlab.arturbosch.detekt.Detekt
+
 plugins {
     detekt()
     ktlint()
@@ -39,7 +41,10 @@ detekt {
     parallel = true
     buildUponDefaultConfig = true
     config = files("config/detekt/detekt.yml")
-    reports.html.enabled = true
+}
+
+tasks.withType<Detekt>().configureEach {
+    reports.html.required.set(true)
 }
 
 allprojects {
