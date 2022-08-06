@@ -26,7 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.paulrybitskyi.valuepicker.sample.root.RootActivity">
+        <activity
+            android:name="com.paulrybitskyi.valuepicker.sample.root.RootActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
