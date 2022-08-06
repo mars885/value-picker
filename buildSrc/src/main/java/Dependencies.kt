@@ -71,7 +71,7 @@ object versions {
     const val autoService = "1.0"
     const val lint = "30.2.2"   // lintVersion = gradlePluginVersion + 23.0.0
     const val jUnit = "4.13.2"
-    const val jUnitExt = "1.1.2"
+    const val jUnitExt = "1.1.3"
 }
 
 object deps {
