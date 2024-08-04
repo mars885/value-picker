@@ -61,7 +61,7 @@ object versions {
     const val gradleVersionsPlugin = "0.51.0"
     const val dokkaPlugin = "1.9.20"
     const val appCompat = "1.7.0"
-    const val recyclerView = "1.2.1"
+    const val recyclerView = "1.3.2"
     const val navigation = "2.5.1"
     const val constraintLayout = "2.1.4"
     const val coreKtx = "1.8.0"
