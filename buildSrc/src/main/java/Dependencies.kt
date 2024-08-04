@@ -64,7 +64,7 @@ object versions {
     const val recyclerView = "1.3.2"
     const val navigation = "2.7.7"
     const val constraintLayout = "2.1.4"
-    const val coreKtx = "1.8.0"
+    const val coreKtx = "1.13.1"
     const val commonsCore = "1.0.3"
     const val commonsKtx = "1.0.3"
     const val commonsRecyclerView = "1.0.1"
