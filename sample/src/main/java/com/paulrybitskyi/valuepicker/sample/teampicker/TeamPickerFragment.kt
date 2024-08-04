@@ -35,7 +35,7 @@ import com.paulrybitskyi.valuepicker.sample.teampicker.model.Team
 
 @Suppress("MagicNumber")
 internal class TeamPickerFragment : BaseFragment<
-    FragmentTeamPickerBinding
+    FragmentTeamPickerBinding,
 >(R.layout.fragment_team_picker) {
 
     override val viewBinding by viewBinding(FragmentTeamPickerBinding::bind)
@@ -56,7 +56,7 @@ internal class TeamPickerFragment : BaseFragment<
         dividerDrawable = getDrawable(R.drawable.team_picker_divider)
         fixedItemSize = Size.withFixedSize(
             width = getDimensionPixelSize(R.dimen.team_picker_item_width),
-            height = getDimensionPixelSize(R.dimen.team_picker_item_height)
+            height = getDimensionPixelSize(R.dimen.team_picker_item_height),
         )
         orientation = Orientation.VERTICAL
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
@@ -73,7 +73,7 @@ internal class TeamPickerFragment : BaseFragment<
             PickerItem(
                 id = it.ordinal,
                 title = it.longName,
-                payload = it
+                payload = it,
             )
         }
     }

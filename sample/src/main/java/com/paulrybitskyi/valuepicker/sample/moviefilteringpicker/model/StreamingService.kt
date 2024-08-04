@@ -22,5 +22,5 @@ internal enum class StreamingService(val title: String) {
     HULU("Hulu"),
     HBO_MAX("HBO"),
     DISNEY("Disney"),
-    APPLE_TV("Apple")
+    APPLE_TV("Apple"),
 }

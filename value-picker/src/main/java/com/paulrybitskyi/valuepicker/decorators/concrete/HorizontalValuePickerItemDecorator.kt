@@ -28,7 +28,7 @@ import kotlin.math.floor
 internal class HorizontalValuePickerItemDecorator(
     maxVisibleItems: Int,
     dividerDrawable: Drawable,
-    valueItemConfigProvider: () -> ValueItemConfig
+    valueItemConfigProvider: () -> ValueItemConfig,
 ) : ValuePickerItemDecorator(maxVisibleItems, dividerDrawable, valueItemConfigProvider) {
 
     override fun drawDividers(canvas: Canvas, parent: RecyclerView) = with(canvas) {
@@ -46,7 +46,7 @@ internal class HorizontalValuePickerItemDecorator(
             left = drawableLeftBound,
             top = 0,
             right = drawableRightBound,
-            bottom = parent.height
+            bottom = parent.height,
         )
         dividerDrawable.draw(this)
     }
@@ -61,7 +61,7 @@ internal class HorizontalValuePickerItemDecorator(
             left = drawableLeftBound,
             top = 0,
             right = drawableRightBound,
-            bottom = parent.height
+            bottom = parent.height,
         )
         dividerDrawable.draw(this)
     }

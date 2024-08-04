@@ -29,5 +29,5 @@ internal enum class Team(val longName: String) {
     MIAMI_HEAT(longName = "Miami Heat"),
     GOLDEN_STATE_WARRIOS(longName = "Golden State Warriors"),
     LOS_ANGELES_LAKERS(longName = "Los Angeles Lakers"),
-    SAN_ANTONIO_SPURS(longName = "San Antonio Spurs")
+    SAN_ANTONIO_SPURS(longName = "San Antonio Spurs"),
 }

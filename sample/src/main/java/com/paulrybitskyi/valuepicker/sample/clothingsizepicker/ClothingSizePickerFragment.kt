@@ -34,7 +34,7 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentClothingSizePick
 
 @Suppress("MagicNumber")
 internal class ClothingSizePickerFragment : BaseFragment<
-    FragmentClothingSizePickerBinding
+    FragmentClothingSizePickerBinding,
 >(R.layout.fragment_clothing_size_picker) {
 
     override val viewBinding by viewBinding(FragmentClothingSizePickerBinding::bind)
@@ -55,7 +55,7 @@ internal class ClothingSizePickerFragment : BaseFragment<
         dividerDrawable = getDrawable(R.drawable.clothing_size_picker_divider)
         fixedItemSize = Size.withFixedSize(
             width = getDimensionPixelSize(R.dimen.clothing_size_picker_item_width),
-            height = getDimensionPixelSize(R.dimen.clothing_size_picker_item_height)
+            height = getDimensionPixelSize(R.dimen.clothing_size_picker_item_height),
         )
         orientation = Orientation.HORIZONTAL
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
@@ -71,7 +71,7 @@ internal class ClothingSizePickerFragment : BaseFragment<
         return ClothingSize.values().map {
             PickerItem(
                 id = it.ordinal,
-                title = it.name
+                title = it.name,
             )
         }
     }

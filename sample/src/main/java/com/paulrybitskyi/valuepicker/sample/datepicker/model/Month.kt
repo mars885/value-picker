@@ -18,54 +18,54 @@ package com.paulrybitskyi.valuepicker.sample.datepicker.model
 
 internal enum class Month(
     val longName: String,
-    val shortName: String
+    val shortName: String,
 ) {
     JANUARY(
         longName = "January",
-        shortName = "Jan"
+        shortName = "Jan",
     ),
     FEBRUARY(
         longName = "February",
-        shortName = "Feb"
+        shortName = "Feb",
     ),
     MARCH(
         longName = "March",
-        shortName = "Mar"
+        shortName = "Mar",
     ),
     APRIL(
         longName = "April",
-        shortName = "Apr"
+        shortName = "Apr",
     ),
     MAY(
         longName = "May",
-        shortName = "May"
+        shortName = "May",
     ),
     JUNE(
         longName = "June",
-        shortName = "Jun"
+        shortName = "Jun",
     ),
     JULY(
         longName = "July",
-        shortName = "Jul"
+        shortName = "Jul",
     ),
     AUGUST(
         longName = "August",
-        shortName = "Aug"
+        shortName = "Aug",
     ),
     SEPTEMBER(
         longName = "September",
-        shortName = "Sept"
+        shortName = "Sept",
     ),
     OCTOBER(
         longName = "October",
-        shortName = "Oct"
+        shortName = "Oct",
     ),
     NOVEMBER(
         longName = "November",
-        shortName = "Nov"
+        shortName = "Nov",
     ),
     DECEMBER(
         longName = "December",
-        shortName = "Dec"
-    )
+        shortName = "Dec",
+    ),
 }

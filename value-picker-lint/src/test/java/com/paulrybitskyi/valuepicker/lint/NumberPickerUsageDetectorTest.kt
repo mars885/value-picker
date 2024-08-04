@@ -36,8 +36,8 @@ internal class NumberPickerUsageDetectorTest {
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -47,7 +47,7 @@ internal class NumberPickerUsageDetectorTest {
                 <NumberPicker
                  ~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -55,7 +55,7 @@ internal class NumberPickerUsageDetectorTest {
                 @@ -1 +1
                 - <NumberPicker
                 + <com.paulrybitskyi.valuepicker.ValuePickerView
-                """
+                """,
             )
     }
 
@@ -70,8 +70,8 @@ internal class NumberPickerUsageDetectorTest {
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -81,7 +81,7 @@ internal class NumberPickerUsageDetectorTest {
                 <android.widget.NumberPicker
                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -89,7 +89,7 @@ internal class NumberPickerUsageDetectorTest {
                 @@ -1 +1
                 - <android.widget.NumberPicker
                 + <com.paulrybitskyi.valuepicker.ValuePickerView
-                """
+                """,
             )
     }
 
@@ -104,8 +104,8 @@ internal class NumberPickerUsageDetectorTest {
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -129,8 +129,8 @@ internal class NumberPickerUsageDetectorTest {
                             return new NumberPicker(context);
                         }
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -140,7 +140,7 @@ internal class NumberPickerUsageDetectorTest {
                         return new NumberPicker(context);
                                ~~~~~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -148,7 +148,7 @@ internal class NumberPickerUsageDetectorTest {
                    @@ -9 +9
                    -         return new NumberPicker(context);
                    +         return new com.paulrybitskyi.valuepicker.ValuePickerView(context);
-                """
+                """,
             )
     }
 
@@ -170,8 +170,8 @@ internal class NumberPickerUsageDetectorTest {
                             return new NumberPicker(context, attrs);
                         }
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -181,7 +181,7 @@ internal class NumberPickerUsageDetectorTest {
                         return new NumberPicker(context, attrs);
                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -189,7 +189,7 @@ internal class NumberPickerUsageDetectorTest {
                    @@ -10 +10
                    -         return new NumberPicker(context, attrs);
                    +         return new com.paulrybitskyi.valuepicker.ValuePickerView(context, attrs);
-                """
+                """,
             )
     }
 
@@ -211,8 +211,8 @@ internal class NumberPickerUsageDetectorTest {
                             return new NumberPicker(context, attrs, defStyleAttr);
                         }
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -222,7 +222,7 @@ internal class NumberPickerUsageDetectorTest {
                         return new NumberPicker(context, attrs, defStyleAttr);
                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -230,7 +230,7 @@ internal class NumberPickerUsageDetectorTest {
                    @@ -10 +10
                    -         return new NumberPicker(context, attrs, defStyleAttr);
                    +         return new com.paulrybitskyi.valuepicker.ValuePickerView(context, attrs, defStyleAttr);
-                """
+                """,
             )
     }
 
@@ -252,8 +252,8 @@ internal class NumberPickerUsageDetectorTest {
                             return new NumberPicker(context, attrs, defStyleAttr, defStyleRes);
                         }
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -263,7 +263,7 @@ internal class NumberPickerUsageDetectorTest {
                         return new NumberPicker(context, attrs, defStyleAttr, defStyleRes);
                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
     }
 
@@ -283,8 +283,8 @@ internal class NumberPickerUsageDetectorTest {
                             return new android.widget.NumberPicker(context);
                         }
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -294,7 +294,7 @@ internal class NumberPickerUsageDetectorTest {
                         return new android.widget.NumberPicker(context);
                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -302,7 +302,7 @@ internal class NumberPickerUsageDetectorTest {
                    @@ -8 +8
                    -         return new android.widget.NumberPicker(context);
                    +         return new com.paulrybitskyi.valuepicker.ValuePickerView(context);
-                """
+                """,
             )
     }
 
@@ -323,8 +323,8 @@ internal class NumberPickerUsageDetectorTest {
                             return null;
                         }
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -349,8 +349,8 @@ internal class NumberPickerUsageDetectorTest {
                         }
 
                     }
-                    """
-                ).indented()
+                    """,
+                ).indented(),
             )
             .issues(NumberPickerUsageDetector.ISSUE)
             .run()
@@ -360,7 +360,7 @@ internal class NumberPickerUsageDetectorTest {
                         return NumberPicker(context)
                                ~~~~~~~~~~~~~~~~~~~~~
                 0 errors, 1 warnings
-                """
+                """,
             )
             .expectFixDiffs(
                 """
@@ -368,7 +368,7 @@ internal class NumberPickerUsageDetectorTest {
                    @@ -9 +9
                    -         return NumberPicker(context)
                    +         return com.paulrybitskyi.valuepicker.ValuePickerView(context)
-                """
+                """,
             )
     }
 }

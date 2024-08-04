@@ -27,12 +27,12 @@ internal object ValuePickerItemDecoratorFactory {
     fun createVerticalDecorator(
         maxVisibleItems: Int,
         dividerDrawable: Drawable,
-        valueItemConfigProvider: () -> ValueItemConfig
+        valueItemConfigProvider: () -> ValueItemConfig,
     ): ValuePickerItemDecorator {
         return VerticalValuePickerItemDecorator(
             maxVisibleItems = maxVisibleItems,
             dividerDrawable = dividerDrawable,
-            valueItemConfigProvider = valueItemConfigProvider
+            valueItemConfigProvider = valueItemConfigProvider,
         )
     }
 
@@ -40,12 +40,12 @@ internal object ValuePickerItemDecoratorFactory {
     fun createHorizontalDecorator(
         maxVisibleItems: Int,
         dividerDrawable: Drawable,
-        valueItemConfigProvider: () -> ValueItemConfig
+        valueItemConfigProvider: () -> ValueItemConfig,
     ): ValuePickerItemDecorator {
         return HorizontalValuePickerItemDecorator(
             maxVisibleItems = maxVisibleItems,
             dividerDrawable = dividerDrawable,
-            valueItemConfigProvider = valueItemConfigProvider
+            valueItemConfigProvider = valueItemConfigProvider,
         )
     }
 }

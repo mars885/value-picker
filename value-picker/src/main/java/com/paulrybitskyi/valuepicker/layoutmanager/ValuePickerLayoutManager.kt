@@ -27,11 +27,11 @@ import kotlin.math.abs
 internal class ValuePickerLayoutManager(
     private val recyclerView: RecyclerView,
     private val orientation: Orientation,
-    private val valueItemEffect: ValueEffect
+    private val valueItemEffect: ValueEffect,
 ) : LinearLayoutManager(
     recyclerView.context,
     orientation.rvOrientation,
-    false
+    false,
 ) {
 
     private val dimension: Int
@@ -44,7 +44,7 @@ internal class ValuePickerLayoutManager(
 
     override fun onLayoutChildren(
         recycler: RecyclerView.Recycler,
-        state: RecyclerView.State
+        state: RecyclerView.State,
     ) {
         super.onLayoutChildren(recycler, state)
 
@@ -62,7 +62,7 @@ internal class ValuePickerLayoutManager(
     override fun scrollVerticallyBy(
         dy: Int,
         recycler: RecyclerView.Recycler,
-        state: RecyclerView.State
+        state: RecyclerView.State,
     ): Int {
         return super.scrollVerticallyBy(dy, recycler, state)
             .also { applyEffectToChildren() }
@@ -71,7 +71,7 @@ internal class ValuePickerLayoutManager(
     override fun scrollHorizontallyBy(
         dx: Int,
         recycler: RecyclerView.Recycler,
-        state: RecyclerView.State
+        state: RecyclerView.State,
     ): Int {
         return super.scrollHorizontallyBy(dx, recycler, state)
             .also { applyEffectToChildren() }
@@ -116,14 +116,14 @@ internal class ValuePickerLayoutManager(
     override fun smoothScrollToPosition(
         recyclerView: RecyclerView,
         state: RecyclerView.State,
-        position: Int
+        position: Int,
     ) {
         attachCustomSmoothScroller(recyclerView, position)
     }
 
     private fun attachCustomSmoothScroller(
         recyclerView: RecyclerView,
-        position: Int
+        position: Int,
     ) {
         ValuePickerSmoothScroller(recyclerView.context)
             .apply { targetPosition = position }

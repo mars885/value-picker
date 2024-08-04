@@ -24,7 +24,7 @@ import com.paulrybitskyi.valuepicker.model.ValueItemConfig
 internal abstract class ValuePickerItemDecorator(
     protected val maxVisibleItems: Int,
     protected val dividerDrawable: Drawable,
-    protected val valueItemConfigProvider: () -> ValueItemConfig
+    protected val valueItemConfigProvider: () -> ValueItemConfig,
 ) : RecyclerView.ItemDecoration() {
 
     override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {

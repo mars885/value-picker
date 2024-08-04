@@ -66,8 +66,10 @@ allprojects {
     }
 
     configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        version.set(versions.ktlint)
         android.set(true)
         outputToConsole.set(true)
+        verbose.set(true)
         reporters {
             reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.HTML)
         }

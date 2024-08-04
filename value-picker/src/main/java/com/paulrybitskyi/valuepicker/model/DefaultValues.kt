@@ -31,13 +31,13 @@ internal class DefaultValues(
     val valueItemMinHeight: Int,
     val valueItemPadding: Int,
     val valueItemTextSize: Float,
-    val valueItemTextTypeface: Typeface
+    val valueItemTextTypeface: Typeface,
 )
 
 internal val DefaultValues.valueItemSize: Size
     get() = sizeOf(
         width = valueItemMinWidth,
-        height = valueItemMinHeight
+        height = valueItemMinHeight,
     )
 
 internal fun initDefaultValues(context: Context): DefaultValues {
@@ -47,6 +47,6 @@ internal fun initDefaultValues(context: Context): DefaultValues {
         valueItemMinHeight = context.getDimensionPixelSize(R.dimen.default_value_item_min_height),
         valueItemPadding = context.getDimensionPixelSize(R.dimen.default_value_item_padding),
         valueItemTextSize = context.getDimension(R.dimen.default_value_item_text_size),
-        valueItemTextTypeface = Typeface.SANS_SERIF
+        valueItemTextTypeface = Typeface.SANS_SERIF,
     )
 }

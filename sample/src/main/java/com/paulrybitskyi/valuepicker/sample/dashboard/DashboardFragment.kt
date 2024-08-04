@@ -23,7 +23,7 @@ import com.paulrybitskyi.valuepicker.sample.R
 import com.paulrybitskyi.valuepicker.sample.databinding.FragmentDashboardBinding
 
 internal class DashboardFragment : BaseFragment<
-    FragmentDashboardBinding
+    FragmentDashboardBinding,
 >(R.layout.fragment_dashboard) {
 
     override val viewBinding by viewBinding(FragmentDashboardBinding::bind)
@@ -42,7 +42,7 @@ internal class DashboardFragment : BaseFragment<
         return DashboardRecyclerViewAdapter(
             context = requireContext(),
             items = DashboardDestination.values().toList(),
-            onItemClickListener = ::navigateToDestination
+            onItemClickListener = ::navigateToDestination,
         )
     }
 

@@ -24,5 +24,5 @@ package com.paulrybitskyi.valuepicker.model
 class PickerItem @JvmOverloads constructor(
     override val id: Int,
     override val title: String,
-    override val payload: Any? = null
+    override val payload: Any? = null,
 ) : Item

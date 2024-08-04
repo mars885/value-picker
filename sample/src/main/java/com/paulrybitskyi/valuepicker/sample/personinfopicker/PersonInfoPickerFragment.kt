@@ -36,7 +36,7 @@ import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 
 @Suppress("MagicNumber")
 internal class PersonInfoPickerFragment : BaseFragment<
-    FragmentPersonInfoPickerBinding
+    FragmentPersonInfoPickerBinding,
 >(R.layout.fragment_person_info_picker) {
 
     override val viewBinding by viewBinding(FragmentPersonInfoPickerBinding::bind)
@@ -63,7 +63,7 @@ internal class PersonInfoPickerFragment : BaseFragment<
         textTypeface = Typeface.DEFAULT_BOLD
         fixedItemSize = Size.withFixedSize(
             width = getDimensionPixelSize(R.dimen.person_info_picker_item_width),
-            height = getDimensionPixelSize(R.dimen.person_info_picker_item_height)
+            height = getDimensionPixelSize(R.dimen.person_info_picker_item_height),
         )
         orientation = Orientation.HORIZONTAL
     }
@@ -86,8 +86,8 @@ internal class PersonInfoPickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = age,
-                        title = age.toString()
-                    )
+                        title = age.toString(),
+                    ),
                 )
             }
         }
@@ -111,8 +111,8 @@ internal class PersonInfoPickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = cm,
-                        title = "$cm cm"
-                    )
+                        title = "$cm cm",
+                    ),
                 )
             }
         }
@@ -123,8 +123,8 @@ internal class PersonInfoPickerFragment : BaseFragment<
         valueEffect = CompositeValueEffect(
             listOf(
                 FadingValueEffect(),
-                RotationValueEffect(RotationValueEffect.Property.ROTATION_Y)
-            )
+                RotationValueEffect(RotationValueEffect.Property.ROTATION_Y),
+            ),
         )
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
             viewBinding.weightTv.text = "Weight: ${it.title}"
@@ -141,8 +141,8 @@ internal class PersonInfoPickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = kg,
-                        title = "$kg kg"
-                    )
+                        title = "$kg kg",
+                    ),
                 )
             }
         }
