@@ -70,7 +70,7 @@ internal class TimePickerFragment : BaseFragment<
     }
 
     private fun generateHourPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (hour in 1..12) {
                 add(
                     PickerItem(
@@ -94,7 +94,7 @@ internal class TimePickerFragment : BaseFragment<
     }
 
     private fun generateMinutePickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (minute in 0..59) {
                 add(
                     PickerItem(
@@ -118,7 +118,7 @@ internal class TimePickerFragment : BaseFragment<
     }
 
     private fun generatePeriodPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             add(
                 PickerItem(
                     id = 1,

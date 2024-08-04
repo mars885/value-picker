@@ -98,7 +98,7 @@ internal class MovieFilteringPickerFragment : BaseFragment<
     }
 
     private fun generateYearPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (year in 1930..2020) {
                 add(
                     PickerItem(
