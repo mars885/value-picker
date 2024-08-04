@@ -59,7 +59,7 @@ object versions {
     const val detektPlugin = "1.23.6"
     const val ktlintPlugin = "10.3.0"
     const val gradleVersionsPlugin = "0.51.0"
-    const val dokkaPlugin = "1.7.0"
+    const val dokkaPlugin = "1.9.20"
     const val appCompat = "1.4.2"
     const val recyclerView = "1.2.1"
     const val navigation = "2.5.1"
