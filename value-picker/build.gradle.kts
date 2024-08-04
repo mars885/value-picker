@@ -23,6 +23,7 @@ android {
     compileSdk = appConfig.compileSdkVersion
 
     defaultConfig {
+        namespace = "com.paulrybitskyi.valuepicker"
         minSdk = appConfig.minSdkVersion
         targetSdk = appConfig.targetSdkVersion
 
