@@ -58,7 +58,7 @@ object versions {
     const val androidPlugin = "8.3.1" // also in buildSrc build.gradle.kts file and lint version
     const val detektPlugin = "1.23.6"
     const val ktlintPlugin = "10.3.0"
-    const val gradleVersionsPlugin = "0.42.0"
+    const val gradleVersionsPlugin = "0.51.0"
     const val dokkaPlugin = "1.7.0"
     const val appCompat = "1.4.2"
     const val recyclerView = "1.2.1"

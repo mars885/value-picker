@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
@@ -45,6 +46,14 @@ detekt {
 
 tasks.withType<Detekt>().configureEach {
     reports.html.required.set(true)
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        listOf("alpha", "beta", "rc").any { keyword ->
+            candidate.version.lowercase().contains(keyword)
+        }
+    }
 }
 
 allprojects {
