@@ -68,7 +68,7 @@ internal class ClothingSizePickerFragment : BaseFragment<
     }
 
     private fun generateClothingSizePickerItems(): List<Item> {
-        return ClothingSize.values().map {
+        return ClothingSize.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = it.name,

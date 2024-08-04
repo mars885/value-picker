@@ -71,7 +71,7 @@ internal class DatePickerFragment : BaseFragment<
     }
 
     private fun generateMonthPickerItems(longMonthNames: Boolean): List<Item> {
-        return Month.values().map {
+        return Month.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = if (longMonthNames) it.longName else it.shortName,

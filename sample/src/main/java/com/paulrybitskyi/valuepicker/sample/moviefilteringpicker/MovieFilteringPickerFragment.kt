@@ -76,7 +76,7 @@ internal class MovieFilteringPickerFragment : BaseFragment<
     }
 
     private fun generateGenrePickerItems(): List<Item> {
-        return Genre.values().map {
+        return Genre.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = it.title,
@@ -128,7 +128,7 @@ internal class MovieFilteringPickerFragment : BaseFragment<
     }
 
     private fun generateServicePickerItems(): List<Item> {
-        return StreamingService.values().map {
+        return StreamingService.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = it.title,
