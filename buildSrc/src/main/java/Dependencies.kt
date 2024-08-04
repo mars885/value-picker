@@ -71,7 +71,7 @@ object versions {
     const val autoService = "1.1.1"
     const val lint = "31.3.1"   // lintVersion = androidPlugin + 23.0.0
     const val jUnit = "4.13.2"
-    const val jUnitExt = "1.1.3"
+    const val jUnitExt = "1.2.1"
 }
 
 object deps {
