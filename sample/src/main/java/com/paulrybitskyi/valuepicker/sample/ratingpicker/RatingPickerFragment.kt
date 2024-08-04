@@ -61,7 +61,7 @@ internal class RatingPickerFragment : BaseFragment<
     }
 
     private fun generateRatingPickerItems(): List<Item> {
-        return Rating.values().map {
+        return Rating.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = it.number.toString(),

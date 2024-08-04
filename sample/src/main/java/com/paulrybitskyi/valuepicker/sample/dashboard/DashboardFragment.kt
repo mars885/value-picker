@@ -41,7 +41,7 @@ internal class DashboardFragment : BaseFragment<
     private fun initAdapter(): DashboardRecyclerViewAdapter {
         return DashboardRecyclerViewAdapter(
             context = requireContext(),
-            items = DashboardDestination.values().toList(),
+            items = DashboardDestination.entries.toList(),
             onItemClickListener = ::navigateToDestination,
         )
     }

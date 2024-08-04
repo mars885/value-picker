@@ -69,7 +69,7 @@ internal class TeamPickerFragment : BaseFragment<
     }
 
     private fun generateTeamPickerItems(): List<Item> {
-        return Team.values().map {
+        return Team.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = it.longName,

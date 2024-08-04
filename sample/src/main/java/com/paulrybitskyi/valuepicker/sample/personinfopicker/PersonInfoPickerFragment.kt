@@ -81,7 +81,7 @@ internal class PersonInfoPickerFragment : BaseFragment<
     }
 
     private fun generateAgePickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (age in 1..100) {
                 add(
                     PickerItem(
@@ -106,7 +106,7 @@ internal class PersonInfoPickerFragment : BaseFragment<
     }
 
     private fun generateHeightPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (cm in 50..250) {
                 add(
                     PickerItem(
@@ -136,7 +136,7 @@ internal class PersonInfoPickerFragment : BaseFragment<
     }
 
     private fun generateWeightPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (kg in 10..150) {
                 add(
                     PickerItem(

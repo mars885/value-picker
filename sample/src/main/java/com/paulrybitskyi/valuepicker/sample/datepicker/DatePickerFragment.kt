@@ -71,7 +71,7 @@ internal class DatePickerFragment : BaseFragment<
     }
 
     private fun generateMonthPickerItems(longMonthNames: Boolean): List<Item> {
-        return Month.values().map {
+        return Month.entries.map {
             PickerItem(
                 id = it.ordinal,
                 title = if (longMonthNames) it.longName else it.shortName,
@@ -92,7 +92,7 @@ internal class DatePickerFragment : BaseFragment<
     }
 
     private fun generateDayPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (day in 1..31) {
                 add(
                     PickerItem(
@@ -116,7 +116,7 @@ internal class DatePickerFragment : BaseFragment<
     }
 
     private fun generateYearPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for (year in 2020..2030) {
                 add(
                     PickerItem(

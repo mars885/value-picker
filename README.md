@@ -112,7 +112,7 @@ Let's see how we can do that by following the steps listed above:
 
 
     private fun getPickerItems(): List<Item> {
-        return mutableListOf<Item>().apply {
+        return buildList {
             for(number in 1..100) {
                 add(
                     PickerItem(
