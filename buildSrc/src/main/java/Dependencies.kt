@@ -55,7 +55,7 @@ object publishingConfig {
 object versions {
 
     const val kotlin = "2.0.0" // also in buildSrc build.gradle.kts file
-    const val gradlePlugin = "7.2.2" // also in buildSrc build.gradle.kts file and lint version
+    const val androidPlugin = "8.3.1" // also in buildSrc build.gradle.kts file and lint version
     const val detektPlugin = "1.20.0"
     const val ktlintPlugin = "10.3.0"
     const val gradleVersionsPlugin = "0.42.0"
@@ -78,7 +78,7 @@ object deps {
 
     object plugins {
 
-        const val androidGradle = "com.android.tools.build:gradle:${versions.gradlePlugin}"
+        const val androidGradle = "com.android.tools.build:gradle:${versions.androidPlugin}"
         const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         const val gradleVersions = "com.github.ben-manes:gradle-versions-plugin:${versions.gradleVersionsPlugin}"
         const val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokkaPlugin}"
