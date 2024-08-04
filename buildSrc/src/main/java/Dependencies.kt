@@ -62,7 +62,7 @@ object versions {
     const val dokkaPlugin = "1.9.20"
     const val appCompat = "1.7.0"
     const val recyclerView = "1.3.2"
-    const val navigation = "2.5.1"
+    const val navigation = "2.7.7"
     const val constraintLayout = "2.1.4"
     const val coreKtx = "1.8.0"
     const val commonsCore = "1.0.3"
