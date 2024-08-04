@@ -25,7 +25,7 @@ private const val PROPERTY_ROTATION_X_START_ANGLE = 90f
 private const val PROPERTY_ROTATION_Y_START_ANGLE = -90f
 
 internal class RotationValueEffect(
-    private val property: Property
+    private val property: Property,
 ) : ValueEffect {
 
     override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
@@ -34,7 +34,7 @@ internal class RotationValueEffect(
         val rvDistanceFrmChildCenter = (rvCenter - childCenter)
         val rotation = calculateChildRotation(
             rvDistanceFrmChildCenter,
-            recyclerView.getDimension(orientation)
+            recyclerView.getDimension(orientation),
         )
 
         when (property) {
@@ -55,6 +55,6 @@ internal class RotationValueEffect(
 
     internal enum class Property {
         ROTATION_X,
-        ROTATION_Y
+        ROTATION_Y,
     }
 }

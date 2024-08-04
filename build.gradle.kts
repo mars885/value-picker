@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
@@ -40,11 +41,19 @@ buildscript {
 detekt {
     parallel = true
     buildUponDefaultConfig = true
-    config = files("config/detekt/detekt.yml")
+    config.setFrom("config/detekt/detekt.yml")
 }
 
 tasks.withType<Detekt>().configureEach {
     reports.html.required.set(true)
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        listOf("alpha", "beta", "rc").any { keyword ->
+            candidate.version.lowercase().contains(keyword)
+        }
+    }
 }
 
 allprojects {
@@ -57,8 +66,10 @@ allprojects {
     }
 
     configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        version.set(versions.ktlint)
         android.set(true)
         outputToConsole.set(true)
+        verbose.set(true)
         reporters {
             reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.HTML)
         }
@@ -66,5 +77,5 @@ allprojects {
 }
 
 val clean by tasks.registering(Delete::class) {
-    delete(buildDir)
+    delete(layout.buildDirectory)
 }

@@ -26,7 +26,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 internal abstract class BaseFragment<
-    VB : ViewBinding
+    VB : ViewBinding,
 >(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
 
     private var isViewCreated = false
@@ -36,7 +36,7 @@ internal abstract class BaseFragment<
     final override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Prevent the view from recreation until onDestroy is called
         return if (isViewCreated) {

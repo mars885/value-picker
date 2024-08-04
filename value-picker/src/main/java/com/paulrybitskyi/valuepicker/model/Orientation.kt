@@ -30,9 +30,10 @@ import com.paulrybitskyi.valuepicker.ValuePickerView
 enum class Orientation(internal val id: Int) {
 
     VERTICAL(id = 1),
-    HORIZONTAL(id = 2);
+    HORIZONTAL(id = 2),
+    ;
 
-    companion object {
+companion object {
 
         @JvmName("forId")
         @JvmStatic

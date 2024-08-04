@@ -31,7 +31,7 @@ import com.paulrybitskyi.valuepicker.sample.ratingpicker.model.Rating
 
 @Suppress("MagicNumber")
 internal class RatingPickerFragment : BaseFragment<
-    FragmentRatingPickerBinding
+    FragmentRatingPickerBinding,
 >(R.layout.fragment_rating_picker) {
 
     override val viewBinding by viewBinding(FragmentRatingPickerBinding::bind)
@@ -65,7 +65,7 @@ internal class RatingPickerFragment : BaseFragment<
             PickerItem(
                 id = it.ordinal,
                 title = it.number.toString(),
-                payload = it
+                payload = it,
             )
         }
     }

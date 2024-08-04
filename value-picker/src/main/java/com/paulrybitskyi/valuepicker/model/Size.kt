@@ -27,7 +27,7 @@ private const val DIMENSION_NOT_SET = -1
  */
 class Size internal constructor(
     val width: Int,
-    val height: Int
+    val height: Int,
 ) {
 
     companion object {
@@ -44,7 +44,7 @@ class Size internal constructor(
         fun withFixedWidth(@Px width: Int): Size {
             return Size(
                 width = width,
-                height = DIMENSION_NOT_SET
+                height = DIMENSION_NOT_SET,
             )
         }
 
@@ -60,7 +60,7 @@ class Size internal constructor(
         fun withFixedHeight(@Px height: Int): Size {
             return Size(
                 width = DIMENSION_NOT_SET,
-                height = height
+                height = height,
             )
         }
 
@@ -76,7 +76,7 @@ class Size internal constructor(
         fun withFixedSize(@Px width: Int, @Px height: Int): Size {
             return Size(
                 width = width,
-                height = height
+                height = height,
             )
         }
     }

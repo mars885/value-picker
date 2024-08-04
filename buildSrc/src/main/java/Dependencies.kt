@@ -20,13 +20,13 @@ import org.gradle.api.JavaVersion
 
 object appConfig {
 
-    const val compileSdkVersion = 32
-    const val targetSdkVersion = 32
+    const val compileSdkVersion = 34
+    const val targetSdkVersion = 34
     const val minSdkVersion = 21
     const val applicationId = "com.paulrybitskyi.valuepicker.sample"
 
-    val javaCompatibilityVersion = JavaVersion.VERSION_1_8
-    val kotlinCompatibilityVersion = JavaVersion.VERSION_1_8
+    val javaCompatibilityVersion = JavaVersion.VERSION_17
+    val kotlinCompatibilityVersion = JavaVersion.VERSION_17
 }
 
 object publishingConfig {
@@ -54,31 +54,32 @@ object publishingConfig {
 
 object versions {
 
-    const val kotlin = "1.7.0" // also in buildSrc build.gradle.kts file
-    const val gradlePlugin = "7.2.2" // also in buildSrc build.gradle.kts file and lint version
-    const val detektPlugin = "1.20.0"
-    const val ktlintPlugin = "10.3.0"
-    const val gradleVersionsPlugin = "0.42.0"
-    const val dokkaPlugin = "1.7.0"
-    const val appCompat = "1.4.2"
-    const val recyclerView = "1.2.1"
-    const val navigation = "2.5.1"
+    const val kotlin = "2.0.0" // also in buildSrc build.gradle.kts file
+    const val androidPlugin = "8.3.1" // also in buildSrc build.gradle.kts file and lint version
+    const val detektPlugin = "1.23.6"
+    const val ktlintPlugin = "12.1.1"
+    const val gradleVersionsPlugin = "0.51.0"
+    const val dokkaPlugin = "1.9.20"
+    const val appCompat = "1.7.0"
+    const val recyclerView = "1.3.2"
+    const val navigation = "2.7.7"
     const val constraintLayout = "2.1.4"
-    const val coreKtx = "1.8.0"
+    const val coreKtx = "1.13.1"
     const val commonsCore = "1.0.3"
     const val commonsKtx = "1.0.3"
     const val commonsRecyclerView = "1.0.1"
-    const val autoService = "1.0"
-    const val lint = "30.2.2"   // lintVersion = gradlePluginVersion + 23.0.0
+    const val ktlint = "1.3.1"
+    const val autoService = "1.1.1"
+    const val lint = "31.3.1"   // lintVersion = androidPlugin + 23.0.0
     const val jUnit = "4.13.2"
-    const val jUnitExt = "1.1.3"
+    const val jUnitExt = "1.2.1"
 }
 
 object deps {
 
     object plugins {
 
-        const val androidGradle = "com.android.tools.build:gradle:${versions.gradlePlugin}"
+        const val androidGradle = "com.android.tools.build:gradle:${versions.androidPlugin}"
         const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         const val gradleVersions = "com.github.ben-manes:gradle-versions-plugin:${versions.gradleVersionsPlugin}"
         const val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokkaPlugin}"

@@ -28,7 +28,7 @@ import com.paulrybitskyi.valuepicker.sample.dashboard.DashboardRecyclerViewAdapt
 internal class DashboardRecyclerViewAdapter(
     context: Context,
     private val items: List<DashboardDestination>,
-    private val onItemClickListener: (DashboardDestination) -> Unit
+    private val onItemClickListener: (DashboardDestination) -> Unit,
 ) : RecyclerView.Adapter<ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -38,8 +38,8 @@ internal class DashboardRecyclerViewAdapter(
             layoutInflater.inflate(
                 R.layout.item_view_dashboard,
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 

@@ -24,7 +24,7 @@ internal data class ValueItemConfig(
     val size: Size,
     val textColor: Int,
     val textSize: Float,
-    val textTypeface: Typeface
+    val textTypeface: Typeface,
 )
 
 @JvmField
@@ -32,5 +32,5 @@ internal val VALUE_ITEM_CONFIG_STUB = ValueItemConfig(
     size = sizeOf(width = 0, height = 0),
     textColor = 0,
     textSize = 0f,
-    textTypeface = Typeface.SANS_SERIF
+    textTypeface = Typeface.SANS_SERIF,
 )

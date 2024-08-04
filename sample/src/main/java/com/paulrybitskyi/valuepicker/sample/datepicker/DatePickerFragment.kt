@@ -31,7 +31,7 @@ import com.paulrybitskyi.valuepicker.sample.datepicker.model.Month
 
 @Suppress("MagicNumber")
 internal class DatePickerFragment : BaseFragment<
-    FragmentDatePickerBinding
+    FragmentDatePickerBinding,
 >(R.layout.fragment_date_picker) {
 
     override val viewBinding by viewBinding(FragmentDatePickerBinding::bind)
@@ -75,7 +75,7 @@ internal class DatePickerFragment : BaseFragment<
             PickerItem(
                 id = it.ordinal,
                 title = if (longMonthNames) it.longName else it.shortName,
-                payload = it
+                payload = it,
             )
         }
     }
@@ -97,8 +97,8 @@ internal class DatePickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = day,
-                        title = if (day < 10) "0$day" else day.toString()
-                    )
+                        title = if (day < 10) "0$day" else day.toString(),
+                    ),
                 )
             }
         }
@@ -121,8 +121,8 @@ internal class DatePickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = year,
-                        title = year.toString()
-                    )
+                        title = year.toString(),
+                    ),
                 )
             }
         }

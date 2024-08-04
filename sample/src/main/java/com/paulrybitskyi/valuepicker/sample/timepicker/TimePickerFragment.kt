@@ -30,7 +30,7 @@ import com.paulrybitskyi.valuepicker.sample.databinding.FragmentTimePickerBindin
 
 @Suppress("MagicNumber")
 internal class TimePickerFragment : BaseFragment<
-    FragmentTimePickerBinding
+    FragmentTimePickerBinding,
 >(R.layout.fragment_time_picker) {
 
     override val viewBinding by viewBinding(FragmentTimePickerBinding::bind)
@@ -75,8 +75,8 @@ internal class TimePickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = hour,
-                        title = hour.toString()
-                    )
+                        title = hour.toString(),
+                    ),
                 )
             }
         }
@@ -99,8 +99,8 @@ internal class TimePickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = minute,
-                        title = if (minute < 10) "0$minute" else minute.toString()
-                    )
+                        title = if (minute < 10) "0$minute" else minute.toString(),
+                    ),
                 )
             }
         }
@@ -122,14 +122,14 @@ internal class TimePickerFragment : BaseFragment<
             add(
                 PickerItem(
                     id = 1,
-                    title = "AM"
-                )
+                    title = "AM",
+                ),
             )
             add(
                 PickerItem(
                     id = 2,
-                    title = "PM"
-                )
+                    title = "PM",
+                ),
             )
         }
     }

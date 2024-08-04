@@ -30,10 +30,10 @@ import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.XmlContext
 import com.android.tools.lint.detector.api.XmlScanner
 import com.intellij.psi.PsiMethod
-import java.util.EnumSet
 import org.jetbrains.uast.UCallExpression
 import org.jetbrains.uast.getQualifiedName
 import org.w3c.dom.Element
+import java.util.EnumSet
 
 internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeScanner {
 
@@ -54,8 +54,8 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
                 NumberPickerUsageDetector::class.java,
                 EnumSet.of(Scope.RESOURCE_FILE, Scope.JAVA_FILE),
                 Scope.RESOURCE_FILE_SCOPE,
-                Scope.JAVA_FILE_SCOPE
-            )
+                Scope.JAVA_FILE_SCOPE,
+            ),
         )
     }
 
@@ -81,7 +81,7 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
             issue = ISSUE,
             location = context.getElementLocation(element),
             message = NUMBER_PICKER_USAGE_BRIEF_DESC,
-            quickfixData = computeQuickFixForXmlUsage(element)
+            quickfixData = computeQuickFixForXmlUsage(element),
         )
     }
 
@@ -101,13 +101,13 @@ internal class NumberPickerUsageDetector : Detector(), XmlScanner, SourceCodeSca
     override fun visitConstructor(
         context: JavaContext,
         node: UCallExpression,
-        constructor: PsiMethod
+        constructor: PsiMethod,
     ) {
         context.report(
             issue = ISSUE,
             location = context.getLocation(node),
             message = NUMBER_PICKER_USAGE_BRIEF_DESC,
-            quickfixData = computeQuickFixForSourceUsage(node)
+            quickfixData = computeQuickFixForSourceUsage(node),
         )
     }
 

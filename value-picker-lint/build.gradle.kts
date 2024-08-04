@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 /*
  * Copyright 2021 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
  *
@@ -24,11 +26,9 @@ plugins {
 java.sourceCompatibility = appConfig.javaCompatibilityVersion
 java.targetCompatibility = appConfig.javaCompatibilityVersion
 
-kotlin.target {
-    compilations.all {
-        kotlinOptions {
-            jvmTarget = appConfig.kotlinCompatibilityVersion.toString()
-        }
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget(appConfig.kotlinCompatibilityVersion.toString())
     }
 }
 

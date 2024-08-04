@@ -18,46 +18,46 @@ package com.paulrybitskyi.valuepicker.sample.ratingpicker.model
 
 internal enum class Rating(
     val number: Int,
-    val title: String
+    val title: String,
 ) {
     ONE(
         number = 1,
-        title = "One"
+        title = "One",
     ),
     TWO(
         number = 2,
-        title = "Two"
+        title = "Two",
     ),
     THREE(
         number = 3,
-        title = "Three"
+        title = "Three",
     ),
     FOUR(
         number = 4,
-        title = "Four"
+        title = "Four",
     ),
     FIVE(
         number = 5,
-        title = "Five"
+        title = "Five",
     ),
     SIX(
         number = 6,
-        title = "Six"
+        title = "Six",
     ),
     SEVEN(
         number = 7,
-        title = "Seven"
+        title = "Seven",
     ),
     EIGHT(
         number = 8,
-        title = "Eight"
+        title = "Eight",
     ),
     NINE(
         number = 9,
-        title = "Nine"
+        title = "Nine",
     ),
     TEN(
         number = 10,
-        title = "Ten"
-    )
+        title = "Ten",
+    ),
 }

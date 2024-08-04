@@ -50,7 +50,6 @@ import com.paulrybitskyi.valuepicker.decorators.ValuePickerItemDecoratorFactory.
 import com.paulrybitskyi.valuepicker.decorators.ValuePickerItemDecoratorFactory.createVerticalDecorator
 import com.paulrybitskyi.valuepicker.layoutmanager.ValuePickerLayoutManager
 import com.paulrybitskyi.valuepicker.model.Item
-import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
 import com.paulrybitskyi.valuepicker.model.Orientation.Companion.asOrientation
 import com.paulrybitskyi.valuepicker.model.Size
 import com.paulrybitskyi.valuepicker.model.VALUE_ITEM_CONFIG_STUB
@@ -67,6 +66,7 @@ import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 import com.paulrybitskyi.valuepicker.valueeffects.concrete.NoValueEffect
 import java.util.Collections
+import com.paulrybitskyi.valuepicker.model.Orientation as PickerOrientation
 
 private const val DEFAULT_MAX_VISIBLE_ITEMS = 3
 
@@ -84,7 +84,7 @@ private val DEFAULT_VALUE_EFFECT = FadingValueEffect()
 class ValuePickerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
     /**
@@ -179,7 +179,7 @@ class ValuePickerView @JvmOverloads constructor(
         set(value) {
             field = value.coerceIn(
                 DEFAULT_FLING_SPEED_FACTOR_MIN,
-                DEFAULT_FLING_SPEED_FACTOR_MAX
+                DEFAULT_FLING_SPEED_FACTOR_MAX,
             )
         }
 
@@ -246,7 +246,9 @@ class ValuePickerView @JvmOverloads constructor(
      * A property representing a current list of items of the picker.
      */
     var items: List<Item>
-        set(value) { _items = value.toList() }
+        set(value) {
+        _items = value.toList()
+        }
         get() = Collections.unmodifiableList(_items)
 
     private lateinit var valueItemViewPaint: Paint
@@ -371,7 +373,7 @@ class ValuePickerView @JvmOverloads constructor(
         valuePickerAdapter.getItem(adapterPosition)?.let {
             setSelectedItem(
                 item = it,
-                scrollToPosition = false
+                scrollToPosition = false,
             )
         }
     }
@@ -380,7 +382,7 @@ class ValuePickerView @JvmOverloads constructor(
         ValuePickerRecyclerViewAdapter(
             items = _items,
             valueItemConfig = valueItemConfig,
-            scrollerHelper = initScrollerHelper()
+            scrollerHelper = initScrollerHelper(),
         )
         .apply { onItemClickListener = ::handleItemClick }
         .also {
@@ -392,7 +394,7 @@ class ValuePickerView @JvmOverloads constructor(
     private fun initScrollerHelper(): ScrollerHelper {
         return ScrollerHelperFactory.create(
             isInfinite = isInfiniteScrollEnabled,
-            dataSetItemCount = itemCount
+            dataSetItemCount = itemCount,
         )
     }
 
@@ -409,7 +411,7 @@ class ValuePickerView @JvmOverloads constructor(
             size = defaultValues.valueItemSize,
             textColor = defaultValues.valueItemTextColor,
             textSize = defaultValues.valueItemTextSize,
-            textTypeface = defaultValues.valueItemTextTypeface
+            textTypeface = defaultValues.valueItemTextTypeface,
         )
     }
 
@@ -439,12 +441,12 @@ class ValuePickerView @JvmOverloads constructor(
         context.withStyledAttributes(
             set = attrs,
             attrs = R.styleable.ValuePickerView,
-            defStyleAttr = defStyle
+            defStyleAttr = defStyle,
         ) {
             areDividersEnabled = getBoolean(R.styleable.ValuePickerView_vpv_areDividersEnabled, areDividersEnabled)
             isInfiniteScrollEnabled = getBoolean(
                 R.styleable.ValuePickerView_vpv_isInfiniteScrollEnabled,
-                isInfiniteScrollEnabled
+                isInfiniteScrollEnabled,
             )
             maxVisibleItems = getInteger(R.styleable.ValuePickerView_vpv_maxVisibleItems, maxVisibleItems)
             textColor = getColor(R.styleable.ValuePickerView_vpv_textColor, textColor)
@@ -499,7 +501,7 @@ class ValuePickerView @JvmOverloads constructor(
 
         return sizeOf(
             width = valueItemTextMaxWidth,
-            height = valueItemTextMaxHeight
+            height = valueItemTextMaxHeight,
         )
     }
 
@@ -522,7 +524,7 @@ class ValuePickerView @JvmOverloads constructor(
 
         return sizeOf(
             width = (width ?: 0),
-            height = (height ?: 0)
+            height = (height ?: 0),
         )
     }
 
@@ -645,7 +647,7 @@ class ValuePickerView @JvmOverloads constructor(
     override fun fling(velocityX: Int, velocityY: Int): Boolean {
         return super.fling(
             (velocityX * flingSpeedFactor).toInt(),
-            (velocityY * flingSpeedFactor).toInt()
+            (velocityY * flingSpeedFactor).toInt(),
         )
     }
 }

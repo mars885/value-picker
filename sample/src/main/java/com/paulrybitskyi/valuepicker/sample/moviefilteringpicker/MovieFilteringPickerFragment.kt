@@ -35,7 +35,7 @@ import com.paulrybitskyi.valuepicker.valueeffects.concrete.FadingValueEffect
 
 @Suppress("MagicNumber")
 internal class MovieFilteringPickerFragment : BaseFragment<
-    FragmentMovieFilteringPickerBinding
+    FragmentMovieFilteringPickerBinding,
 >(R.layout.fragment_movie_filtering_picker) {
 
     override val viewBinding by viewBinding(FragmentMovieFilteringPickerBinding::bind)
@@ -80,7 +80,7 @@ internal class MovieFilteringPickerFragment : BaseFragment<
             PickerItem(
                 id = it.ordinal,
                 title = it.title,
-                payload = it
+                payload = it,
             )
         }
     }
@@ -103,8 +103,8 @@ internal class MovieFilteringPickerFragment : BaseFragment<
                 add(
                     PickerItem(
                         id = year,
-                        title = year.toString()
-                    )
+                        title = year.toString(),
+                    ),
                 )
             }
         }
@@ -115,8 +115,8 @@ internal class MovieFilteringPickerFragment : BaseFragment<
         valueEffect = CompositeValueEffect(
             listOf(
                 FadingValueEffect(),
-                RotationValueEffect(RotationValueEffect.Property.ROTATION_X)
-            )
+                RotationValueEffect(RotationValueEffect.Property.ROTATION_X),
+            ),
         )
         onItemSelectedListener = ValuePickerView.OnItemSelectedListener {
             viewBinding.serviceTv.text = "Service: ${it.title}"
@@ -132,7 +132,7 @@ internal class MovieFilteringPickerFragment : BaseFragment<
             PickerItem(
                 id = it.ordinal,
                 title = it.title,
-                payload = it
+                payload = it,
             )
         }
     }

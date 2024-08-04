@@ -33,7 +33,7 @@ import com.paulrybitskyi.valuepicker.scrollerhelpers.ScrollerHelper
 internal class ValuePickerRecyclerViewAdapter(
     items: List<Item>,
     var valueItemConfig: ValueItemConfig,
-    var scrollerHelper: ScrollerHelper
+    var scrollerHelper: ScrollerHelper,
 ) : RecyclerView.Adapter<ViewHolder>() {
 
     var items by observeChanges(items) { _, newItems ->
@@ -51,7 +51,7 @@ internal class ValuePickerRecyclerViewAdapter(
         return AppCompatTextView(context).apply {
             layoutParams = RecyclerView.LayoutParams(
                 valueItemConfig.size.width,
-                valueItemConfig.size.height
+                valueItemConfig.size.height,
             )
             gravity = Gravity.CENTER
             setTextColor(valueItemConfig.textColor)

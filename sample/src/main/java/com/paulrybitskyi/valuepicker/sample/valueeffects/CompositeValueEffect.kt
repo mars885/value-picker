@@ -22,7 +22,7 @@ import com.paulrybitskyi.valuepicker.model.Orientation
 import com.paulrybitskyi.valuepicker.valueeffects.ValueEffect
 
 internal class CompositeValueEffect(
-    private val itemEffects: List<ValueEffect>
+    private val itemEffects: List<ValueEffect>,
 ) : ValueEffect {
 
     override fun applyEffect(child: View, recyclerView: RecyclerView, orientation: Orientation) {
