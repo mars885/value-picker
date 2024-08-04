@@ -68,7 +68,7 @@ object versions {
     const val commonsCore = "1.0.3"
     const val commonsKtx = "1.0.3"
     const val commonsRecyclerView = "1.0.1"
-    const val autoService = "1.0"
+    const val autoService = "1.1.1"
     const val lint = "30.2.2"   // lintVersion = androidPlugin + 23.0.0
     const val jUnit = "4.13.2"
     const val jUnitExt = "1.1.3"
